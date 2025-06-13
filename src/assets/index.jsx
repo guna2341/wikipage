@@ -1,0 +1,10 @@
+export { default as img } from './img.png';
+export { default as logo } from './logo.png';
+export { User } from './svgs/user';
+export { Comment } from './svgs/comment';
+export { Edit } from './svgs/edit';
+export { Logout } from './svgs/logout';
+export { SearchIcon } from './svgs/searchIcon';
+export { DownArrow } from './svgs/downArrow';
+export { Pin } from './svgs/pin';
+export { SendIcon } from './svgs/sendIcon';

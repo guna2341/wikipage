@@ -1,0 +1,37 @@
+import { Input } from '@heroui/input'
+import React from 'react'
+
+export const InputField = ({
+  startContent,
+  endContent,
+  placeholder,
+  label,
+  classname,
+  classnames,
+  size,
+  onChange,
+  value
+}) => {
+  return (
+    <div>
+      <Input
+        value={value}
+        onChange={onChange}
+        size={size}
+        className={classname}
+        classNames={{
+          base: "w-full",
+          mainWrapper: "w-full",
+          inputWrapper: "px-4",
+          innerWrapper: "flex gap-1",
+          ...classnames
+        }}
+        label={label}
+        placeholder={placeholder}
+        startContent={startContent}
+        endContent={endContent}
+      />
+    </div>
+  )
+}
+
