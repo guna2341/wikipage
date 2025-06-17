@@ -3,6 +3,7 @@ import React from 'react'
 
 export const ButtonComponent = ({
   ref,
+  onClick,
   color = "primary",
   variant = "solid",
   children = "button",
@@ -26,6 +27,7 @@ export const ButtonComponent = ({
       endContent={endContent}
       isIconOnly={isIconOnly}
       isDisabled={isDisabled}
+      onPress={onClick}
     >
     {children}
     </Button>

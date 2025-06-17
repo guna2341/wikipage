@@ -14,10 +14,10 @@ export const TabItem = ({
             selectedKey={activeTab}
             onSelectionChange={setActiveTab}
             classNames={{
-                base: "w-full border-0",
-                tab: "w-full p-0 border-0 justify-start outline-0 z-0",
+                base: "w-full border-0 justify-start",
+                tab: "w-full p-0 border-0 justify-start outline-0 my-2 z-0",
                 tabList: "w-full p-0 border-0 gap-0 bg-white outline-0",
-                tabContent: "p-4 w-full border-0 outline-0 z-0",
+                tabContent: "w-full border-0 outline-0 z-0",
                 cursor: "bg-custom-500 border-0 outline-0 z-0 shadow-none",
             }}
         >
@@ -25,15 +25,23 @@ export const TabItem = ({
                 <Tab
                     key={tab?.id}
                     title={
-                        <div className='flex justify-between items-center'>
+                        <div className={cn('flex items-center', {
+                           "p-4" : tab.id !== 0
+                        })}>
                         <div className={cn(
                             'w-full flex items-center gap-4 font-normal text-base leading-6 text-custom-400',
                             {
                                 "font-semibold text-custom-600": activeTab == tab?.id
                             }
-                        )}>
-                            <tab.img />
-                            {tab?.tab}
+                            )}>
+                                {tab.img &&
+                                    <span>
+                                        <tab.img />
+                                    </span>
+                                }
+                                <span className='w-full text-left' onClick={tab.onClick}>
+                                    {tab?.tab}
+                                </span>
                             </div>
                             {tab.comments &&
                                 <div className={cn('w-6 h-6 rounded flex justify-center font-normal items-center text-custom-400', {

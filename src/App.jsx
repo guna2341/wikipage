@@ -1,8 +1,7 @@
-import { Route, Router, Routes } from "react-router-dom";
-import Test from "./pages/test/test";
-import { Faculty } from "./pages/faculty/layout";
+import { Route, Routes } from "react-router-dom";
+import { Faculty, Test } from "@/pages";
 import { PageRoutes } from "./protectedRoutes";
-import { Login } from "./components";
+import { Login } from "@/components";
 
 function App() {
   return (

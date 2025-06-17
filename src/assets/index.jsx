@@ -8,3 +8,5 @@ export { SearchIcon } from './svgs/searchIcon';
 export { DownArrow } from './svgs/downArrow';
 export { Pin } from './svgs/pin';
 export { SendIcon } from './svgs/sendIcon';
+export { Edit2 } from './svgs/edit2';
+export { Delete } from './svgs/delete';

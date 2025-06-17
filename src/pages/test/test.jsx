@@ -1,8 +1,8 @@
 import React from 'react'
-import { NavBar, SideBar, InputField, MessageCard, MessageNavbar, MessageBox, MessageList } from "@/components";
+import { NavBar, SideBar, InputField, MessageCard, MessageNavbar, MessageBox, MessageList, CourseHeader, TabItem, CourseBody, CourseTable, Stepper } from "@/components";
 import { SearchIcon } from '@/assets';
-import { TabItem } from '@/components/tabItem';
-const Test = () => {
+import { coursePlanList } from '../faculty/utils';
+export const Test = () => {
     const sampleData = [
         {
             user: "faculty",
@@ -15,6 +15,10 @@ const Test = () => {
     ];
   return (
       <div className='p-12 flex flex-col gap-5'>
+          <Stepper/>
+          <CourseTable
+            data={coursePlanList}
+          />
           <TabItem/>
           <SideBar />
           <NavBar />
@@ -34,9 +38,19 @@ const Test = () => {
                   msg={item.msg}
             />
           ))}
-          <MessageList/>
+          <MessageList />
+          <CourseHeader
+              dept={"CSE"}
+              course_code={"22CS501"}
+              academic_year={"24-25"}
+              faculty_members={["Dr.Parthasarathi P","Mrs.Ganagavalli K"]}
+          />
+             <CourseBody
+                         className={"w-full max-w-[804px]"}
+                         header={'Introduction to the course'}
+                         message={'In theoretical computer science and mathematics, the theory of computation is the branch that deals with what problems can be solved on a model of computation, using an algorithm, how efficiently they can be solved or to what degree (e.g., approximate solutions versus precise ones). The field is divided into three major branches: automata theory and formal languages, computability theory, and computational complexity theory, which are linked by the question: "What are the fundamental capabilities and limitations of computers?' }
+                     />
       </div>
   )
 }
 
-export default Test
