@@ -1,11 +1,12 @@
-import { Comment, Edit, User } from "@/assets";
+import { Comment, DownArrow, Edit, User } from "@/assets";
 import { CommentPage } from "../pages/comment";
+import { SideBarAccordian } from "@/components/sidebarAccordian";
+
 
 export const TabList = [
     {
         id: 0,
-        img: Edit,
-        tab: "Course Plan"
+        tab: <SideBarAccordian />,
     },
     {
         id: 1,
@@ -17,11 +18,76 @@ export const TabList = [
         img: Comment,
         tab: "Comments",
         comments: "10",
-        page:<CommentPage/>
     },
     {
         id: 3,
         img: User,
         tab: "Profile"
+    }
+];
+
+export const coursePlanList = [
+    {
+        unit: "1.1",
+        topic: "Introduction to TOC",
+        lectureMaterial: "1.1",
+        lectureVideo: "Lv.1",
+        discourseLink: "DL1",
+    },
+    {
+        unit: "1.2",
+        topic: "Deterministic Finite Automata",
+        lectureMaterial: "1.2",
+        lectureVideo: "Lv.2",
+    },
+    {
+        unit: "1.3",
+        topic: "Nondeterministic Finite Automata",
+        lectureMaterial: "1.3",
+        lectureVideo: "Lv.3",
+        discourseLink: "DL2",
+    },
+    {
+        unit: "1.4",
+        topic: "Regular Expressions",
+        lectureMaterial: "1.4",
+        lectureVideo: "Lv.4",
+    },
+    {
+        unit: "1.5",
+        topic: "Context-Free Grammars",
+        lectureMaterial: "1.5",
+        lectureVideo: "Lv.5",
+        discourseLink: "DL3",
+    },
+    {
+        unit: "1.6",
+        topic: "Pushdown Automata",
+        lectureMaterial: "1.6",
+        lectureVideo: "Lv.6",
+    },
+    {
+        unit: "1.7",
+        topic: "Turing Machines",
+        lectureMaterial: "1.7",
+        lectureVideo: "Lv.7",
+        discourseLink: "DL4",
+    },
+    {
+        unit: "1.7",
+        topic: "Turing Machines",
+        lectureMaterial: "1.7",
+        lectureVideo: "Lv.7",
+    },
+];
+
+export const Courses = [
+    {
+        id: 1,
+        course:"CSE: 22CS501 24-25"
+    },
+    {
+        id: 2,
+        course:"CSE: 22MA201 24-25"
     }
 ];

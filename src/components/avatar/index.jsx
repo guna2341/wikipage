@@ -1,5 +1,5 @@
-import { Avatar } from '@heroui/avatar'
 import React from 'react'
+import { Avatar } from '@heroui/avatar'
 
 export const AvatarComponent = ({
     className,

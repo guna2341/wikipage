@@ -1,0 +1,53 @@
+import { CourseBody, CourseHeader, CourseTable } from '@/components'
+import React from 'react'
+import { coursePlanList } from '../utils'
+
+export const CoursePlan = () => {
+    return (
+        <div className='p-7 flex flex-col gap-9 h-full overflow-auto scrollbar-hide'>
+            <CourseHeader
+                dept={"CSE"}
+                course_code={"22CS501"}
+                academic_year={"24-25"}
+                faculty_members={["Dr.Parthasarathi P", "Mrs.Ganagavalli K"]}
+            />
+            <CourseBody
+                className={"w-full max-w-[804px]"}
+                header={'Introduction to the course'}
+                message={'In theoretical computer science and mathematics, the theory of computation is the branch that deals with what problems can be solved on a model of computation, using an algorithm, how efficiently they can be solved or to what degree (e.g., approximate solutions versus precise ones). The field is divided into three major branches: automata theory and formal languages, computability theory, and computational complexity theory, which are linked by the question: "What are the fundamental capabilities and limitations of computers?'}
+            />
+            <CourseBody
+                className={"w-full max-w-[804px]"}
+                header={'Course Objective'}
+                message={<div>
+                    <li>Understand the mathematical models of computation and formal language</li>
+                    <li> Understand the capability of Turing machines and to design TM for a given language.</li>
+                    <li>Understand the decidability and intractability of computational problems</li>
+                </div>}
+            />
+            <CourseBody
+                className={"w-full max-w-[804px]"}
+                header={'Course Outcomes'}
+                message={<div>
+                    <li>Design the Finite Automata for computable problems.</li>
+                    <li>Formulate / Design regular expression for pattern recognition.</li>
+                    <li>Develop pushdown automata for language recognition.</li>
+                    <li>Analyse the Turing machine for language acceptance.</li>
+                    <li>Analyse the undecidability of languages.</li>
+                </div>}
+            />
+            <div
+                className='flex flex-col gap-[18px]'
+            >
+                <p
+                    className='font-semibold text-lg leading-6 flex items-center gap-3'
+                >
+                    Course Plan
+                </p>
+                <CourseTable
+                    data={coursePlanList}
+                />
+            </div>
+        </div>
+    )
+}
