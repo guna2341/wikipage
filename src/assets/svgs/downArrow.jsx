@@ -1,11 +1,13 @@
 import * as React from "react"
-export const DownArrow = (props) => (
+export const DownArrow = ({
+    width = 16,
+    height = 16
+}) => (
     <svg
         xmlns="http://www.w3.org/2000/svg"
-        width={16}
-        height={16}
+        width={width}
+        height={height}
         fill="none"
-        {...props}
     >
         <path
             stroke="#000"

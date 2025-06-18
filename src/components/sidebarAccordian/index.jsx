@@ -4,8 +4,8 @@ import React from 'react';
 import { cn } from '../cn';
 
 export const SideBarAccordian = ({ onClick }) => {
-  const [sidebar, setSidebar] = React.useState(true);
-  const [currentTab, setCurrentTab] = React.useState(1);
+  const [sidebar, setSidebar] = React.useState(false);
+  const [currentTab, setCurrentTab] = React.useState(-1);
   const contentRef = React.useRef(null);
 
   React.useEffect(() => {

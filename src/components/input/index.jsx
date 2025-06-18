@@ -10,11 +10,15 @@ export const InputField = ({
   classnames,
   size,
   onChange,
-  value
+  value,
+  variant,
+  radius
 }) => {
   return (
     <div>
       <Input
+      radius={radius}
+      variant={variant}
         value={value}
         onChange={onChange}
         size={size}

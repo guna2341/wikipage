@@ -15,6 +15,7 @@ export const Test = () => {
     ];
   return (
       <div className='p-12 flex flex-col gap-5'>
+        fdf
           <Stepper/>
           <CourseTable
             data={coursePlanList}

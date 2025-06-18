@@ -3,6 +3,7 @@ import { ButtonComponent } from '@/components';
 
 export const CourseHeader = ({
     className,
+    isSaveBtn = true,
     dept,
     course_code,
     academic_year,
@@ -35,12 +36,14 @@ export const CourseHeader = ({
           })}
           </span>
       </div>
+      {isSaveBtn &&
       <ButtonComponent
         className={"bg-purple-600"}
         onClick={() => console.log("Save")}
       >
         Save
       </ButtonComponent>
+}
     </div>
   )
 }

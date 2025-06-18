@@ -91,3 +91,71 @@ export const Courses = [
         course:"CSE: 22MA201 24-25"
     }
 ];
+
+export const courseUndoList = [
+    {
+        id:1,
+        content:"Deterministic Finite Automata",
+        faculty:"Dr.Parthasarathi p",
+        lastEdit:"13 Mar,2025 at 9.00AM"
+    },
+    {
+        id:2,
+        content:"Deterministic Finite Automata",
+        faculty:"Dr.Parthasarathi p",
+        lastEdit:"13 Mar,2025 at 9.00AM"
+    },
+    {
+        id:3,
+        content:"Deterministic Finite Automata",
+        faculty:"Dr.Parthasarathi p",
+        lastEdit:"13 Mar,2025 at 9.00AM"
+    },
+    {
+        id:4,
+        content:"Deterministic Finite Automata",
+        faculty:"Dr.Parthasarathi p",
+        lastEdit:"13 Mar,2025 at 9.00AM"
+    },
+    {
+        id:5,
+        content:"Deterministic Finite Automata",
+        faculty:"Dr.Parthasarathi p",
+        lastEdit:"13 Mar,2025 at 9.00AM"
+    },
+    {
+        id:6,
+        content:"Deterministic Finite Automata",
+        faculty:"Dr.Parthasarathi p",
+        lastEdit:"13 Mar,2025 at 9.00AM"
+    },
+    {
+        id:5,
+        content:"Deterministic Finite Automata",
+        faculty:"Dr.Parthasarathi p",
+        lastEdit:"13 Mar,2025 at 9.00AM"
+    },
+    {
+        id:6,
+        content:"Deterministic Finite Automata",
+        faculty:"Dr.Parthasarathi p",
+        lastEdit:"13 Mar,2025 at 9.00AM"
+    },
+    {
+        id:5,
+        content:"Deterministic Finite Automata",
+        faculty:"Dr.Parthasarathi p",
+        lastEdit:"13 Mar,2025 at 9.00AM"
+    },
+    {
+        id:6,
+        content:"Deterministic Finite Automata",
+        faculty:"Dr.Parthasarathi p",
+        lastEdit:"13 Mar,2025 at 9.00AM"
+    },
+];
+
+export const courseUndoCourses = [
+    { id: 1, course: "CSE:22CS501 24-25" },
+    { id: 2, course: "CSE:22CS501 24-25" },
+];

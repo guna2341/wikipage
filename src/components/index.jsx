@@ -15,3 +15,5 @@ export { CourseHeader } from './coursePlanHeader';
 export { CourseBody } from './coursePlanBody';
 export { CourseTable } from './coursePlanTable';
 export { Stepper } from './stepper';
+export {CoursePlanCodeInput} from './coursePlanCodeInput';
+export {CoursePlanUndoTable} from './coursePlanUndoTable';
