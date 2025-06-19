@@ -3,15 +3,21 @@ import { Accordion, AccordionItem } from "@heroui/accordion"
 
 
 export const AccordianComponent = ({
-    data=[]
+    id,
+    title,
+    content,
+    className,
+    classNames
 }) => {
   return (
-      <Accordion className="w-full">
-          {data.map((item, index) => (
-              <AccordionItem key={item.key} title={item.title}>
-                  {item.content}
+      <Accordion className={`w-full ${className}`}
+      >
+              <AccordionItem key={id} 
+              title={title}
+              classNames={{...classNames}}
+              >
+                  {content}
               </AccordionItem>
-          ))}
       </Accordion>
   )
 }

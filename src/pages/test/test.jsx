@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavBar, SideBar, InputField, MessageCard, MessageNavbar, MessageBox, MessageList, CourseHeader, TabItem, CourseBody, CourseTable, Stepper, CourseItem } from "@/components";
+import { NavBar, SideBar, InputField, MessageCard, MessageNavbar, MessageBox, MessageList, CourseHeader, TabItem, CourseBody, CourseTable, Stepper, CourseItem, CreateCourseSecond } from "@/components";
 import { SearchIcon } from '@/assets';
 import { coursePlanList } from '../faculty/utils';
 import { Tooltip } from '@heroui/tooltip';
@@ -16,6 +16,7 @@ export const Test = () => {
     ];
   return (
       <div className='p-12 flex flex-col gap-5'>
+        <CreateCourseSecond/>
         <CourseItem/>
           <Stepper/>
           <CourseTable
