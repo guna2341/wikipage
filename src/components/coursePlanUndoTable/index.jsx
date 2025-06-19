@@ -9,7 +9,7 @@ export const CoursePlanUndoTable = ({
     const [currentTab, setCurrentTab] = React.useState(1);
 
     return (
-        <div className='bg-white rounded-2xl w-[calc(100%-0.5rem)] h-[calc(100%-11rem)] scrollbar-hide flex flex-col border border-custom-1007'>
+        <div className='bg-white rounded-2xl w-[calc(100%-0.5rem)] h-[calc(100%-9rem)] scrollbar-hide flex flex-col border border-custom-1007'>
             <div className='flex gap-4 w-full overflow-auto scrollbar-hide pt-5 px-8'>
                 {courses.map(course => (
                     <div

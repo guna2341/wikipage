@@ -13,14 +13,18 @@ export const ButtonComponent = ({
   startContent,
   isLoading = false,
   isIconOnly = false,
-  isDisabled = false
+  isDisabled = false,
+  radius
 }) => {
   return (
     <Button
       ref={ref}
       variant={variant}
-      classnames={classnames}
-      className={className}
+      radius={"md"}
+      classnames={{  
+        ...classnames
+      }}
+      className={`gap-[1.5px] pl-3 ${className}`}
       color={color}
       isLoading={isLoading}
       startContent={startContent}

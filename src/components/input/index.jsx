@@ -12,11 +12,13 @@ export const InputField = ({
   onChange,
   value,
   variant,
-  radius
+  radius,
+  disabled
 }) => {
   return (
     <div>
       <Input
+      isDisabled={disabled}
       radius={radius}
       variant={variant}
         value={value}

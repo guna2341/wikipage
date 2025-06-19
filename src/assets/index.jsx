@@ -15,4 +15,5 @@ export { SendIcon } from './svgs/sendIcon';
 export { Edit2 } from './svgs/edit2';
 export { Delete } from './svgs/delete';
 export {FileEdit} from './svgs/fileEdit';
-export {BigArrow} from './svgs/bigArrow';
+export { BigArrow } from './svgs/bigArrow';
+export { AddIcon } from './svgs/addIcon';

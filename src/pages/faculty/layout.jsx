@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import { CoursePlanHome } from './pages/coursePlanHome'
 import { CoursePlanEdit } from './pages/coursePlanEdit'
 import { CreateCourse } from './pages/createCourse'
+import { CoursePlan } from './pages/coursePlanOverview'
 
 export const Faculty = () => {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ export const Faculty = () => {
         activeTab={activeTab}
         setActiveTab={setActiveTab}
       />
-      <div className='w-full h-full flex flex-col'>
+      <div className='w-full h-full flex flex-col '>
         <NavBar />
         {activeTab == "0" && <CreateCourse/>}
         {activeTab == "1" && "Course Material"}

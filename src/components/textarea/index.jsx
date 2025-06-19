@@ -8,10 +8,22 @@ export const TextField = ({
     maxRows,
     minRows,
     placeholder,
-    onKeyDown
+    onKeyDown,
+    disableAutosize,
+    disabled = false,
+    onChange
 }) => {
+const [words,setWords] = React.useState(0);
+
+    function handleOnChange(e) {
+        onChange(e);
+    }
+
   return (
       <Textarea
+          onChange={handleOnChange}
+          disableAutosize={disableAutosize}
+          isDisabled={disabled}
           onKeyDown={onKeyDown}
           maxRows={maxRows}
           minRows={minRows}
