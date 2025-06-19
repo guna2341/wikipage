@@ -1,3 +1,4 @@
+import { BigArrow } from "@/assets"
 import { Accordion, AccordionItem } from "@heroui/accordion"
 
 
@@ -12,8 +13,10 @@ export const AccordianComponent = ({
   return (
       <Accordion className={`w-full ${className}`}
       >
-              <AccordionItem key={id} 
+              <AccordionItem 
+              key={id} 
               title={title}
+              indicator={<BigArrow/>}
               classNames={{...classNames}}
               >
                   {content}

@@ -4,15 +4,11 @@ import { InputField } from '../input'
 import { AddIcon, DocumentIcon, FileUpload } from '@/assets'
 import { TickMark } from '@/assets/svgs/tickMark'
 import { Progress } from '@heroui/progress'
+import { cn } from '../cn'
 
 export const CourseItem = ({
-    data = [
-        {
-            lp:1.1,
-            lm:"",
-            lv:""
-        }
-    ]
+    data = [],
+    onClick
 }) => {
 
     const [lm,setLm] = React.useState({
@@ -23,18 +19,21 @@ export const CourseItem = ({
     });
     const [lv,setLv] = React.useState("https://sharefile.xyz/file.jpg");
   return (
-    <div>
+    <div className='flex flex-col gap-5 py-4 px-4'>
         <div className='flex justify-end'>
         <ButtonComponent
+        onClick={onClick}
         startContent={<AddIcon/>}
         >
             Add Lesson Plan
         </ButtonComponent>
         </div>
-        {data.map((item) =>(
-            <div className='flex flex-col gap-[22px] h-full'>
+        {data.map((item,index) =>(
+            <div className={cn('flex flex-col gap-[22px] px-8 pb-8',{
+                   'border-b border-custom-100' :data.length-1   !== index
+            })}>
                 <span className='flex flex-col gap-2 font-normal text-sm leading-6 text-custom-1020'>
-                    Lesson Plan:{item?.lp}
+                    Lesson Plan: {item?.lp}
                     <InputField
                     variant={"bordered"}
                     disabled
