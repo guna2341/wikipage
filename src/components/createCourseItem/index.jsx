@@ -5,6 +5,8 @@ import { AddIcon, DocumentIcon, FileUpload } from '@/assets'
 import { TickMark } from '@/assets/svgs/tickMark'
 import { Progress } from '@heroui/progress'
 import { cn } from '../cn'
+import { SelectComponent } from '../select'
+import { label } from 'framer-motion/client'
 
 export const CourseItem = ({
     data = [],
@@ -115,18 +117,28 @@ export const CourseItem = ({
 }
 
 const CustomInputField = ({isDiscourse,lp}) => {
+    const lpData = [
+        {
+            key:'1.1',
+            label:'1.1'
+        },
+        {
+            key:'1.2',
+            label:'1.2'
+        },
+        {
+            key:'1.3',
+            label:'1.3'
+        },
+    ];
     if (isDiscourse) {
             return (
                 <div className='flex items-center'>
                        <div className='flex flex-col gap-2 font-normal text-sm leading-6 text-custom-1020'>
                         Starting Lesson
-                   <InputField
-                    variant={"bordered"}
-                    disabled
-                    classnames={{
-                        inputWrapper:"shadow-none border-[1px] border-custom-1015"
-                    }}
-                    />
+                        <SelectComponent
+                        data = {lpData}
+                        />
                     </div>
                        <div className='flex flex-col gap-2 font-normal text-sm leading-6 text-custom-1020'>
                         Ending Lesson
