@@ -8,7 +8,8 @@ import { cn } from '../cn'
 
 export const CourseItem = ({
     data = [],
-    onClick
+    onClick,
+    isDiscourse
 }) => {
 
     const [lm,setLm] = React.useState({
@@ -32,21 +33,13 @@ export const CourseItem = ({
             <div className={cn('flex flex-col gap-[22px] px-8 pb-8',{
                    'border-b border-custom-100' :data.length-1   !== index
             })}>
-                <span className='flex flex-col gap-2 font-normal text-sm leading-6 text-custom-1020'>
-                    Lesson Plan: {item?.lp}
-                    <InputField
-                    variant={"bordered"}
-                    disabled
-                    classnames={{
-                        inputWrapper:"shadow-none border-[1px] border-custom-1015"
-                    }}
-                    />
-                </span>
+              
+                    <CustomInputField isDiscourse={isDiscourse} lp={item?.lp}/>
                 <div className='flex flex-col gap-6'>
                     <span className='flex flex-col gap-2 font-normal text-sm leading-6 text-custom-1020'>
                         Upload Lecture Material File:
-                        <div className='flex justify-between items-start gap-32'>
-                            <div className='w-full max-w-[492px] h-full max-h-[114px] border border-dashed border-custom-1021 rounded-md p-4 flex flex-col gap-2.5'>
+                        <div className='flex justify-between items-start gap-8'>
+                            <div className='w-full max-w-full h-[144px] border border-dashed border-custom-1021 rounded-md p-4 flex flex-col gap-2.5'>
                                 <span className='flex justify-center'><FileUpload/></span>
                                 <div className='text-center flex flex-col gap-1.5'>
                                     <p className='text-custom-1022 font-normal text-xs leading-3'>
@@ -57,11 +50,11 @@ export const CourseItem = ({
                                     </p>
                                 </div>
                             </div>
-                            <div className='w-full h-full max-h-[88px] border border-custom-1023 rounded-md px-4 py-3 flex flex-col'>
+                            <div className='w-full h-full max-h-[98px] border border-custom-1023 rounded-md px-4 py-3 flex flex-col gap-1'>
                                <div className='flex items-center justify-between'>
 
                                 <div className='flex gap-3 w-full'>
-                                    <div className='pt-0.5'>
+                                    <div className='pt-1'>
                                     <DocumentIcon/>
                                     </div>
                                     <div className='text-custom-1022 w-full'>
@@ -83,13 +76,13 @@ export const CourseItem = ({
                             </div>
                         </div>
                     </span>
-                    <div className='flex flex-col gap-2'>
+                    <div className='flex flex-col gap-2 w-full'>
                         <span
                         className='flex flex-col gap-2 font-normal text-sm leading-6 text-custom-1020'
                         >Upload Lecture Video URL Link:
                         </span>
                         <InputField
-                        classname={'w-[492px]'}
+                        classname={'max-w-[692px]'}
                         value={lv}
                         onChange={e => setLv(e.target.value)}
                         classnames={{
@@ -105,8 +98,61 @@ export const CourseItem = ({
                         />
                     </div>
                   </div>
+                  <div className='flex gap-4 justify-end'>
+                  <ButtonComponent
+                  className={"border border-custom-1026 bg-white text-black"}
+                  >
+                    Cancel
+                </ButtonComponent>
+                  <ButtonComponent>
+                    Save
+                </ButtonComponent>
+                  </div>
             </div>
         ))}
     </div>
   )
+}
+
+const CustomInputField = ({isDiscourse,lp}) => {
+    if (isDiscourse) {
+            return (
+                <div className='flex items-center'>
+                       <div className='flex flex-col gap-2 font-normal text-sm leading-6 text-custom-1020'>
+                        Starting Lesson
+                   <InputField
+                    variant={"bordered"}
+                    disabled
+                    classnames={{
+                        inputWrapper:"shadow-none border-[1px] border-custom-1015"
+                    }}
+                    />
+                    </div>
+                       <div className='flex flex-col gap-2 font-normal text-sm leading-6 text-custom-1020'>
+                        Ending Lesson
+                        <InputField
+                    variant={"bordered"}
+                    disabled
+                    classnames={{
+                        inputWrapper:"shadow-none border-[1px] border-custom-1015"
+                    }}
+                    />
+                    </div>
+                </div>
+            )
+    }
+    else {
+        return (
+              <div className='flex flex-col gap-2 font-normal text-sm leading-6 text-custom-1020'>
+                    Lesson Plan: {lp}
+                    <InputField
+                    variant={"bordered"}
+                    disabled
+                    classnames={{
+                        inputWrapper:"shadow-none border-[1px] border-custom-1015"
+                    }}
+                    />
+                </div>
+        )
+    }
 }

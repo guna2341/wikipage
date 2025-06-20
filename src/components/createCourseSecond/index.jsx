@@ -5,6 +5,8 @@ import { AccordianComponent } from '../accordian'
 import { CourseItem } from '../createCourseItem'
 
 export const CreateCourseSecond = ({
+    onClick,
+    isDiscourse = true
 }) => {
 
     const [data,setData] = React.useState([
@@ -84,23 +86,34 @@ export const CreateCourseSecond = ({
                 Add Unit
             </ButtonComponent>
         </div>
-        <div className='bg-white h-full overflow-auto rounded-2xl border border-custom-100 scrollbar-hide'>
+        <div className='bg-white h-full overflow-auto rounded-2xl border border-custom-100 scrollbar-hide flex flex-col justify-between'>
+            <div>
             {data.map((item,index) => (
                 <div className='w-full'>
                     <AccordianComponent
                     className={'px-0'}   
                     classNames={{
-                    heading:"border-b border-custom-100 h-full p-0",
+                    heading:"border-y border-custom-100 h-full p-0",
                     titleWrapper:"px-8 py-3",
                     content:"pb-2",
                     indicator:"mr-6"
                     }}
                     id={index}
                     title={<span className='text-custom-1016 font-semibold text-base leading-6'>UNIT No: {item.unit < 10 ? <span>0{item.unit}</span> : <span>{item.unit}</span>}</span>}
-                    content={<CourseItem data={item.lessonPlan} onClick={() => handleAddLessonPlan(item.unit)} />}
+                    content={<CourseItem data={item.lessonPlan} onClick={() => handleAddLessonPlan(item.unit)} isDiscourse={isDiscourse} />}
                     />
                     </div>
             ))}
+            </div>
+            <div className='flex justify-end p-4'> 
+                <ButtonComponent
+                onClick={onClick}
+                className={'w-[120px]'}
+                >
+                  Next
+                </ButtonComponent>
+                </div>
+
         </div>
     </div>
   )

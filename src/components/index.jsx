@@ -19,4 +19,5 @@ export { CoursePlanCodeInput } from './coursePlanCodeInput';
 export { CoursePlanUndoTable } from './coursePlanUndoTable';
 export { CreateCourseFirst } from './createCourseFirst';
 export { CreateCourseSecond } from './createCourseSecond'
-export {CourseItem} from './createCourseItem';
+export { CourseItem } from './createCourseItem';
+export { SelectComponent } from './select';

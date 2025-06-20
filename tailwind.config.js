@@ -45,7 +45,8 @@ export default {
           1022:"#0B0B0B",
           1023:"#CACACA",
           1024:"#50C878",
-          1025:"#FAFAFA"
+          1025:"#FAFAFA",
+          1026:"#CBCBCB"
         },
       },
     },

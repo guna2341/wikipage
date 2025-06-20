@@ -24,7 +24,8 @@ export const CoursePlanCodeInput = () => {
                         <InputField
                         radius={"sm"}
                         placeholder={"Enter the code"}
-                        classnames={{mainWrapper:"bg-white",
+                        classnames={{
+                        mainWrapper:"bg-white",
                         inputWrapper:"bg-custom-1010 shadow-none border border-custom-1009"}}
                         />
                         <ButtonComponent
