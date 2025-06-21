@@ -17,3 +17,4 @@ export { Delete } from './svgs/delete';
 export {FileEdit} from './svgs/fileEdit';
 export { BigArrow } from './svgs/bigArrow';
 export { AddIcon } from './svgs/addIcon';
+export { LeftArrow } from './svgs/leftArrow';

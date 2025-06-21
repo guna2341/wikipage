@@ -38,7 +38,9 @@ export const NewCourseInputField = (
           inputWrapper:"bg-custom-850 h-full w-full rounded-2xl data-[hover=true]:bg-custom-850  group-data-[focus=true]:bg-custom-850"
         }}
         />
+          <span className='text-sm leading-6'>
           {bottomLabel}
+          </span>
         </span>
        </div>
     </div>
