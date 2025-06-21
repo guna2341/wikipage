@@ -2,8 +2,10 @@ import { BigArrow } from '@/assets'
 import { CreateCourseFirst, CreateCourseSecond, Stepper } from '@/components'
 import React from 'react'
 
-export const CreateCourse = () => {
-  const [currentIndex,setCurrentIndex] = React.useState(2);
+export const CreateCourse = ({
+  handleCreate
+}) => {
+  const [currentIndex,setCurrentIndex] = React.useState(1);
 
   function handleNext() {
     if (currentIndex <= 2) {
@@ -12,8 +14,12 @@ export const CreateCourse = () => {
   }
 
   function handlePrevious() {
-    if (currentIndex > 1) {
-      setCurrentIndex(currentIndex - 1);
+    let tab = currentIndex - 1;
+    if (tab >=0 ) {
+      setCurrentIndex(tab);
+    }
+    if (tab == 0) {
+      handleCreate();
     }
   }
 
