@@ -27,7 +27,7 @@ export const Stepper = (
             <div className='flex items-center'>
                 <div 
           className={cn('bg-custom-1014 w-8 h-8 rounded-full flex justify-center items-center text-white font-medium text-base leading-6',{
-            'bg-white text-black border border-custom-1015': currentIndex !== item.id
+            'bg-white text-black border border-custom-1015': currentIndex + 1 <= item.id
           })}
           >
             {item.id}

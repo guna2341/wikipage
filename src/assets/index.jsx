@@ -17,3 +17,6 @@ export { Delete } from './svgs/delete';
 export {FileEdit} from './svgs/fileEdit';
 export { BigArrow } from './svgs/bigArrow';
 export { AddIcon } from './svgs/addIcon';
+export { FileUpload } from './svgs/fileUpload'; 
+export { DocumentIcon } from './svgs/documentIcon';
+export { TickMark } from './svgs/tickMark';

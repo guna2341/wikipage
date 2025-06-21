@@ -24,7 +24,7 @@ export const ButtonComponent = ({
       classnames={{  
         ...classnames
       }}
-      className={`gap-[1.5px] pl-3 ${className}`}
+      className={`pl-3 ${className}`}
       color={color}
       isLoading={isLoading}
       startContent={startContent}

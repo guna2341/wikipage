@@ -3,10 +3,10 @@ import { CreateCourseFirst, CreateCourseSecond, Stepper } from '@/components'
 import React from 'react'
 
 export const CreateCourse = () => {
-  const [currentIndex,setCurrentIndex] = React.useState(1);
+  const [currentIndex,setCurrentIndex] = React.useState(2);
 
   function handleNext() {
-    if (currentIndex < 2) {
+    if (currentIndex <= 2) {
       setCurrentIndex(currentIndex + 1);
     }
   }
