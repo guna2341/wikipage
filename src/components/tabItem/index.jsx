@@ -8,6 +8,7 @@ export const TabItem = ({
     setActiveTab,
     tabList = [],
 }) => {
+
     return (
         <Tabs
             isVertical

@@ -2,7 +2,7 @@ import { ButtonComponent, CourseHeader, InputField } from '@/components'
 import { welcome } from '@/assets'
 import React, { useEffect } from 'react'
 
-export const CoursePlanHome = () => {
+export const CoursePlanIllustration = () => {
   return (
     <div className='p-7 flex flex-col gap-9 h-full overflow-auto scrollbar-hide'>
     <CourseHeader

@@ -18,3 +18,6 @@ export {FileEdit} from './svgs/fileEdit';
 export { BigArrow } from './svgs/bigArrow';
 export { AddIcon } from './svgs/addIcon';
 export { LeftArrow } from './svgs/leftArrow';
+export { FileUpload } from './svgs/fileUpload'; 
+export { DocumentIcon } from './svgs/documentIcon';
+export { TickMark } from './svgs/tickMark';

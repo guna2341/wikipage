@@ -5,7 +5,7 @@ export const CourseTable = ({ data = [] }) => {
   const tableHeaders = ["UNIT NO", "TOPIC", "LECTURE MATERIAL", "LECTURE VIDEO", "DISCOURSE LINK", "Action"];
 
   return (
-    <div className="border border-custom-100 bg-white rounded-2xl overflow-x-auto">
+    <div className="border border-custom-100 h-full  bg-white rounded-2xl overflow-x-auto">
       <table className="w-full">
         <thead>
           <tr>

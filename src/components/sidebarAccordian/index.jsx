@@ -2,11 +2,23 @@ import { DownArrow, Edit } from '@/assets';
 import { Courses } from '@/pages/faculty/utils';
 import React from 'react';
 import { cn } from '../cn';
+import useCoursePlanStore from '@/store/faculty/coursePlan';
 
 export const SideBarAccordian = ({ onClick }) => {
+
+  const subNavbar = useCoursePlanStore(e => e.subNavbar);
+  const changeCoursePlan = useCoursePlanStore(e => e.changeCoursePlan);
   const [sidebar, setSidebar] = React.useState(false);
-  const [currentTab, setCurrentTab] = React.useState(-1);
   const contentRef = React.useRef(null);
+
+  function SubNavbarChange() {
+    setSidebar(!sidebar);
+    changeCoursePlan("subNavbar","-1");
+  }
+
+  function onTabChange(newTab) {
+      changeCoursePlan("subNavbar",newTab);
+  }
 
   React.useEffect(() => {
     const content = contentRef.current;
@@ -27,7 +39,7 @@ export const SideBarAccordian = ({ onClick }) => {
         </span>
         <div
           className='flex justify-between w-full items-center p-4 cursor-pointer'
-          onClick={() => setSidebar(!sidebar)}
+          onClick={SubNavbarChange}
         >
           Course Plan
           <DownArrow
@@ -47,16 +59,13 @@ export const SideBarAccordian = ({ onClick }) => {
           {Courses.map((course, index) => (
             <div
               key={course.id}
-              onClick={() => {
-                setCurrentTab(course.id);
-                onClick?.(course.id);
-              }}
+              onClick={() => onTabChange(course.id)}
               className={cn(
                 'border-t border-custom-500 py-3 pl-10 bg-white cursor-pointer transition-colors font-normal text-base leading-6 text-custom-400 duration-200',
                 {
-                  'bg-custom-500 border-b border-custom-1007 bg-opacity-100': currentTab === course.id,
-                  'hover:bg-gray-100': currentTab !== course.id,
-                  'rounded-b-md': index === Courses.length - 1
+                  'bg-custom-500 border-b border-custom-1007 bg-opacity-100': subNavbar === course.id,
+                  'hover:bg-gray-100': subNavbar !== course.id,
+                  'rounded-b-md': `${index}` === Courses.length - 1
                 }
               )}
             >

@@ -4,6 +4,7 @@ import { ButtonComponent } from '@/components';
 export const CourseHeader = ({
     className,
     isSaveBtn = true,
+    course,
     dept,
     course_code,
     academic_year,
@@ -14,7 +15,7 @@ export const CourseHeader = ({
       <div className='flex flex-col gap-2'>
           <span
               className='font-semibold text-[22px] leading-6'>
-              {dept}: {course_code} {academic_year}
+                {course ? <>{course}</>:<>{dept}: {course_code} {academic_year}</>}
           </span>
         <span
         className='font-medium text-base leading-6 text-custom-1003'

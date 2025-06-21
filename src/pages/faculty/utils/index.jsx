@@ -83,12 +83,14 @@ export const coursePlanList = [
 
 export const Courses = [
     {
-        id: 1,
-        course:"CSE: 22CS501 24-25"
+        id: "1",
+        course:"CSE: 22CS501 24-25",
+        faculty_members:["Dr.Parthasarathi P", "Mrs.Ganagavalli K"]
     },
     {
-        id: 2,
-        course:"CSE: 22MA201 24-25"
+        id: "2",
+        course:"CSE: 22MA201 24-25",
+        faculty_members:["Dr.Parthasarathi P", "Mrs.Ganagavalli K"]
     }
 ];
 
