@@ -1,20 +1,10 @@
-import { Login } from '@/components';
-import { Faculty } from '@/pages/faculty/layout';
-import React from 'react'
+import { Navigate, Outlet } from "react-router-dom";
 
-export const PageRoutes = () => {
-    const role = "faculty";
-    if (role === "faculty") {
-        return <Faculty />
-    }
-    else if (role === "admin") {
-        return "admin"
-    }
-    else if (role === "student") {
-        return "student"
-    }
-    else {
-        return <Login />
-    }
-}
+export const ProtectedRoute = () => {
+  const token = 'true';
+  if (!token) {
+    return <Navigate to="/login"/>;
+  }
 
+  return <Outlet />;
+};

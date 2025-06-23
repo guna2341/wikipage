@@ -1,23 +1,29 @@
 import { Route, Routes } from "react-router-dom";
-import { Faculty, Test } from "@/pages";
-import { PageRoutes } from "./protectedRoutes";
 import { Login } from "@/components";
-import { CourseView } from "./pages/faculty/pages/courseView";
-import { CoursePlan } from "./pages/faculty/pages/coursePlan";
-import { CourseMaterial } from "./pages/faculty/pages/courseMaterial";
-import { Comment } from "./pages/faculty/pages/comment";
+import { PageRoutes } from "./pageRoutes";
+import { ProtectedRoute } from "./protectedRoutes";
+import { Regulation } from "./pages/student/pages/regulation";
+import { CourseMaterial, CoursePlan, CourseView, Faculty, FacultyComment, Student, StudentComment } from "@/pages";
 
 function App() {
   return (
     <Routes>
-      <Route path="/test" element={<Test />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/" element={<PageRoutes />}></Route> 
-      <Route path="/faculty" element={<Faculty />}>
-       <Route path="courseplan" element={<CoursePlan/>} />
-       <Route path="coursematerial" element={<CourseMaterial/>} />
-       <Route path="comment" element={<Comment/>}/>
-        <Route path=":course/:id" element={<CourseView />} />
+
+      <Route path="/" element={<PageRoutes />} />
+
+      <Route element={<ProtectedRoute />}>
+        <Route path="/faculty" element={<Faculty />}>
+          <Route path="courseplan" element={<CoursePlan />} />
+          <Route path="coursematerial" element={<CourseMaterial />} />
+          <Route path="comment" element={<FacultyComment />} />
+          <Route path=":course/:id" element={<CourseView />} />
+        </Route>
+        <Route path="/student" element={<Student/>}>
+          <Route path="regulation" element={<Regulation/>} />
+          {/* <Route path="regulation/:course/:id" element={} /> */}
+          <Route path="comments" element={<StudentComment />} />
+        </Route>
       </Route>
     </Routes>
   );

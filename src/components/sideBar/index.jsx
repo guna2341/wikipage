@@ -8,6 +8,7 @@ export const SideBar = ({
     role = "Faculty",
     tabList,
     activeTab,
+    customTab,
     setActiveTab
 }) => {
     return (
@@ -22,6 +23,7 @@ export const SideBar = ({
                     </span>
                 </div>
                 <TabItem
+                    customTab = {customTab}
                     tabList={tabList}
                     activeTab={activeTab}
                     setActiveTab={setActiveTab}

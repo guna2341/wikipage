@@ -1,6 +1,6 @@
 import { MessageBox, MessageInput, MessageList, MessageNavbar } from '@/components'
 
-export const FacultyComment = () => {
+export const StudentComment = () => {
   return (
     <div className='py-6 px-3.5 h-full w-full overflow-hidden'>
       <div className='flex bg-white h-full w-full border border-custom-100 rounded-2xl'>
@@ -9,7 +9,7 @@ export const FacultyComment = () => {
               </div>
         <div className='flex flex-col w-full'>
           <div className='px-5 pt-3 h-full max-h-[89px] w-full border-b border-custom-100'>
-                <MessageNavbar status />
+                      <MessageNavbar status />
                 </div>
              <div className='p-7 flex flex-col gap-8 overflow-y-scroll scrollbar-hide'>     
                 <MessageBox />

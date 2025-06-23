@@ -14,6 +14,6 @@
       "@assets/*": ["./src/assets/*"]
     }
   },
-  "include": ["src", "vite.config.js", "src/protectedRoutes/.jsx"],
+  "include": ["src", "vite.config.js", "src/pageRoutes/.jsx"],
   "exclude": ["node_modules"]
 }
