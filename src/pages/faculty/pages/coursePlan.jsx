@@ -1,16 +1,25 @@
-import { CoursePlanCodeInput, CoursePlanUndoTable } from '@/components'
+import { CoursePlanCodeInput, CoursePlanIllustration, CoursePlanUndoTable, CoursePlanOverview  } from '@/components'
 import React from 'react'
 import { Courses, courseUndoCourses, courseUndoList } from '../utils'
 import useCoursePlanStore from '@/store/faculty/coursePlan'
-import { CoursePlanIllustration } from './coursePlanIllustration'
-import { CoursePlan } from './coursePlanOverview'
+import useCourseMaterialStore from '@/store/faculty/courseMaterial'
+import { useNavigate } from 'react-router-dom'
 
-export const CoursePlanEdit = () => {
+export const CoursePlan = () => {
 
+  const navigate = useNavigate();
   const subNavbar = useCoursePlanStore(e => e.subNavbar);
+  const changeCoursePlan = useCoursePlanStore(e => e.changeCoursePlan);
+  const changeCourseMaterial = useCourseMaterialStore(e => e.changeCourseMaterial);
+
+  function handleEdit() {
+    changeCoursePlan("currentNavbar","1");
+    changeCourseMaterial("createCourseTab",1);
+    navigate("/faculty/courseMaterial"); 
+  }
 
   function handleSubmit(courseId) {
-          console.log(courseId);
+      console.log(courseId);
   }
 
   return (
@@ -37,7 +46,9 @@ export const CoursePlanEdit = () => {
       }
       {
         subNavbar == "2" && 
-        <CoursePlan/>
+        <CoursePlanOverview
+        handleEdit={handleEdit}
+        />
       }
     </div>
   )

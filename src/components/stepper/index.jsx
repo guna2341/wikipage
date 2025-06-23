@@ -4,6 +4,7 @@ import { cn } from '../cn'
 export const Stepper = (
   {
     currentIndex = 1,
+    setCurrentindex,
     data = [
       {
         id:1,
@@ -26,9 +27,10 @@ export const Stepper = (
           {data.map(item => (
             <div className='flex items-center'>
                 <div 
-          className={cn('bg-custom-1014 w-8 h-8 rounded-full flex justify-center items-center text-white font-medium text-base leading-6',{
+          className={cn('bg-custom-1014 w-8 h-8 rounded-full flex justify-center items-center text-white font-medium text-base leading-6 cursor-pointer',{
             'bg-white text-black border border-custom-1015': currentIndex + 1 <= item.id
           })}
+          onClick={() => setCurrentindex(item.id)}
           >
             {item.id}
           </div>
@@ -41,10 +43,12 @@ export const Stepper = (
           </div>
           <div className='flex ml-[-40px]'>
           {data.map(item => (
-            <div className={cn('w-[220px] font-semibold text-base leading-6',{
+            <div className={cn('w-[220px] font-semibold text-base leading-6 cursor-pointer',{
               'pl-10' :item.id === 2,
               'text-center pl-6':item.id === 3 
-            })}>{item.label}</div>
+            })}
+              onClick={() => setCurrentindex(item.id)}
+            >{item.label}</div>
           ))} 
           </div>
           </div>

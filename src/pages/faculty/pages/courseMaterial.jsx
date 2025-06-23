@@ -1,16 +1,23 @@
 import React from 'react'
-import { CreateCourse } from './createCourse';
-import { CourseMaterialHeader, SelectComponent } from '@/components';
+import { CourseMaterialHeader, CourseMaterialTable, CreateCourse, ModCourseMaterialTable, SelectComponent } from '@/components';
+import useCourseMaterialStore from '@/store/faculty/courseMaterial';
+import { useNavigate } from 'react-router-dom';
 
 export const CourseMaterial = () => {
 
-    const [createCourse,setCreateCourse] = React.useState(false);
+    const navigate = useNavigate();
+    const createCourse = useCourseMaterialStore(e => e.createCourseTab);
+    const changeCourseMaterial = useCourseMaterialStore(e => e.changeCourseMaterial);
+
+    function handleCourse(dept,sem) {
+        navigate(`/faculty/${dept}/${sem}`)
+    }
 
     function handleCreate() {
-             setCreateCourse(!createCourse);
+        changeCourseMaterial("createCourseTab",1);
     }
     
-    if (createCourse) {
+    if (createCourse != 0) {
         return (
             <CreateCourse handleCreate={handleCreate} />
         );
@@ -18,29 +25,29 @@ export const CourseMaterial = () => {
     else {
         return (
                 <div className='h-full p-7 flex flex-col gap-5 overflow-auto scrollbar-hide'>
-                    <CourseMaterialHeader handleCreate={handleCreate} />
-                    <div className='bg-white h-full rounded-2xl py-7 px-6'>
+              <CourseMaterialHeader handleCreate={handleCreate} />           
+                    <div className='bg-white rounded-2xl py-7 px-6'>
                         <div className='flex flex-col gap-5'>
                             <div className='flex items-center justify-between'>                            
                             <p className='font-semibold leading-6 text-xl w-full'>
                                 Academic Regulation
                             </p>
-                            <div className='w-fit'>
-                            <SelectComponent
-                            label='All Regulation'
-                            className="w-[156px] h-[31px]"
-                            classNames={{
-                                base:"h-[31px] p-0",
-                                mainWrapper:"h-[31px] p-0",
-                                trigger:"h-[31px]",
-                                innerWrapper:"h-[31px]",
-                            }}
-                            />
-                            </div>
+                                <div className='w-fit '>
+                                <SelectComponent
+                                label='All Regulation'
+                                className="w-[156px] h-[31px]"
+                                />
+                                </div>
                             </div>
                              <p className='font-semibold leading-6 text-lg'>
                                 2022 Regulation
                             </p>
+                            <div className='flex flex-col w-full gap-14'>
+                            <CourseMaterialTable handleClick={handleCourse} />
+                            <CourseMaterialTable/>
+                            <ModCourseMaterialTable/>
+                            <ModCourseMaterialTable/>   
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -1,5 +1,6 @@
 import React from 'react'
 import { ButtonComponent } from '@/components';
+import { Edit2 } from '@/assets';
 
 export const CourseHeader = ({
     className,
@@ -8,7 +9,9 @@ export const CourseHeader = ({
     dept,
     course_code,
     academic_year,
-    faculty_members = []
+    faculty_members = [],
+    isEdit,
+    handleEdit
 }) => {
   return (
     <div className={`flex justify-between ${className}`}>
@@ -37,6 +40,17 @@ export const CourseHeader = ({
           })}
           </span>
       </div>
+
+      <div className='flex items-center gap-4'>
+{!isEdit && 
+ <ButtonComponent
+        className={'w-[100px] border bg-white border-purple-600 text-purple-600 rounded-lg font-normal text-base leading-6 pr-3'}
+        onClick={handleEdit}
+        startContent={<span className='text-purple-600'><Edit2 color='currentColor' /> </span>}
+        >
+          Edit
+        </ButtonComponent>}
+
       {isSaveBtn &&
       <ButtonComponent
         className={"bg-purple-600"}
@@ -45,6 +59,7 @@ export const CourseHeader = ({
         Save
       </ButtonComponent>
 }
+    </div>
     </div>
   )
 }

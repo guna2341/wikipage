@@ -16,6 +16,7 @@ onSubmit
              size='lg'
             />
               <CourseHeader
+                isEdit={true}
                 className={'ml-2'}
                 isSaveBtn={false}
                 course={course}

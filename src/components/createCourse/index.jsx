@@ -1,26 +1,26 @@
 import { BigArrow } from '@/assets'
 import { CreateCourseFirst, CreateCourseSecond, Stepper } from '@/components'
+import useCourseMaterialStore from '@/store/faculty/courseMaterial';
 import React from 'react'
 
-export const CreateCourse = ({
-  handleCreate
-}) => {
-  const [currentIndex,setCurrentIndex] = React.useState(1);
+export const CreateCourse = () => {
+
+  const currentIndex = useCourseMaterialStore(e => e.createCourseTab);
+  const changeCourseMaterial = useCourseMaterialStore(e => e.changeCourseMaterial);
+
+  function handleIndex(index) {
+      changeCourseMaterial("createCourseTab",index);
+  }
 
   function handleNext() {
     if (currentIndex <= 2) {
-      setCurrentIndex(currentIndex + 1);
+      changeCourseMaterial("createCourseTab",currentIndex + 1);
     }
   }
 
   function handlePrevious() {
     let tab = currentIndex - 1;
-    if (tab >=0 ) {
-      setCurrentIndex(tab);
-    }
-    if (tab == 0) {
-      handleCreate();
-    }
+    changeCourseMaterial("createCourseTab",tab);
   }
 
   return (
@@ -34,13 +34,13 @@ export const CreateCourse = ({
         <div className='w-full flex justify-center'>        
         <Stepper
         currentIndex={currentIndex}
+        setCurrentindex={handleIndex}
         />
         </div>
         </div>
         {currentIndex == 1 && <CreateCourseFirst onNext={handleNext} onPrevious={handlePrevious} /*onStart = {handleStart}*/ />}
         {currentIndex == 2 && <CreateCourseSecond onNext={handleNext} onPrevious={handlePrevious} />}
         {currentIndex == 3 && <CreateCourseSecond onNext={handleNext} onPrevious={handlePrevious} isDiscourse={true} />}
-
     </div>
   )
 }

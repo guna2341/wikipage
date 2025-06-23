@@ -12,6 +12,7 @@ export const CourseMaterialTable = ({
     { id: "7", dept: "Information Science Engineering" },
     { id: "8", dept: "Mechanical Engineering" },
     { id: "9", dept: "Mechatronics Engineering" },
+    { id: "10", dept: "Computer Science And Engineering" },
   ],
   handleClick
 }) => {
@@ -27,7 +28,7 @@ export const CourseMaterialTable = ({
       <table className='w-full border-collapse'>
         <thead>
           <tr>
-            <th className="py-3.5 w-[300px] bg-custom-1028 border border-l-0 border-custom-100 text-custom-1005 font-medium leading-7 text-base">DEPARTMENT</th>
+            <th className="py-3.5 w-[200px] bg-custom-1028 border border-l-0 border-custom-100 text-custom-1005 font-medium leading-7 text-base">DEPARTMENT</th>
             <th className="py-3.5 bg-custom-1028 border border-custom-100 border-r-0 text-custom-1005 font-medium leading-7 text-base" colSpan={semesters.length}>SEMESTER</th>
           </tr>
         </thead>
@@ -40,7 +41,7 @@ export const CourseMaterialTable = ({
               {semesters.map(sem => (
                 <td key={sem} 
                 onClick={() => handleClick(item.dept,sem)}
-                className='py-3.5 w-[84px] border-t border-l border-custom-100 text-center'>
+                className=' w-[50px] border-t border-l border-custom-100 text-center cursor-pointer'>
                   {sem}
                   </td>
               ))}

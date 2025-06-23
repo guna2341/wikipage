@@ -38,7 +38,7 @@ export const SideBarAccordian = ({ onClick }) => {
           <Edit />
         </span>
         <div
-          className='flex justify-between w-full items-center p-4 cursor-pointer'
+          className='flex justify-between w-full items-center p-4 pl-0 cursor-pointer'
           onClick={SubNavbarChange}
         >
           Course Plan

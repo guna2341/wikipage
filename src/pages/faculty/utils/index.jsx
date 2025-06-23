@@ -1,5 +1,4 @@
 import { Comment, DownArrow, Edit, User } from "@/assets";
-import { CommentPage } from "../pages/comment";
 import { SideBarAccordian } from "@/components/sidebarAccordian";
 
 
@@ -19,11 +18,11 @@ export const TabList = [
         tab: "Comments",
         comments: "10",
     },
-    {
-        id: 3,
-        img: User,
-        tab: "Profile"
-    }
+    // {
+    //     id: 3,
+    //     img: User,
+    //     tab: "Profile"
+    // }
 ];
 
 export const coursePlanList = [

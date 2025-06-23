@@ -23,3 +23,7 @@ export { CourseItem } from './createCourseItem';
 export { SelectComponent } from './select';
 export { CourseMaterialTable } from './courseMaterialTable';
 export { CourseMaterialHeader } from './courseMaterialHeader';
+export { ModCourseMaterialTable} from './modCourseMaterialTable';
+export { CoursePlanIllustration } from './coursePlanIllustration';
+export { CoursePlanOverview } from './coursePlanOverview';
+export { CreateCourse } from './createCourse';
