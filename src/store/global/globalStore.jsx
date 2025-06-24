@@ -4,7 +4,7 @@ import { immer } from 'zustand/middleware/immer';
 const useGlobalStore = create(
   immer((set) => ({
     
-    role: "faculty",
+    role: "student",
 
     changeGlobalStore:(key,value) => {
     set({[key]:value});
