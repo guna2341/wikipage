@@ -1,5 +1,4 @@
 import { Navbar, NavbarContent, NavbarItem } from '@heroui/navbar'
-import React from 'react'
 import { AvatarComponent, cn } from '@components';
 import { img } from '@/assets';
 

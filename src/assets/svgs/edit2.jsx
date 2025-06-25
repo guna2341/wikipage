@@ -1,11 +1,12 @@
 import * as React from "react"
 export const Edit2 = ({
-    color = "#624DE3"
+    color = "#624DE3",
+    size = 22
 }) => (
     <svg
         xmlns="http://www.w3.org/2000/svg"
-        width={22}
-        height={22}
+        width={size}
+        height={size}
         fill="none"
         className="cursor-pointer"
     >

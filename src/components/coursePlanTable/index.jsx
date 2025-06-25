@@ -1,5 +1,4 @@
 import { Delete, Edit2 } from '@/assets';
-import React from 'react';
 
 export const CourseTable = ({ data = [] }) => {
   const tableHeaders = ["UNIT NO", "TOPIC", "LECTURE MATERIAL", "LECTURE VIDEO", "DISCOURSE LINK", "Action"];

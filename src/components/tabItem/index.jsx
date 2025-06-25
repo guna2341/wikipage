@@ -1,7 +1,5 @@
-import React from 'react'
 import { cn } from '../cn'
 import { Tab, Tabs } from '@heroui/tabs'
-import { Edit } from '@/assets'
 
 export const TabItem = ({
     customTab,

@@ -1,4 +1,3 @@
-import React from 'react';
 import { AvatarComponent } from '@components';
 import { img } from '@/assets';
 

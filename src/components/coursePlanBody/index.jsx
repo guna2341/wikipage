@@ -1,5 +1,4 @@
 import { Edit2 } from '@/assets'
-import React from 'react'
 
 export const CourseBody = ({
   header = "Introduction to the course",

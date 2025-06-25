@@ -1,8 +1,6 @@
-import React from 'react'
 import { cn } from '../cn'
 
 export const SyllabusTable = ({
-  dept,
   handleClick,
   header,
   minimun_credits,

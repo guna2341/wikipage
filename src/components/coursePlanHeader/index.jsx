@@ -1,4 +1,3 @@
-import React from 'react'
 import { ButtonComponent } from '@/components';
 import { Edit2 } from '@/assets';
 

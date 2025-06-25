@@ -9,6 +9,15 @@ export { CourseView } from './faculty/pages/courseView';
 export { Student } from './student/layout';
 export { Regulation } from './student/pages/regulation';
 export { StudentComment } from './student/pages/comments';
+export { StudentCourseView } from './student/pages/courseView';
+export { Syllabus } from './student/pages/syllabus';
+
+// admin
+export { Admin } from './admin/layout';
+export { AdminRegulation } from './admin/pages/regulation'
+export { AdminRegulationList } from './admin/pages/regulationList';
+export { StudentList } from './admin/pages/studentList';
+export { FacultyList } from './admin/pages/facultyList';
 
 // test
 export { Test } from './test/test'; 

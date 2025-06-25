@@ -1,16 +1,15 @@
 import { create } from 'zustand';
 import { immer } from 'zustand/middleware/immer';
 
-const useGlobalStore = create(
+const useAdminRegulationStore = create(
   immer((set) => ({
-    
-    role: "admin",
+   currentNavbar:"0",
 
-    changeGlobalStore:(key,value) => {
+   changeRegulation:(key,value) => {
     set({[key]:value});
    }
 
   }))
 );
 
-export default useGlobalStore;
+export default useAdminRegulationStore;

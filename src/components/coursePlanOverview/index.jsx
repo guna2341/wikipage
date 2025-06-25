@@ -1,6 +1,5 @@
 import { CourseBody, CourseHeader, CourseTable } from '@/components'
 import { coursePlanList } from '@/pages/faculty/utils'
-import useCoursePlanStore from '@/store/faculty/coursePlan';
 import React from 'react'
 
 export const CoursePlanOverview = ({

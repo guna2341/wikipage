@@ -4,7 +4,7 @@ import React from 'react';
 import { cn } from '../cn';
 import useCoursePlanStore from '@/store/faculty/coursePlan';
 
-export const SideBarAccordian = ({ onClick }) => {
+export const SideBarAccordian = () => {
 
   const subNavbar = useCoursePlanStore(e => e.subNavbar);
   const changeCoursePlan = useCoursePlanStore(e => e.changeCoursePlan);

@@ -12,14 +12,14 @@ export const Student = () => {
   const changeStudentRegulation = useStudentRegulationStore(e => e.changeStudentRegulation);
   const navigate = useNavigate();
 
-  React.useEffect(() => {
-    if (role === "student" ) {
-    navigate('regulation');
-    }
-    else {
-      navigate("/login");
-    }
-  }, []);
+  // React.useEffect(() => {
+  //   if (role === "student" ) {
+  //   navigate('regulation');
+  //   }
+  //   else {
+  //     navigate("/login");
+  //   }
+  // }, []);
 
   function navigateRoute(tab) {
     switch(tab) {
@@ -36,7 +36,6 @@ export const Student = () => {
   }
 
    function setActiveTab(newTab) {
-    console.log(typeof(newTab))
       changeStudentRegulation("currentNavbar",newTab);
       navigateRoute(newTab);
   }

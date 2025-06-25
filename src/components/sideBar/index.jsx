@@ -1,6 +1,5 @@
 import { Image } from '@heroui/image'
-import React from 'react'
-import { Comment, Edit, logo, User, Logout } from '@/assets';
+import { logo, Logout } from '@/assets';
 import { ButtonComponent } from '@components';
 import { TabItem } from '../tabItem';
 

@@ -1,4 +1,3 @@
-import React from 'react';
 
 export const CourseMaterialTable = ({
   header = "BACHELOR OF TECHNOLOGY(UG)",

@@ -13,14 +13,14 @@ export const Faculty = () => {
   const changeCourseMaterial = useCourseMaterialStore(e => e.changeCourseMaterial);
   const role = useGlobalStore(e => e.role);
 
-  React.useEffect(() => {
-    if (role === "faculty" ) {
-    navigate('/faculty/courseplan');
-    }
-    else {
-      navigate("/login");
-    }
-  }, []);
+  // React.useEffect(() => {
+  //   if (role === "faculty" ) {
+  //   navigate('/faculty/courseplan');
+  //   }
+  //   else {
+  //     navigate("/login");
+  //   }
+  // }, []);
   
   function navigateRoute(tab) {
       switch(tab) {
