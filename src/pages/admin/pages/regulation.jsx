@@ -1,25 +1,27 @@
 import React from 'react'
-import { CourseMaterialHeader, CourseMaterialTable, CreateCourse, ModCourseMaterialTable, SelectComponent } from '@/components';
+import { CourseMaterialHeader, CourseMaterialTable, ModCourseMaterialTable, SelectComponent } from '@/components';
 import useCourseMaterialStore from '@/store/faculty/courseMaterial';
 import { useNavigate } from 'react-router-dom';
+import { CreateRegulation } from './createRegulation';
+import useAdminRegulationStore from '@/store/admin/regulation';
 
 export const AdminRegulation = () => {
 
     const navigate = useNavigate();
-    const createCourse = useCourseMaterialStore(e => e.createCourseTab);
-    const changeCourseMaterial = useCourseMaterialStore(e => e.changeCourseMaterial);
+    const createCourse = useAdminRegulationStore(e => e.createCourseTab);
+    const changeAdminRegulation = useAdminRegulationStore(e => e.changeRegulation);
 
     function handleCourse(dept,sem) {
         navigate(`${dept}/${sem}`)
     }
 
     function handleCreate() {
-        changeCourseMaterial("createCourseTab",1);
+        changeAdminRegulation("createCourseTab",true);
     }
     
-    if (createCourse != 0) {
+    if (createCourse) {
         return (
-            <CreateCourse handleCreate={handleCreate} />
+            <CreateRegulation/>
         );
     }
     else {

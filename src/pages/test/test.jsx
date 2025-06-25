@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavBar, SideBar, InputField, MessageCard, MessageNavbar, MessageBox, MessageList, CourseHeader, TabItem, CourseBody, CourseTable, Stepper, CourseItem, CreateCourseSecond, CourseMaterialTable } from "@/components";
+import { NavBar, SideBar, InputField, MessageCard, MessageNavbar, MessageBox, MessageList, CourseHeader, TabItem, CourseBody, CourseTable, Stepper, CourseItem, CreateCourseSecond, CourseMaterialTable, SelectComponent } from "@/components";
 import { SearchIcon } from '@/assets';
 import { coursePlanList } from '../faculty/utils';
 import { CoursePlanOverview } from '@/components/coursePlanOverview';

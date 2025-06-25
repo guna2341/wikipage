@@ -1,4 +1,5 @@
 import { heroui } from "@heroui/theme";
+import scrollbarHide from "tailwind-scrollbar-hide";
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -54,5 +55,5 @@ export default {
     },
   },
   darkMode: "class",
-  plugins: [heroui(), require("tailwind-scrollbar-hide")],
+  plugins: [heroui(), scrollbarHide],
 };

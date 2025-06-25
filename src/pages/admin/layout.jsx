@@ -40,6 +40,7 @@ export const Admin = () => {
 
    function setActiveTab(newTab) {
       changeAdminRegulation("currentNavbar",newTab);
+      changeAdminRegulation("createCourseTab",false);
       navigateRoute(newTab);
   }
 
