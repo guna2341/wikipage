@@ -1,4 +1,3 @@
-import React from 'react';
 import {Checkbox} from "@heroui/checkbox";
 import { ButtonComponent, CourseHeader, InputField } from '@/components';
 

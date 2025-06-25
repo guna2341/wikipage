@@ -1,4 +1,3 @@
-import React from 'react'
 import { ButtonComponent } from '@/components';
 import { Edit2 } from '@/assets';
 
@@ -11,6 +10,7 @@ export const CourseHeader = ({
     academic_year,
     faculty_members = [],
     isEdit,
+    showEdit,
     handleEdit
 }) => {
   return (
@@ -40,7 +40,7 @@ export const CourseHeader = ({
           })}
           </span>
       </div>
-
+          {showEdit && 
       <div className='flex items-center gap-4'>
 {!isEdit && 
  <ButtonComponent
@@ -60,6 +60,7 @@ export const CourseHeader = ({
       </ButtonComponent>
 }
     </div>
+}
     </div>
   )
 }

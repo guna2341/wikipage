@@ -1,9 +1,8 @@
-import React from 'react'
 import { cn } from '../cn'
 import { Tab, Tabs } from '@heroui/tabs'
-import { Edit } from '@/assets'
 
 export const TabItem = ({
+    customTab,
     activeTab,
     setActiveTab,
     tabList = [],
@@ -26,8 +25,8 @@ export const TabItem = ({
                 <Tab
                     key={tab?.id}
                     title={
-                        <div className={cn('flex items-center', {
-                           "p-4" : tab.id !== 0
+                        <div className={cn('flex items-center p-4', {
+                           "p-0" :  customTab && tab.id === 0
                         })}>
                         <div className={cn(
                             'w-full flex items-center gap-4 font-normal text-base leading-6 text-custom-400',

@@ -1,4 +1,3 @@
-import React from 'react'
 import { NewCourseInputField } from '../newCourseInputField'
 import { ButtonComponent } from '../button'
 import { LeftArrow } from '@/assets'

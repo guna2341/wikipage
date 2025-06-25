@@ -1,6 +1,5 @@
 import { Image } from '@heroui/image'
-import React from 'react'
-import { Comment, Edit, logo, User, Logout } from '@/assets';
+import { logo, Logout } from '@/assets';
 import { ButtonComponent } from '@components';
 import { TabItem } from '../tabItem';
 
@@ -8,6 +7,7 @@ export const SideBar = ({
     role = "Faculty",
     tabList,
     activeTab,
+    customTab,
     setActiveTab
 }) => {
     return (
@@ -22,6 +22,7 @@ export const SideBar = ({
                     </span>
                 </div>
                 <TabItem
+                    customTab = {customTab}
                     tabList={tabList}
                     activeTab={activeTab}
                     setActiveTab={setActiveTab}

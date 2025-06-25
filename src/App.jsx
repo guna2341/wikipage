@@ -1,23 +1,48 @@
 import { Route, Routes } from "react-router-dom";
-import { Faculty, Test } from "@/pages";
-import { PageRoutes } from "./protectedRoutes";
 import { Login } from "@/components";
-import { CourseView } from "./pages/faculty/pages/courseView";
-import { CoursePlan } from "./pages/faculty/pages/coursePlan";
-import { CourseMaterial } from "./pages/faculty/pages/courseMaterial";
-import { Comment } from "./pages/faculty/pages/comment";
+import { PageRoutes } from "./pageRoutes";
+import { ProtectedRoute } from "./protectedRoutes";
+import { Admin, AdminRegulation, AdminRegulationList, CourseMaterial, CoursePlan, CourseView, Faculty, FacultyComment, FacultyList, Regulation, Student, StudentComment, StudentCourseView, StudentList, Syllabus, Test } from "./pages";
 
 function App() {
   return (
     <Routes>
-      <Route path="/test" element={<Test />} />
+      {/* demo login page */}
       <Route path="/login" element={<Login />} />
-      <Route path="/" element={<PageRoutes />}></Route> 
-      <Route path="/faculty" element={<Faculty />}>
-       <Route path="courseplan" element={<CoursePlan/>} />
-       <Route path="coursematerial" element={<CourseMaterial/>} />
-       <Route path="comment" element={<Comment/>}/>
-        <Route path=":course/:id" element={<CourseView />} />
+
+      {/* testing page */}
+      <Route path="/test" element={<Test/>} />
+      
+      {/* page routes */}
+      <Route path="/" element={<PageRoutes />} />
+      
+      {/* protected routes */}
+      <Route element={<ProtectedRoute />}>
+        
+        {/* faculty module */}
+        <Route path="/faculty" element={<Faculty />}>
+          <Route path="courseplan" element={<CoursePlan />} />
+          <Route path="coursematerial" element={<CourseMaterial />} />
+          <Route path="comment" element={<FacultyComment />} />
+          <Route path=":course/:id" element={<CourseView />} />
+        </Route>
+        
+        {/* student module */}
+        <Route path="/student" element={<Student/>}>
+          <Route path="regulation" element={<Regulation/>} />
+          <Route path="regulation/:academic_year/:course/:sem" element={<Syllabus/>} />
+          <Route path="regulation/:academic_year/:course/:sem/:course_code" element={<StudentCourseView/>} />
+          <Route path="comments" element={<StudentComment />} />
+        </Route>
+
+        {/* admin module */}
+        <Route path="/admin" element = {<Admin/>} >
+          <Route path="regulation" element={<AdminRegulation/>} />
+          <Route path="regulation/:course/:sem" element={<AdminRegulationList/>} />
+          <Route path="studentList" element={<StudentList/>} />
+          <Route path="facultyList" element={<FacultyList/>} />
+        </Route>
+
       </Route>
     </Routes>
   );

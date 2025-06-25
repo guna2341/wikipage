@@ -3,6 +3,8 @@ import { NavBar, SideBar, InputField, MessageCard, MessageNavbar, MessageBox, Me
 import { SearchIcon } from '@/assets';
 import { coursePlanList } from '../faculty/utils';
 import { CoursePlanOverview } from '@/components/coursePlanOverview';
+import { SyllabusTable } from '@/components/syllabusTable';
+import { courseTable } from '../student/utils';
 export const Test = () => {
     const sampleData = [
         {
@@ -16,6 +18,11 @@ export const Test = () => {
     ];
   return (
       <div className='p-12 flex flex-col gap-5'>
+        <SyllabusTable
+        header="B.E COMPUTER SCIENCE AND ENGINEERING"
+        minimun_credits={'22.0'}
+        courses={courseTable}
+        />
         <CoursePlanOverview/>
         <CourseMaterialTable/>
         <CreateCourseSecond/>

@@ -1,4 +1,3 @@
-import React from 'react'
 import { InputField } from '../input'
 import { AddIcon, SearchIcon } from '@/assets'
 import { ButtonComponent } from '../button'

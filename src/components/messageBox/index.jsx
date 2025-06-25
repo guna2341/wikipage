@@ -1,5 +1,4 @@
 import { img } from '@/assets'
-import React from 'react'
 import { AvatarComponent } from '@/components';
 
 export const MessageBox = ({

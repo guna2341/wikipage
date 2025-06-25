@@ -1,4 +1,3 @@
-import React from 'react'
 import { cn } from '../cn'
 
 export const ModCourseMaterialTable = ({
@@ -16,7 +15,9 @@ export const ModCourseMaterialTable = ({
         </div>
         <div className='flex'>
             {Array(3).fill("").map((item,index) => (
-                <span className={cn('py-3.5 border border-l-0 w-[84px] px-3 text-center',{
+                <span
+                key={index}
+                className={cn('py-3.5 border border-l-0 w-[84px] px-3 text-center',{
                     'rounded-r-2xl' : index == semesters-1
                 })}>sem{index+1}</span>
             ))}

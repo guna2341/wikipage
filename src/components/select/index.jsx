@@ -1,5 +1,4 @@
 import { Select, SelectItem } from '@heroui/select'
-import React from 'react'
 
 export const SelectComponent = ({
     data = [],

@@ -1,4 +1,4 @@
-import { Comment, DownArrow, Edit, User } from "@/assets";
+import { Comment, Edit } from "@/assets";
 import { SideBarAccordian } from "@/components/sidebarAccordian";
 
 

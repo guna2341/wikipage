@@ -1,5 +1,4 @@
 import { DownArrow, SearchIcon } from '@/assets'
-import React from 'react'
 import { InputField, MessageCard } from '@/components'
 
 export const MessageList = ({

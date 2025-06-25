@@ -1,6 +1,4 @@
-  import { Button } from '@heroui/button';
-  import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenu, NavbarMenuItem } from '@heroui/navbar';
-  import React from 'react';
+  import { Navbar, NavbarContent, NavbarItem } from '@heroui/navbar';
   import { AvatarComponent } from '@components';
   import { img } from '@/assets';
 

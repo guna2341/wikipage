@@ -1,4 +1,3 @@
-import React from 'react';
 
 export const CourseMaterialTable = ({
   header = "BACHELOR OF TECHNOLOGY(UG)",
@@ -40,7 +39,7 @@ export const CourseMaterialTable = ({
               </td>
               {semesters.map(sem => (
                 <td key={sem} 
-                onClick={() => handleClick(item.dept,sem)}
+                onClick={() => handleClick(item.dept,sem,2022)}
                 className=' w-[50px] border-t border-l border-custom-100 text-center cursor-pointer'>
                   {sem}
                   </td>

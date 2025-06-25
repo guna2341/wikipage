@@ -13,7 +13,6 @@ export const TextField = ({
     disabled = false,
     onChange
 }) => {
-const [words,setWords] = React.useState(0);
 
     function handleOnChange(e) {
         onChange(e);

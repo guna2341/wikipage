@@ -1,7 +1,6 @@
 import { BigArrow } from '@/assets'
 import { CreateCourseFirst, CreateCourseSecond, Stepper } from '@/components'
 import useCourseMaterialStore from '@/store/faculty/courseMaterial';
-import React from 'react'
 
 export const CreateCourse = () => {
 

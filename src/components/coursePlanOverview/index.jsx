@@ -1,10 +1,10 @@
 import { CourseBody, CourseHeader, CourseTable } from '@/components'
 import { coursePlanList } from '@/pages/faculty/utils'
-import useCoursePlanStore from '@/store/faculty/coursePlan';
 import React from 'react'
 
 export const CoursePlanOverview = ({
-    handleEdit
+    handleEdit,
+    showEdit = true
 }) => {
 
     const [isEdit,setIsEdit] = React.useState(false);
@@ -13,6 +13,7 @@ export const CoursePlanOverview = ({
         <div className='p-7 flex flex-col gap-9 h-full overflow-auto scrollbar-hide'>
             <CourseHeader
                 isEdit={isEdit} 
+                showEdit = {showEdit}
                 handleEdit={handleEdit}
                 dept={"CSE"}
                 course_code={"22CS501"}

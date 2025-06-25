@@ -1,8 +1,7 @@
 import { Pin, SendIcon } from '@/assets'
-import React from 'react'
 import { TextField } from '../textarea';
 
-export const MessageInput = ({handleEnter}) => {
+export const MessageInput = () => {
   return (
     <div className='w-full flex items-center gap-6 justify-center'>
       <Pin />
