@@ -29,7 +29,10 @@ export const CreateRegulation = () => {
         <div className='font-semibold leading-6 text-xl w-full pt-0.5 flex flex-col gap-5'>
               Create Academic Regulation
               <InputField
-              isReadOnly
+              disabled
+              classnames={{
+                  inputWrapper:"bg-custom-850 border border-custom-100" 
+              }}
               size={"lg"}
               value={"Enter Regulation"}
               />
