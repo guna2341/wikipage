@@ -12,14 +12,9 @@ export const Admin = () => {
   const changeAdminRegulation = useAdminRegulationStore(e => e.changeRegulation);
   const navigate = useNavigate();
 
-  // React.useEffect(() => {
-  //   if (role === "admin" ) {
-  //   navigate('regulation');
-  //   }
-  //   else {
-  //     navigate("/login");
-  //   }
-  // }, []);
+  React.useEffect(() => {
+    navigate('regulation');
+  }, []);
 
   function navigateRoute(tab) {
     switch(tab) {
@@ -40,6 +35,7 @@ export const Admin = () => {
 
    function setActiveTab(newTab) {
       changeAdminRegulation("currentNavbar",newTab);
+      changeAdminRegulation("createCourseTab",false);
       navigateRoute(newTab);
   }
 

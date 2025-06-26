@@ -12,14 +12,9 @@ export const Student = () => {
   const changeStudentRegulation = useStudentRegulationStore(e => e.changeStudentRegulation);
   const navigate = useNavigate();
 
-  // React.useEffect(() => {
-  //   if (role === "student" ) {
-  //   navigate('regulation');
-  //   }
-  //   else {
-  //     navigate("/login");
-  //   }
-  // }, []);
+  React.useEffect(() => {
+    navigate('regulation');
+  }, []);
 
   function navigateRoute(tab) {
     switch(tab) {

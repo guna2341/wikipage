@@ -12,12 +12,13 @@ export const SideBarAccordian = () => {
   const contentRef = React.useRef(null);
 
   function SubNavbarChange() {
-    setSidebar(!sidebar);
-    changeCoursePlan("subNavbar","-1");
+    changeCoursePlan("subNavbar","-1");  
+        setSidebar(!sidebar);
+
   }
 
   function onTabChange(newTab) {
-      changeCoursePlan("subNavbar",newTab);
+    changeCoursePlan("subNavbar",newTab);
   }
 
   React.useEffect(() => {
@@ -33,6 +34,7 @@ export const SideBarAccordian = () => {
 
   return (
     <div className="flex flex-col">
+
       <div className='flex gap-4 items-center pl-4'>
         <span>
           <Edit />

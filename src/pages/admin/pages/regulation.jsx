@@ -1,28 +1,23 @@
 import React from 'react'
-import { CourseMaterialHeader, CourseMaterialTable, CreateCourse, ModCourseMaterialTable, SelectComponent } from '@/components';
+import { CourseMaterialHeader, CourseMaterialTable, ModCourseMaterialTable, SelectComponent } from '@/components';
 import useCourseMaterialStore from '@/store/faculty/courseMaterial';
 import { useNavigate } from 'react-router-dom';
+import { CreateRegulation } from './createRegulation';
+import useAdminRegulationStore from '@/store/admin/regulation';
 
 export const AdminRegulation = () => {
 
     const navigate = useNavigate();
-    const createCourse = useCourseMaterialStore(e => e.createCourseTab);
-    const changeCourseMaterial = useCourseMaterialStore(e => e.changeCourseMaterial);
+    const changeAdminRegulation = useAdminRegulationStore(e => e.changeRegulation);
 
     function handleCourse(dept,sem) {
         navigate(`${dept}/${sem}`)
     }
 
     function handleCreate() {
-        changeCourseMaterial("createCourseTab",1);
+        navigate("createRegulation");
     }
-    
-    if (createCourse != 0) {
-        return (
-            <CreateCourse handleCreate={handleCreate} />
-        );
-    }
-    else {
+
         return (
                 <div className='h-full p-7 flex flex-col gap-5 overflow-auto scrollbar-hide'>
               <CourseMaterialHeader handleCreate={handleCreate} />           
@@ -53,5 +48,4 @@ export const AdminRegulation = () => {
                 </div>
         );
     }
-}
 

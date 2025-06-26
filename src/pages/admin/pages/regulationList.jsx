@@ -1,6 +1,6 @@
-import { Edit2 } from '@/assets';
-import { ButtonComponent, cn } from '@/components';
+import { AdminSyllabusTable, ButtonComponent, cn } from '@/components';
 import React from 'react'
+import { courseTable } from '../utils';
 
 export const AdminRegulationList = () => {
 
@@ -8,22 +8,30 @@ export const AdminRegulationList = () => {
   const list = [
     {
       id:1,
-      list:"Faculty List"
+      list:"Faculty List",
+      component:"faculty table"
     },
     {
       id:2,
-      list:"Student List"
+      list:"Student List",
+      component:"student   table"
     },
     {
       id:3,
-      list:"FacultyList"
+      list:"Course Coordinator List",
+      component:<AdminSyllabusTable
+      header={"B.E. Computer Science And Engineering"}
+      courses={courseTable}
+      minimun_credits={'22.0'}
+      />
     }
   ];
 
 
   return (
-    <div>
-          <div className='flex gap-4 w-full overflow-auto scrollbar-hide pt-5 px-8 bg-white'>
+    <div className='h-full p-7 overflow-auto scrollbar-hide'>    
+      <div className='h-[103%] flex flex-col bg-white rounded-2xl border'>
+          <div className='flex gap-4 w-full overflow-auto scrollbar-hide pt-5 px-8 border-b border-custom-100'>
                 {list.map(li => (
                      <div
                         key={li.id}
@@ -33,11 +41,35 @@ export const AdminRegulationList = () => {
                         )}
                         onClick={() => setCurrentTab(li.id)}
                           >
-                    {li.list}   
+                    {li.list} 
                   </div>
                 ))}
+
+                </div>
+                  <div className='w-full'>
+                  {list.map(item => (
+                    <div className={cn('hidden opacity-0',{
+                        'opacity-100 block' : item.id === currentTab,
+                    })}>
+                      <div>
+                      {item.component}
+                      </div>
+                    </div>
+                  ))}
                 </div>
     </div>
+    <div className='flex gap-4 justify-end py-4'>
+                  <ButtonComponent
+                  className={'bg-white border border-custom-100 text-black'}
+                  >
+                    Cancel
+                  </ButtonComponent>
+                  <ButtonComponent>
+                    Save
+                  </ButtonComponent>
+    </div>
+    </div>
+
   )
 }
 

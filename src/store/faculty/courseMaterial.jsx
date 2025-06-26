@@ -3,7 +3,7 @@ import { immer } from 'zustand/middleware/immer';
 
 const useCourseMaterialStore = create(
   immer((set) => ({
-    createCourseTab:0,
+    createCourseTab:1,
 
     changeCourseMaterial:(key,value) => {
     set({[key]:value});

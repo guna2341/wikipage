@@ -1,13 +1,14 @@
 import * as React from "react"
 export const LeftArrow = ({
-    color = "currentColor"
+    color = "currentColor",
+    size = 22
 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
-    width={22}
-    height={22}
+    width={size}
+    height={size}
   >
     <path
       fill={color}

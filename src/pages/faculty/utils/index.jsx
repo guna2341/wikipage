@@ -18,11 +18,6 @@ export const TabList = [
         tab: "Comments",
         comments: "10",
     },
-    // {
-    //     id: 3,
-    //     img: User,
-    //     tab: "Profile"
-    // }
 ];
 
 export const coursePlanList = [
