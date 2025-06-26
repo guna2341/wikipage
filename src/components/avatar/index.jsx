@@ -22,6 +22,6 @@ export const AvatarComponent = ({
             radius={radius}
             color={color}
         />
-  )
+    )
 }
 

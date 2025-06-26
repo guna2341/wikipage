@@ -1,58 +1,57 @@
-import { NavBar, SideBar } from '@/components'
+import { NavBar, SideBar } from '@/components';
 import useAdminRegulationStore from '@/store/admin/regulation';
-import useGlobalStore from '@/store/global/globalStore';
-import React from 'react'
+import React, { useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { AdminTabList } from './utils';
 
+const ADMIN_TABS = {
+  REGULATION: "0",
+  STUDENTS: "1",
+  FACULTY: "2"
+};
+
 export const Admin = () => {
-
-   const role = useGlobalStore(e => e.role);
-  const activeTab = useAdminRegulationStore(e => e.currentNavbar);
-  const changeAdminRegulation = useAdminRegulationStore(e => e.changeRegulation);
   const navigate = useNavigate();
+  const activeTab = useAdminRegulationStore((s) => s.currentNavbar);
+  const changeRegulation = useAdminRegulationStore((s) => s.changeRegulation);
 
-  React.useEffect(() => {
-    navigate('regulation');
-  }, []);
+  useEffect(() => {
+    navigate("regulation");
+  }, [navigate]);
 
-  function navigateRoute(tab) {
-    switch(tab) {
-      case "0":
+  const navigateToTab = (tabId) => {
+    switch (tabId) {
+      case ADMIN_TABS.REGULATION:
         navigate("regulation");
         break;
-      case "1":
+      case ADMIN_TABS.STUDENTS:
         navigate("studentList");
         break;
-      case "2":
+      case ADMIN_TABS.FACULTY:
         navigate("facultyList");
         break;
       default:
-        navigate("admin");
-        break;
+        navigate("regulation");
     }
-  }
+  };
 
-   function setActiveTab(newTab) {
-      changeAdminRegulation("currentNavbar",newTab);
-      changeAdminRegulation("createCourseTab",false);
-      navigateRoute(newTab);
-  }
+  const handleTabChange = (newTab) => {
+    changeRegulation("currentNavbar", newTab);
+    changeRegulation("createCourseTab", false);
+    navigateToTab(newTab);
+  };
 
   return (
-     <div className='flex bg-custom-850 h-screen w-full'>
-             <SideBar
-               tabList={AdminTabList}
-               activeTab={activeTab}
-               setActiveTab={setActiveTab}
-             />
-             <div className='w-full h-full flex flex-col '>
-               <NavBar
-               sub='Admin'
-               />
-               <Outlet/>
-             </div>
-           </div>
-  )
-}
-
+    <div className="flex bg-custom-850 h-screen w-full">
+      <SideBar
+        tabList={AdminTabList}
+        activeTab={activeTab}
+        setActiveTab={handleTabChange}
+      />
+      <div className="w-full h-full flex flex-col">
+        <NavBar sub="Admin" />
+        <Outlet />
+      </div>
+    </div>
+  );
+};

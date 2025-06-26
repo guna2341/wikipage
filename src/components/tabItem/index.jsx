@@ -1,4 +1,4 @@
-import { cn } from '../cn'
+import { cn } from '@/components'
 import { Tab, Tabs } from '@heroui/tabs'
 
 export const TabItem = ({
@@ -26,13 +26,13 @@ export const TabItem = ({
                     key={tab?.id}
                     title={
                         <div className={cn('flex items-center p-4', {
-                           "p-0" :  customTab && tab.id === 0
+                            "p-0": customTab && tab.id === 0
                         })}>
-                        <div className={cn(
-                            'w-full flex items-center gap-4 font-normal text-base leading-6 text-custom-400',
-                            {
-                                "font-semibold text-custom-600": activeTab == tab?.id
-                            }
+                            <div className={cn(
+                                'w-full flex items-center gap-4 font-normal text-base leading-6 text-custom-400',
+                                {
+                                    "font-semibold text-custom-600": activeTab == tab?.id
+                                }
                             )}>
                                 {tab.img &&
                                     <span>
@@ -45,7 +45,7 @@ export const TabItem = ({
                             </div>
                             {tab.comments &&
                                 <div className={cn('w-6 h-6 rounded flex justify-center font-normal items-center text-custom-400', {
-                                    'bg-custom-600 text-white':activeTab==tab?.id
+                                    'bg-custom-600 text-white': activeTab == tab?.id
                                 })}>
                                     {tab?.comments}
                                 </div>

@@ -1,5 +1,5 @@
 import { Pin, SendIcon } from '@/assets'
-import { TextField } from '../textarea';
+import { TextField } from '@/components';
 
 export const MessageInput = () => {
   return (
@@ -10,7 +10,7 @@ export const MessageInput = () => {
           onKeyDown={e => {
             if (e.key == "Enter") {
               console.log("enter")
-            } 
+            }
           }}
           minRows={1}
           placeholder={"Type a message"}
@@ -19,7 +19,7 @@ export const MessageInput = () => {
           className='absolute right-2 bottom-2 cursor-pointer'
         >
           <SendIcon />
-          </span>
+        </span>
       </div>
     </div>
   )

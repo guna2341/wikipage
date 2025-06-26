@@ -11,7 +11,7 @@ export const CourseTable = ({ data = [] }) => {
             {tableHeaders.map((header, index) => (
               <th
                 key={index}
-                className="font-medium text-sm leading-[30px] text-center py-4 border-b border-custom-100"  
+                className="font-medium text-sm leading-[30px] text-center py-4 border-b border-custom-100"
               >
                 {header}
               </th>

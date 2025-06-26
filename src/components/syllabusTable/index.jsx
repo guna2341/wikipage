@@ -1,4 +1,4 @@
-import { cn } from '../cn'
+import { cn } from '@/components'
 
 export const SyllabusTable = ({
   handleClick,
@@ -11,10 +11,10 @@ export const SyllabusTable = ({
   return (
     <div className='border-2 border-custom-100 rounded-2xl overflow-hidden w-full'>
       <div className='border-b-2 border-custom-100 text-custom-1005 bg-custom-1027 py-3 text-center font-semibold leading-7 text-base'>
-       {header}
+        {header}
       </div>
       <div className='border-b-2 border-custom-100 py-3.5 text-center bg-custom-1028 text-custom-1005 font-medium leading-7 text-base'>
-          Minimum Credits to be earned {minimun_credits}
+        Minimum Credits to be earned {minimun_credits}
       </div>
       <table className='w-full border-collapse'>
         <thead>
@@ -42,30 +42,30 @@ export const SyllabusTable = ({
             <td className='border-l-2 border-custom-100'></td>
           </tr>
           {courses.map(item => (
-            <tr className={cn('border-t-2 cursor-pointer',{
-              'cursor-default' : item.total
+            <tr className={cn('border-t-2 cursor-pointer', {
+              'cursor-default': item.total
             })} key={item.code_no} onClick={() => handleClick(item.code_no)}>
-              {item.total ? 
-            <td className='pl-4 border-r-2 border-custom-100 py-3 font-semibold'>Total</td> :
-            <td className='pl-4 border-r-2 border-custom-100 py-3'>{item.code_no}</td>
- 
-            }
+              {item.total ?
+                <td className='pl-4 border-r-2 border-custom-100 py-3 font-semibold'>Total</td> :
+                <td className='pl-4 border-r-2 border-custom-100 py-3'>{item.code_no}</td>
+
+              }
               <td className='pl-4 border-r-2 border-custom-100'>{item.course}</td>
-              {item.peos && item.pos ? 
-              <td className='flex pl-4 p-0 w-full h-full'>
-                <div className='w-[62px] py-3 border-r-2 border-custom-100 h-full'>{item.peos}</div>
-                <div className='pl-4 py-3 h-full'>{item.pos}</div>
-              </td>
-            :
-            <td className='border-l-2 border-custom-100 h-full p-0'>
-              <div className='w-[78px] py-6 h-full border-r-2 border-custom-100'></div>
-            </td>  
-            }
+              {item.peos && item.pos ?
+                <td className='flex pl-4 p-0 w-full h-full'>
+                  <div className='w-[62px] py-3 border-r-2 border-custom-100 h-full'>{item.peos}</div>
+                  <div className='pl-4 py-3 h-full'>{item.pos}</div>
+                </td>
+                :
+                <td className='border-l-2 border-custom-100 h-full p-0'>
+                  <div className='w-[78px] py-6 h-full border-r-2 border-custom-100'></div>
+                </td>
+              }
               <td className='text-center border-l-2 border-custom-100'>{item.l}</td>
               <td className='text-center border-l-2 border-custom-100'>{item.t}</td>
               <td className='text-center border-l-2 border-custom-100'>{item.p}</td>
               <td className='text-center border-l-2 border-custom-100'>{item.c}</td>
-              </tr>
+            </tr>
           ))}
         </tbody>
       </table>

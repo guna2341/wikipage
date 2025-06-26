@@ -1,5 +1,5 @@
 import React from 'react'
-import { cn } from '../cn'
+import { cn } from '@/components'
 import { FileEdit } from '@/assets';
 
 export const CoursePlanUndoTable = ({
@@ -41,7 +41,7 @@ export const CoursePlanUndoTable = ({
                     <table className='w-full table-fixed'>
                         <tbody>
                             {data.map((item, index) => (
-                                <tr key={index} className={cn('text-center border-t border-custom-1007',{
+                                <tr key={index} className={cn('text-center border-t border-custom-1007', {
                                 })}>
                                     <td className='flex items-center gap-4 pl-4 py-4 font-medium text-custom-1013 text-base leading-6'>
                                         <FileEdit />
@@ -55,8 +55,8 @@ export const CoursePlanUndoTable = ({
                                     </td>
                                     <td className=' font-medium text-custom-1006 underline text-base leading-6'>
                                         <span className='flex gap-4 justify-center'>
-                                        <a href="" onClick={e =>e.preventDefault()}>Undo</a>
-                                        <a href="" onClick={e =>e.preventDefault()}>Redo</a>
+                                            <a href="" onClick={e => e.preventDefault()}>Undo</a>
+                                            <a href="" onClick={e => e.preventDefault()}>Redo</a>
                                         </span>
                                     </td>
                                 </tr>
