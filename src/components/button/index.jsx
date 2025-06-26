@@ -21,7 +21,7 @@ export const ButtonComponent = ({
       ref={ref}
       variant={variant}
       radius={"md"}
-      classnames={{  
+      classnames={{
         ...classnames
       }}
       className={`pl-3 rounded-lg bg-purple-600 ${className}`}
@@ -33,7 +33,7 @@ export const ButtonComponent = ({
       isDisabled={isDisabled}
       onPress={onClick}
     >
-    {children}
+      {children}
     </Button>
   )
 }

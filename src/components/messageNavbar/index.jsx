@@ -1,5 +1,5 @@
 import { Navbar, NavbarContent, NavbarItem } from '@heroui/navbar'
-import { AvatarComponent, cn } from '@components';
+import { AvatarComponent, cn } from '@/components';
 import { img } from '@/assets';
 
 export const MessageNavbar = ({
@@ -10,11 +10,11 @@ export const MessageNavbar = ({
         <Navbar className='justify-start'
             classNames={{
                 wrapper: "!p-0",
-          }}
+            }}
         >
             <NavbarContent justify='start'>
                 <NavbarItem>
-          <AvatarComponent src={img} radius="sm" size="lg" className="w-12 h-12" />
+                    <AvatarComponent src={img} radius="sm" size="lg" className="w-12 h-12" />
                 </NavbarItem>
                 <NavbarItem>
                     <div className='font-semibold text-xl leading-5'>
@@ -28,7 +28,7 @@ export const MessageNavbar = ({
                     </div>
                 </NavbarItem>
             </NavbarContent>
-      </Navbar>
-  )
+        </Navbar>
+    )
 }
 

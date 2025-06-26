@@ -6,15 +6,15 @@ export const Login = () => {
   const navigate = useNavigate();
   const role = useGlobalStore(e => e.role);
 
-  React.useEffect(() => { 
+  React.useEffect(() => {
     if (role) {
       navigate(`/${role}`);
     }
     else {
-    navigate('/login');
+      navigate('/login');
     }
   }, []);
-  
+
   return (
     <div>Login</div>
   )

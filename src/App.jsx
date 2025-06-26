@@ -21,10 +21,7 @@ function App() {
         
         {/* faculty module */}
         <Route path="/faculty" element={<Faculty />}>
-          <Route path="courseplan" element={<CoursePlan />} >
-          </Route>
-            <Route path="overView" element={<FacultyCoursePlanOverView/>} />
-            <Route path="illustration" element={<FacultyCoursePlanIllustration/>} />
+          <Route path="courseplan" element={<CoursePlan />} />
           <Route path="coursematerial" element={<CourseMaterial />} />
           <Route path="comment" element={<FacultyComment />} />
           <Route path=":course/:id" element={<CourseView />} />

@@ -1,7 +1,7 @@
+import React from 'react';
 import { DownArrow, Edit } from '@/assets';
 import { Courses } from '@/pages/faculty/utils';
-import React from 'react';
-import { cn } from '../cn';
+import { cn } from '@/components';
 import useCoursePlanStore from '@/store/faculty/coursePlan';
 
 export const SideBarAccordian = () => {
@@ -12,13 +12,13 @@ export const SideBarAccordian = () => {
   const contentRef = React.useRef(null);
 
   function SubNavbarChange() {
-    changeCoursePlan("subNavbar","-1");  
-        setSidebar(!sidebar);
+    changeCoursePlan("subNavbar", "-1");
+    setSidebar(!sidebar);
 
   }
 
   function onTabChange(newTab) {
-    changeCoursePlan("subNavbar",newTab);
+    changeCoursePlan("subNavbar", newTab);
   }
 
   React.useEffect(() => {
