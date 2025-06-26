@@ -30,7 +30,7 @@ onSubmit
                         radius={"sm"}
                         placeholder={"Enter the code"}
                         classnames={{
-                        mainWrapper:"bg-white",
+                        mainWrapper:"bg-white rounded-lg",
                         inputWrapper:"bg-custom-1010 shadow-none border border-custom-1009"}}
                         />
                         <ButtonComponent

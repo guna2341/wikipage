@@ -13,14 +13,9 @@ export const Faculty = () => {
   const changeCourseMaterial = useCourseMaterialStore(e => e.changeCourseMaterial);
   const role = useGlobalStore(e => e.role);
 
-  // React.useEffect(() => {
-  //   if (role === "faculty" ) {
-  //   navigate('/faculty/courseplan');
-  //   }
-  //   else {
-  //     navigate("/login");
-  //   }
-  // }, []);
+  React.useEffect(() => {
+    navigate('/faculty/courseplan');
+  }, []);
   
   function navigateRoute(tab) {
       switch(tab) {
@@ -28,7 +23,7 @@ export const Faculty = () => {
           navigate("/faculty/courseplan");
           break;
         case "1":
-          changeCourseMaterial("createCourseTab",0);
+          changeCourseMaterial("createCourseTab",1);
           navigate("/faculty/coursematerial");
           break;
         case "2":

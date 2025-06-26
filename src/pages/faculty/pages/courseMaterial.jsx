@@ -6,23 +6,16 @@ import { useNavigate } from 'react-router-dom';
 export const CourseMaterial = () => {
 
     const navigate = useNavigate();
-    const createCourse = useCourseMaterialStore(e => e.createCourseTab);
-    const changeCourseMaterial = useCourseMaterialStore(e => e.changeCourseMaterial);
 
     function handleCourse(dept,sem) {
         navigate(`/faculty/${dept}/${sem}`)
     }
 
     function handleCreate() {
-        changeCourseMaterial("createCourseTab",1);
+        navigate("Createcourse")
     }
     
-    if (createCourse != 0) {
-        return (
-            <CreateCourse handleCreate={handleCreate} />
-        );
-    }
-    else {
+
         return (
                 <div className='h-full p-7 flex flex-col gap-5 overflow-auto scrollbar-hide'>
               <CourseMaterialHeader handleCreate={handleCreate} />           
@@ -53,5 +46,4 @@ export const CourseMaterial = () => {
                 </div>
         );
     }
-}
 

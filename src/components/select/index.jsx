@@ -10,7 +10,11 @@ export const SelectComponent = ({
 }) => {
   return (
     <div>
-        <Select className={`max-w-xs ${className}`} label={label} size={size} variant={variant} classNames={classNames} >
+        <Select className={`max-w- ${className}`} label={label} size={size} variant={variant} 
+        classNames={{
+          trigger:"shadow-none",
+          ...classNames
+          }} >
         {data.map((item) => (
           <SelectItem key={item.key}>{item.label}</SelectItem>
         ))}

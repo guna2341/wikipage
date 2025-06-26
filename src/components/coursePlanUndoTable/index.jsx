@@ -55,8 +55,8 @@ export const CoursePlanUndoTable = ({
                                     </td>
                                     <td className=' font-medium text-custom-1006 underline text-base leading-6'>
                                         <span className='flex gap-4 justify-center'>
-                                        <a href="">Undo</a>
-                                        <a href="">Redo</a>
+                                        <a href="" onClick={e =>e.preventDefault()}>Undo</a>
+                                        <a href="" onClick={e =>e.preventDefault()}>Redo</a>
                                         </span>
                                     </td>
                                 </tr>

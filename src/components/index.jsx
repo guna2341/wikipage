@@ -28,3 +28,4 @@ export { CoursePlanIllustration } from './coursePlanIllustration';
 export { CoursePlanOverview } from './coursePlanOverview';
 export { CreateCourse } from './createCourse';
 export { AdminSyllabusTable } from './adminSyllabusTable';
+export { FileUploadBox } from './fileUpload';

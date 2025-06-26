@@ -8,7 +8,6 @@ import useAdminRegulationStore from '@/store/admin/regulation';
 export const AdminRegulation = () => {
 
     const navigate = useNavigate();
-    const createCourse = useAdminRegulationStore(e => e.createCourseTab);
     const changeAdminRegulation = useAdminRegulationStore(e => e.changeRegulation);
 
     function handleCourse(dept,sem) {
@@ -16,15 +15,9 @@ export const AdminRegulation = () => {
     }
 
     function handleCreate() {
-        changeAdminRegulation("createCourseTab",true);
+        navigate("createRegulation");
     }
-    
-    if (createCourse) {
-        return (
-            <CreateRegulation/>
-        );
-    }
-    else {
+
         return (
                 <div className='h-full p-7 flex flex-col gap-5 overflow-auto scrollbar-hide'>
               <CourseMaterialHeader handleCreate={handleCreate} />           
@@ -55,5 +48,4 @@ export const AdminRegulation = () => {
                 </div>
         );
     }
-}
 

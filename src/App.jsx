@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { Login } from "@/components";
 import { PageRoutes } from "./pageRoutes";
 import { ProtectedRoute } from "./protectedRoutes";
-import { Admin, AdminRegulation, AdminRegulationList, CourseMaterial, CoursePlan, CourseView, Faculty, FacultyComment, FacultyList, Regulation, Student, StudentComment, StudentCourseView, StudentList, Syllabus, Test } from "./pages";
+import { Admin, AdminRegulation, AdminRegulationList, CourseMaterial, CoursePlan, CourseView, CreateRegulation, Faculty, FacultyComment, FacultyCoursePlanIllustration, FacultyCoursePlanOverView, FacultyCreateCourse, FacultyList, Regulation, Student, StudentComment, StudentCourseView, StudentList, Syllabus, Test } from "./pages";
 
 function App() {
   return (
@@ -21,10 +21,14 @@ function App() {
         
         {/* faculty module */}
         <Route path="/faculty" element={<Faculty />}>
-          <Route path="courseplan" element={<CoursePlan />} />
+          <Route path="courseplan" element={<CoursePlan />} >
+          </Route>
+            <Route path="overView" element={<FacultyCoursePlanOverView/>} />
+            <Route path="illustration" element={<FacultyCoursePlanIllustration/>} />
           <Route path="coursematerial" element={<CourseMaterial />} />
           <Route path="comment" element={<FacultyComment />} />
           <Route path=":course/:id" element={<CourseView />} />
+          <Route path="coursematerial/Createcourse" element={<FacultyCreateCourse/>} />
         </Route>
         
         {/* student module */}
@@ -38,6 +42,7 @@ function App() {
         {/* admin module */}
         <Route path="/admin" element = {<Admin/>} >
           <Route path="regulation" element={<AdminRegulation/>} />
+          <Route path="regulation/createRegulation" element={<CreateRegulation/>} />
           <Route path="regulation/:course/:sem" element={<AdminRegulationList/>} />
           <Route path="studentList" element={<StudentList/>} />
           <Route path="facultyList" element={<FacultyList/>} />
