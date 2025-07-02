@@ -1,7 +1,7 @@
+import React from 'react';
 import { DownArrow, Edit } from '@/assets';
 import { Courses } from '@/pages/faculty/utils';
-import React from 'react';
-import { cn } from '../cn';
+import { cn } from '@/components';
 import useCoursePlanStore from '@/store/faculty/coursePlan';
 
 export const SideBarAccordian = () => {
@@ -12,12 +12,13 @@ export const SideBarAccordian = () => {
   const contentRef = React.useRef(null);
 
   function SubNavbarChange() {
+    changeCoursePlan("subNavbar", "-1");
     setSidebar(!sidebar);
-    changeCoursePlan("subNavbar","-1");
+
   }
 
   function onTabChange(newTab) {
-      changeCoursePlan("subNavbar",newTab);
+    changeCoursePlan("subNavbar", newTab);
   }
 
   React.useEffect(() => {
@@ -55,7 +56,7 @@ export const SideBarAccordian = () => {
         className="overflow-hidden transition-all duration-500 ease-in-out"
         style={{ maxHeight: sidebar ? 'auto' : '0px' }}
       >
-        <div className='mt-4 border-t-0 border border-custom-500 rounded-b-md'>
+        <div className='border-t-0 border border-custom-500 rounded-b-md'>
           {Courses.map((course, index) => (
             <div
               key={course.id}

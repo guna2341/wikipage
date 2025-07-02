@@ -4,16 +4,16 @@ import React from 'react'
 
 export const CoursePlanOverview = ({
     handleEdit,
-    showEdit = true
+    showEdit = true,
+    isEdit = false
 }) => {
 
-    const [isEdit,setIsEdit] = React.useState(false);
-        
+
     return (
         <div className='p-7 flex flex-col gap-9 h-full overflow-auto scrollbar-hide'>
             <CourseHeader
-                isEdit={isEdit} 
-                showEdit = {showEdit}
+                isEdit={isEdit}
+                showEdit={showEdit}
                 handleEdit={handleEdit}
                 dept={"CSE"}
                 course_code={"22CS501"}
@@ -21,13 +21,13 @@ export const CoursePlanOverview = ({
                 faculty_members={["Dr.Parthasarathi P", "Mrs.Ganagavalli K"]}
             />
             <CourseBody
-                isEdit = {isEdit}
+                isEdit={isEdit}
                 className={"w-full max-w-[804px]"}
                 header={'Introduction to the course'}
                 message={'In theoretical computer science and mathematics, the theory of computation is the branch that deals with what problems can be solved on a model of computation, using an algorithm, how efficiently they can be solved or to what degree (e.g., approximate solutions versus precise ones). The field is divided into three major branches: automata theory and formal languages, computability theory, and computational complexity theory, which are linked by the question: "What are the fundamental capabilities and limitations of computers?'}
             />
             <CourseBody
-                isEdit = {isEdit}
+                isEdit={isEdit}
                 className={"w-full max-w-[804px]"}
                 header={'Course Objective'}
                 message={<div>
@@ -37,8 +37,8 @@ export const CoursePlanOverview = ({
                 </div>}
             />
             <CourseBody
-               isEdit = {isEdit}               
-               className={"w-full max-w-[804px]"}
+                isEdit={isEdit}
+                className={"w-full max-w-[804px]"}
                 header={'Course Outcomes'}
                 message={<div>
                     <li>Design the Finite Automata for computable problems.</li>

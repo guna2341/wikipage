@@ -17,3 +17,130 @@ export const AdminTabList = [
         tab:"Faculty List"
     }
 ];
+
+export const courseTable = [
+
+    {
+        code_no:'22CS501',
+        course:"THEORY OF COMPUTATION",
+        peos:'I',
+        pos:'a,b,c',
+        l:3,
+        t:1,
+        p:0,
+        c:4
+    },
+     {
+        code_no:'22CS502',
+        course:"COMPUTER NETWORKS",
+        peos:'I',
+        pos:'a,b,c,d,em',
+        l:3,
+        t:0,
+        p:2,
+        c:4
+    },
+     {
+        code_no:'22CS503',
+        course:"MACHINE LEARNING ESSENTIALS",
+        peos:'I',
+        pos:'a,b,c,d,e,f',
+        l:3,
+        t:0,
+        p:2,
+        c:4
+    },
+     {
+        code_no:'22CS504',
+        course:"FREE OPEN SOURCE SOFTWARE",
+        peos:'I,II',
+        pos:'a,b,c,d,e,f,g,h,i,j,k,l',
+        l:2,
+        t:0,
+        p:2,
+        c:3
+    },
+     {
+        code_no:'22CS507',
+        course:"MINI PROJECT",
+        peos:'I,II',
+        pos:'a,b,c,d,e,f,g,h,i,j,k,l',
+        l:0,
+        t:0,
+        p:2,
+        c:1
+    },
+    {
+        total:{
+            l:14,
+            t:1,
+            p:8,
+            c:16
+        }
+    }
+];
+
+export const regulations = [
+    {
+        key: "1",
+        label:"2020"
+    },
+    {
+        key: "2",
+        label:"2021"
+    },
+    {
+        key: "3",
+        label:"2022"
+    },
+    {
+        key: "4",
+        label: "2023"
+    }
+];
+
+export const departments = [
+    {
+        key: "1",
+        label:"CSE"
+    },
+    {
+        key: "2",
+        label:"AIDS"
+    },
+    {
+        key: "3",
+        label:"ECE"
+    },
+    {
+        key: "4",
+        label: "EEE"
+    },
+    {
+        key: "5",
+        label:"AIML"
+    }
+];
+
+export const courses = [
+    {
+        key: "1",
+        label:"Theory of Computation"
+    },
+    {
+        key: "2",
+        label:"Computer Networks"
+    },
+    {
+        key: "3",
+        label:"Machine Learning Essentials"
+    },
+    {
+        key: "4",
+        label: "Free Open Source Software"
+    },
+    {
+        key: "5",
+        label: "Mini Project"
+    }
+];

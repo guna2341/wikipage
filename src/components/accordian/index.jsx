@@ -10,18 +10,19 @@ export const AccordianComponent = ({
     className,
     classNames
 }) => {
-  return (
-      <Accordion className={`w-full ${className}`}
-      >
-              <AccordionItem 
-              key={id} 
-              title={title}
-              indicator={<BigArrow/>}
-              classNames={{...classNames}}
-              >
-                  {content}
-              </AccordionItem>
-      </Accordion>
-  )
+    return (
+        <Accordion className={`w-full ${className}`}
+        >
+            <AccordionItem
+                textValue={title}
+                key={id}
+                title={title}
+                indicator={<BigArrow />}
+                classNames={{ ...classNames }}
+            >
+                {content}
+            </AccordionItem>
+        </Accordion>
+    )
 }
 

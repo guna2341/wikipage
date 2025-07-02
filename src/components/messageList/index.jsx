@@ -6,11 +6,6 @@ export const MessageList = ({
     {
       name: "Elmar",
       role: "student",
-     delay:"12m"
-    },
-    {
-      name: "Elmar",
-      role: "student",
       delay: "12m"
     },
     {
@@ -33,7 +28,12 @@ export const MessageList = ({
       role: "student",
       delay: "12m"
     },
-      {
+    {
+      name: "Elmar",
+      role: "student",
+      delay: "12m"
+    },
+    {
       name: "Elmar",
       role: "student",
       delay: "12m"
@@ -78,7 +78,7 @@ export const MessageList = ({
         classname={"w-[300px] mt-[22px]"}
       />
       <div className='mt-8 h-[80%] overflow-y-scroll scrollbar-hide flex flex-col gap-3.5'>
-        {messageList.map((list,index) => (
+        {messageList.map((list, index) => (
           <MessageCard
             key={index}
             name={list.name}

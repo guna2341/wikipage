@@ -1,7 +1,6 @@
 import { Image } from '@heroui/image'
 import { logo, Logout } from '@/assets';
-import { ButtonComponent } from '@components';
-import { TabItem } from '../tabItem';
+import { ButtonComponent, TabItem } from '@components';
 
 export const SideBar = ({
     role = "Faculty",
@@ -9,7 +8,10 @@ export const SideBar = ({
     activeTab,
     customTab,
     setActiveTab
+    
 }) => {
+
+    
     return (
         <div className='w-full h-screen max-w-[340px] bg-white px-6 py-7 border border-custom-100 flex flex-col justify-between'>
             <div className='flex flex-col gap-12'>
@@ -22,18 +24,18 @@ export const SideBar = ({
                     </span>
                 </div>
                 <TabItem
-                    customTab = {customTab}
+                    customTab={customTab}
                     tabList={tabList}
                     activeTab={activeTab}
                     setActiveTab={setActiveTab}
                 />
             </div>
-        <ButtonComponent
+            <ButtonComponent
                 className="w-full h-full rounded max-h-[50px] bg-custom-700 font-semibold font-base text-white justify-normal"
                 startContent={<Logout />}
             >
                 Logout
-         </ButtonComponent>
+            </ButtonComponent>
         </div>
     )
 }
