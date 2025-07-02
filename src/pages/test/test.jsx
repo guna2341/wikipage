@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NavBar, SideBar, InputField, MessageCard, MessageNavbar, MessageBox, MessageList, CourseHeader, TabItem, CourseBody, CourseTable, Stepper, CourseItem, CreateCourseSecond, CourseMaterialTable, StudentListTable } from "@/components";
 import { SearchIcon } from '@/assets';
 import { coursePlanList } from '../faculty/utils';
@@ -20,9 +20,20 @@ export const Test = () => {
         {id:2,name:"Ajay k",email:"ajay.cs23@bitsathy.ac.in",register:"7376231CS101",department:"CSE",yos:2024,semester:"S5"},
         {id:3,name:"Ajay k",email:"ajay.cs23@bitsathy.ac.in",register:"7376231CS101",department:"CSE",yos:2024,semester:"S5"}
     ];
+
+    const studentHeader=[
+        {id:1,label:"Student Name"},
+        {id:2,label:"Email"},
+        {id:3,label:"Register Number"},
+        {id:4,label:"Department"},
+        {id:5,label:"Year of Study"},
+        {id:6,label:"Semester"},
+        {id:7,label:"Action"}
+    ]
+    const[isEdit,setEdit]=useState(false);
   return (
       <div className='p-12 flex flex-col gap-5'>
-        <StudentListTable student={students} />
+        <StudentListTable student={students} header={studentHeader} isedit={isEdit} edit={setEdit} />
         <SyllabusTable
         header="B.E COMPUTER SCIENCE AND ENGINEERING"
         minimun_credits={'22.0'}
