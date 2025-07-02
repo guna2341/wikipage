@@ -72,7 +72,7 @@ export const CreateCourseSecond = ({
   }
 
   return (
-    <div className='w-full h-[calc(100%-9rem)] flex flex-col gap-4'>
+    <div className='w-full h-[calc(100%-6rem)] flex flex-col gap-4'>
       <div className='flex items-center justify-between'>
         <span className='font-semibold text-[22px] leading-6'>
           Create New Course

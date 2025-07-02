@@ -10,7 +10,7 @@ export const CourseMaterialHeader = ({ handleCreate, handleSearch }) => {
         placeholder={"Search..."}
         classname={'min-w-[320px]'}
         classnames={{
-          mainWrapper: "bg-white",
+          mainWrapper: "bg-white rounded-2xl",
           inputWrapper: "bg-white shadow-none border border-custom-1009"
         }}
         startContent={<SearchIcon />}

@@ -5,11 +5,14 @@ import { FileEdit } from '@/assets';
 export const CoursePlanUndoTable = ({
     data = [],
     courses = [],
+    classNames
 }) => {
     const [currentTab, setCurrentTab] = React.useState(1);
 
     return (
-        <div className='bg-white rounded-2xl overflow-auto scrollbar-hide flex flex-col border border-custom-1007'>
+        <div className={cn('flex flex-col',
+            classNames
+        )}>
             <div className='flex gap-4 w-full overflow-auto scrollbar-hide pt-5 px-8'>
                 {courses.map(course => (
                     <div
@@ -43,9 +46,11 @@ export const CoursePlanUndoTable = ({
                             {data.map((item, index) => (
                                 <tr key={index} className={cn('text-center border-t border-custom-1007', {
                                 })}>
-                                    <td className='flex items-center gap-4 pl-4 py-4 font-medium text-custom-1013 text-base leading-6'>
-                                        <FileEdit />
-                                        {item?.content}
+                                    <td className='flex items-center gap-2.5 pl-4 py-4 font-medium text-custom-1013 text-base leading-6'>
+                                        <span><FileEdit /></span>
+                                        <span className='text-nowrap'>
+                                            {item?.content}
+                                        </span>
                                     </td>
                                     <td className='font-medium text-custom-1013 text-base leading-6'>
                                         {item?.faculty}

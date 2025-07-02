@@ -29,7 +29,7 @@ export const Student = () => {
         break;
     }
   }
-
+  
    function setActiveTab(newTab) {
       changeStudentRegulation("currentNavbar",newTab);
       navigateRoute(newTab);

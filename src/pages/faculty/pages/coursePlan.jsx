@@ -22,9 +22,9 @@ export const CoursePlan = () => {
   }
 
   return (
-    <div className='h-[calc(100%-5rem)] w-full overflow-hidden'>
+    <div className='h-[calc(100%-0rem)] w-full overflow-scroll scrollbar-hide'>
       {subNavbar == "-1" &&
-      <div className='p-7 flex flex-col gap-9 h-full'> 
+      <div className='p-7 flex flex-col gap-5 h-full'> 
         {Courses.map(item => (
           <CoursePlanCodeInput
               key={item.id}
@@ -33,10 +33,12 @@ export const CoursePlan = () => {
               onSubmit={() => handleSubmit(item.id)}
           />
         ))}
-        <CoursePlanUndoTable
+          <div className='bg-white border border-custom-100 rounded-2xl min-h-[440px] overflow-auto scrollbar-hide'>
+          <CoursePlanUndoTable
         data={courseUndoList}
         courses={courseUndoCourses}
-        /> 
+            /> 
+          </div>
         </div>
       }
       {

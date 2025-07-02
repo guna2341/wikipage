@@ -29,7 +29,7 @@ export const CreateCourse = ({ handleNavigate }) => {
   }
 
   return (
-    <div className='p-7 flex flex-col gap-9 h-full overflow-auto scrollbar-hide w-full'>
+    <div className='p-5 pb-5 flex flex-col gap-6 h-full overflow-auto scrollbar-hide w-full'>
       <div className='flex'>
         <div className='pt-1 cursor-pointer'
           onClick={handlePrevious}
