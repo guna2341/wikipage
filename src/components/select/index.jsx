@@ -11,17 +11,7 @@ export const SelectComponent = ({
 }) => {
   return (
     <div>
-        <Select className={`max-w-xs ${className}`} placeholder={placeholer} label={label} size={size} variant={variant} classNames={classNames} >
-  data = [],
-  label = "",
-  size = "sm",
-  variant = "bordered",
-  className,
-  classNames
-}) => {
-  return (
-    <div>
-      <Select className={`max-w- ${className}`} label={label} size={size} variant={variant}
+      <Select className={`max-w-xs ${className}`} label={label} size={size} variant={variant}
         classNames={{
           trigger: "shadow-none",
           ...classNames
