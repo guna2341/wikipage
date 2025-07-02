@@ -6,11 +6,12 @@ export const SelectComponent = ({
     size = "sm",
     variant = "bordered",
     className,
-    classNames
+  classNames,
+    placeholer
 }) => {
   return (
     <div>
-        <Select className={`max-w-xs ${className}`} label={label} size={size} variant={variant} classNames={classNames} >
+        <Select className={`max-w-xs ${className}`} placeholder={placeholer} label={label} size={size} variant={variant} classNames={classNames} >
         {data.map((item) => (
           <SelectItem key={item.key}>{item.label}</SelectItem>
         ))}

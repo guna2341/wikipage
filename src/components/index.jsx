@@ -28,4 +28,3 @@ export { CoursePlanIllustration } from './coursePlanIllustration';
 export { CoursePlanOverview } from './coursePlanOverview';
 export { CreateCourse } from './createCourse';
 export {StudentListTable} from './studentListTable';
-export {CheckBox} from './checkbox';

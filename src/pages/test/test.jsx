@@ -30,7 +30,8 @@ export const Test = () => {
         {id:6,label:"Semester"},
         {id:7,label:"Action"}
     ]
-    const[isEdit,setEdit]=useState(false);
+    const [isEdit, setEdit] = useState(false);
+    
   return (
       <div className='p-12 flex flex-col gap-5'>
         <StudentListTable student={students} header={studentHeader} isedit={isEdit} edit={setEdit} />
