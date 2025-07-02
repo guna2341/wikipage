@@ -30,7 +30,9 @@ export const CourseItem = ({
             {data.map((item, index) => (
                 <div className={cn('flex flex-col gap-[22px] px-8 pb-8', {
                     'border-b border-custom-100': data.length - 1 !== index
-                })}>
+                })}
+                key={index}
+                >
 
                     <CustomInputField isDiscourse={isDiscourse} lp={item?.lp} />
                     <div className='flex flex-col gap-6'>
@@ -56,7 +58,7 @@ export const CourseItem = ({
                             Cancel
                         </ButtonComponent>
                         <ButtonComponent>
-                            Save
+                            Next
                         </ButtonComponent>
                     </div>
                 </div>

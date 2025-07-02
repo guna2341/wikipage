@@ -34,7 +34,6 @@ export const SideBarAccordian = () => {
 
   return (
     <div className="flex flex-col">
-
       <div className='flex gap-4 items-center pl-4'>
         <span>
           <Edit />
@@ -57,7 +56,7 @@ export const SideBarAccordian = () => {
         className="overflow-hidden transition-all duration-500 ease-in-out"
         style={{ maxHeight: sidebar ? 'auto' : '0px' }}
       >
-        <div className='mt-4 border-t-0 border border-custom-500 rounded-b-md'>
+        <div className='border-t-0 border border-custom-500 rounded-b-md'>
           {Courses.map((course, index) => (
             <div
               key={course.id}

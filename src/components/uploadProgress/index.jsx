@@ -22,7 +22,8 @@ export const UploadProgress = ({
                                     </div>
                                    </div>
                                    <div className='gap-3 flex items-center'>
-                                    <Progress
+              <Progress
+                  aria-label='progress'
                                         size='sm'
                                         value={progress}
                                         classNames={{

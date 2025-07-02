@@ -18,8 +18,8 @@ export const Faculty = () => {
   const changeCourseMaterial = useCourseMaterialStore((s) => s.changeCourseMaterial);
 
   useEffect(() => {
-      navigate('/faculty/courseplan');
-  }, [navigate]);
+      navigate('courseplan');
+  }, []);
 
   const navigateToTab = (tabId) => {
     switch (tabId) {

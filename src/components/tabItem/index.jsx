@@ -15,7 +15,7 @@ export const TabItem = ({
             onSelectionChange={setActiveTab}
             classNames={{
                 base: "w-full border-0 justify-start",
-                tab: "w-full p-0 border-0 justify-start outline-0 my-2 z-0",
+                tab: "w-full p-0 border-0 justify-start outline-0 my-2 z-0 data-[focus-visible=true]:outline-0",
                 tabList: "w-full p-0 border-0 gap-0 bg-white outline-0",
                 tabContent: "w-full border-0 outline-0 z-0",
                 cursor: "bg-custom-500 border-0 outline-0 z-0 shadow-none",

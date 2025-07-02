@@ -17,7 +17,7 @@ export const Admin = () => {
 
   useEffect(() => {
     navigate("regulation");
-  }, [navigate]);
+  }, []);
 
   const navigateToTab = (tabId) => {
     switch (tabId) {

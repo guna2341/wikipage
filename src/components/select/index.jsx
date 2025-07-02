@@ -16,7 +16,9 @@ export const SelectComponent = ({
           ...classNames
         }} >
         {data.map((item) => (
-          <SelectItem key={item.key}>{item.label}</SelectItem>
+          <SelectItem key={item.key}
+            className='py-2.5 data-[hover=true]:bg-gray-100 data-[focus-visible=true]:outline-0 data-[selectable=true]:focus:bg-gray-100'
+          >{item.label}</SelectItem>
         ))}
       </Select>
     </div>

@@ -75,3 +75,22 @@ export const courseTable = [
         }
     }
 ];
+
+export const regulations = [
+    {
+        key: "1",
+        label: "2020"
+    },
+    {
+        key: "2",
+        label: "2021"
+    },
+    {
+        key: "3",
+        label: "2022"
+    },
+    {
+        key: "4",
+        label: "2023"
+    }
+];

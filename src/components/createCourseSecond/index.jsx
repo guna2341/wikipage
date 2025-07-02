@@ -5,7 +5,8 @@ import { AddIcon, LeftArrow } from '@/assets'
 export const CreateCourseSecond = ({
   onPrevious,
   onNext,
-  isDiscourse = false
+  isDiscourse = false,
+  isLast = false
 }) => {
 
   const [data, setData] = React.useState([
@@ -72,7 +73,7 @@ export const CreateCourseSecond = ({
   }
 
   return (
-    <div className='w-full h-[calc(100%-9rem)] flex flex-col gap-4'>
+    <div className='w-full h-[calc(100%-6rem)] flex flex-col gap-4'>
       <div className='flex items-center justify-between'>
         <span className='font-semibold text-[22px] leading-6'>
           Create New Course
@@ -116,7 +117,7 @@ export const CreateCourseSecond = ({
             className={'w-[120px] border bg-purple-600 border-purple-600 text-white rounded-lg font-normal text-base leading-6 pr-3'}
             endContent={<span className='text-white ml-2 rotate-180'><LeftArrow /></span>}
           >
-            Next
+            {isLast ? "Save" : "Next"}
           </ButtonComponent>
         </div>
       </div>
