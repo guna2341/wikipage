@@ -43,7 +43,6 @@ export const CoursePlanCodeInput = ({
           }}
         />
         <ButtonComponent
-          className={"bg-purple-600"}
           onClick={() => onSubmit(input)}
         >
           Submit

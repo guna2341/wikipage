@@ -5,7 +5,8 @@ import { AddIcon, LeftArrow } from '@/assets'
 export const CreateCourseSecond = ({
   onPrevious,
   onNext,
-  isDiscourse = false
+  isDiscourse = false,
+  isLast = false
 }) => {
 
   const [data, setData] = React.useState([
@@ -116,7 +117,7 @@ export const CreateCourseSecond = ({
             className={'w-[120px] border bg-purple-600 border-purple-600 text-white rounded-lg font-normal text-base leading-6 pr-3'}
             endContent={<span className='text-white ml-2 rotate-180'><LeftArrow /></span>}
           >
-            Next
+            {isLast ? "Save" : "Next"}
           </ButtonComponent>
         </div>
       </div>

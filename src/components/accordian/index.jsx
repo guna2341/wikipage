@@ -14,6 +14,7 @@ export const AccordianComponent = ({
         <Accordion className={`w-full ${className}`}
         >
             <AccordionItem
+                textValue={title}
                 key={id}
                 title={title}
                 indicator={<BigArrow />}

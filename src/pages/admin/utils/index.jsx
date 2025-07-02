@@ -79,3 +79,68 @@ export const courseTable = [
         }
     }
 ];
+
+export const regulations = [
+    {
+        key: "1",
+        label:"2020"
+    },
+    {
+        key: "2",
+        label:"2021"
+    },
+    {
+        key: "3",
+        label:"2022"
+    },
+    {
+        key: "4",
+        label: "2023"
+    }
+];
+
+export const departments = [
+    {
+        key: "1",
+        label:"CSE"
+    },
+    {
+        key: "2",
+        label:"AIDS"
+    },
+    {
+        key: "3",
+        label:"ECE"
+    },
+    {
+        key: "4",
+        label: "EEE"
+    },
+    {
+        key: "5",
+        label:"AIML"
+    }
+];
+
+export const courses = [
+    {
+        key: "1",
+        label:"Theory of Computation"
+    },
+    {
+        key: "2",
+        label:"Computer Networks"
+    },
+    {
+        key: "3",
+        label:"Machine Learning Essentials"
+    },
+    {
+        key: "4",
+        label: "Free Open Source Software"
+    },
+    {
+        key: "5",
+        label: "Mini Project"
+    }
+];

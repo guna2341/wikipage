@@ -4,6 +4,7 @@ import useCourseMaterialStore from '@/store/faculty/courseMaterial';
 import { useNavigate } from 'react-router-dom';
 import { CreateRegulation } from './createRegulation';
 import useAdminRegulationStore from '@/store/admin/regulation';
+import { regulations } from '../utils';
 
 export const AdminRegulation = () => {
 
@@ -28,6 +29,7 @@ export const AdminRegulation = () => {
                             </p>
                                 <div className='w-fit '>
                                 <SelectComponent
+                                data={regulations}
                                 label='All Regulation'
                                 className="w-[156px] h-[31px]"
                                 />

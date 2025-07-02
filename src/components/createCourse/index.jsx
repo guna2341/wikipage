@@ -1,9 +1,11 @@
 import { BigArrow } from '@/assets'
 import { CreateCourseFirst, CreateCourseSecond, Stepper } from '@/components'
 import useCourseMaterialStore from '@/store/faculty/courseMaterial';
+import { useNavigate } from 'react-router-dom';
 
 export const CreateCourse = ({ handleNavigate }) => {
 
+  const navigate = useNavigate();
   const currentIndex = useCourseMaterialStore(e => e.createCourseTab);
   const changeCourseMaterial = useCourseMaterialStore(e => e.changeCourseMaterial);
 
@@ -11,7 +13,11 @@ export const CreateCourse = ({ handleNavigate }) => {
     changeCourseMaterial("createCourseTab", index);
   }
 
+
   function handleNext() {
+    if (currentIndex == 3) {
+      navigate(-1);
+    }
     if (currentIndex <= 2) {
       changeCourseMaterial("createCourseTab", currentIndex + 1);
     }
@@ -45,7 +51,7 @@ export const CreateCourse = ({ handleNavigate }) => {
       </div>
       {currentIndex == 1 && <CreateCourseFirst onNext={handleNext} onPrevious={handlePrevious} />}
       {currentIndex == 2 && <CreateCourseSecond onNext={handleNext} onPrevious={handlePrevious} />}
-      {currentIndex == 3 && <CreateCourseSecond onNext={handleNext} onPrevious={handlePrevious} isDiscourse={true} />}
+      {currentIndex == 3 && <CreateCourseSecond onNext={handleNext} onPrevious={handlePrevious} isDiscourse={true} isLast={true} />}
     </div>
   )
 }

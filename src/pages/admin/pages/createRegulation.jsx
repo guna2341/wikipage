@@ -3,6 +3,7 @@ import { ButtonComponent, FileUploadBox, InputField, SelectComponent } from '@/c
 import useAdminRegulationStore from '@/store/admin/regulation'
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
+import { courses, departments } from '../utils';
 
 export const CreateRegulation = () => {
 
@@ -41,7 +42,8 @@ export const CreateRegulation = () => {
         <div className='flex gap-20 w-full'>
           <div className='font-semibold leading-6 text-xl flex flex-col gap-5'>
               Select Department
-              <SelectComponent
+            <SelectComponent
+              data = {departments}
               classNames={{
                 trigger:"border border-custom-100 bg-custom-850 shadow-none min-w-[300px]",
                 label:"text-custom-1016 font-normal leading-6",
@@ -51,7 +53,8 @@ export const CreateRegulation = () => {
           </div>
           <div className='font-semibold leading-6 text-xl flex flex-col gap-5 '>
               Select Course
-              <SelectComponent
+            <SelectComponent
+              data = {courses}
               classNames={{
                 trigger:"border border-custom-100 bg-custom-850 shadow-none min-w-[300px]",
                 label:"text-custom-1016 font-normal leading-6",
