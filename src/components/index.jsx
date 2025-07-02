@@ -27,6 +27,7 @@ export { ModCourseMaterialTable } from './modCourseMaterialTable';
 export { CoursePlanIllustration } from './coursePlanIllustration';
 export { CoursePlanOverview } from './coursePlanOverview';
 export { CreateCourse } from './createCourse';
+export {StudentListTable} from './studentListTable';
 export { AdminSyllabusTable } from './adminSyllabusTable';
 export { FileUploadBox } from './fileUpload';
 export { UploadProgress } from './uploadProgress';

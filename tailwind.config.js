@@ -1,4 +1,5 @@
 import { heroui } from "@heroui/theme";
+
 import scrollbarHide from "tailwind-scrollbar-hide";
 
 /** @type {import('tailwindcss').Config} */
@@ -49,7 +50,9 @@ export default {
           1025:"#FAFAFA",
           1026:"#CBCBCB",
           1027:"#F4F4F4",
-          1028:"#F9F9F9"
+          1028:"#F9F9F9",
+          1029:"#F4F7FC",
+          1030:"#464F60"
         },
       },
     },

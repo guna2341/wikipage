@@ -1,6 +1,17 @@
 import { Select, SelectItem } from '@heroui/select'
 
 export const SelectComponent = ({
+    data = [],
+    label = "",
+    size = "sm",
+    variant = "bordered",
+    className,
+  classNames,
+    placeholer
+}) => {
+  return (
+    <div>
+        <Select className={`max-w-xs ${className}`} placeholder={placeholer} label={label} size={size} variant={variant} classNames={classNames} >
   data = [],
   label = "",
   size = "sm",
