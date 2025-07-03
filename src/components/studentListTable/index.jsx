@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { InputField } from '../input';
 import { AddIcon, Delete, Edit2, SearchIcon } from '@/assets';
 import { SelectComponent } from '../select';
@@ -7,17 +7,16 @@ import { Checkbox } from '@heroui/checkbox';
 import { cn } from '../cn';
 
 export const StudentListTable = (props) => {
-    const [edit, setEdit] = useState(props.isedit);
-    const [selected, setselected] = useState(false);
-    const [searchText, setSearchText] = useState('');
-    const [filteredData, setFilteredData] = useState(props.student || []);
+    const [edit, setEdit] = React.useState(props.isedit);
+    const [selected, setselected] = React.useState(false);
+    const [searchText, setSearchText] = React.useState('');
+    const [filteredData, setFilteredData] = React.useState(props.student || []);
 
     const handleclick = () => {
-        console.log("log")
         setEdit(!edit);
     };
 
-    useEffect(() => {
+    React.useEffect(() => {
         const lower = searchText.toLowerCase();
         const filtered = props.student.filter((s) =>
             s.name.toLowerCase().includes(lower) ||
