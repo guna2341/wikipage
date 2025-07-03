@@ -37,7 +37,8 @@ export const Student = () => {
 
   return (
    <div className='flex bg-custom-850 h-screen w-full'>
-         <SideBar
+      <SideBar
+           role="Student"
            tabList={StudentTabList}
            activeTab={activeTab}
            setActiveTab={setActiveTab}

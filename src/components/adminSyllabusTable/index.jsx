@@ -9,8 +9,8 @@ export const AdminSyllabusTable = ({
   courses = []
 }) => {
   return (
-    <div className='flex flex-col gap-5 px-4 py-4'>
-      <div className='flex items-center gap-4 justify-end'>
+    <div className='flex flex-col gap-5 py-4 h-full'>
+      <div className='flex items-center px-4 gap-4 justify-end'>
 
         <ButtonComponent
           className={'p-2'}
@@ -32,7 +32,7 @@ export const AdminSyllabusTable = ({
 
       </div>
 
-      <div className='px-20'>
+      <div className='px-8 h-full'>
         <SyllabusTable
           header={header}
           courses={courses}

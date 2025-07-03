@@ -44,6 +44,7 @@ export const Admin = () => {
   return (
     <div className="flex bg-custom-850 h-screen w-full">
       <SideBar
+        role="Admin"
         tabList={AdminTabList}
         activeTab={activeTab}
         setActiveTab={handleTabChange}
