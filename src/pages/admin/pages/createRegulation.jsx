@@ -14,7 +14,7 @@ export const CreateRegulation = () => {
   }
 
   return (
-    <div className='p-7 h-[calc(100%)] flex flex-col gap-6 overflow-scroll scrollbar-hide'>
+    <div className='p-7 h-full over flex flex-col gap-6 overflow-scroll scrollbar-hide'>
       <div className='flex items-center gap-4'>
         <span onClick={handleClick} className='cursor-pointer'>
         <LeftArrow

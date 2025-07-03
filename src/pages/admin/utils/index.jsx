@@ -144,3 +144,157 @@ export const courses = [
         label: "Mini Project"
     }
 ];
+
+
+export const studentHeader = [
+    { id: 1, label: "Student Name" },
+    { id: 2, label: "Email" },
+    { id: 3, label: "Register Number" },
+    { id: 4, label: "Department" },
+    { id: 5, label: "Year of Study" },
+    { id: 6, label: "Semester" },
+  ]
+
+export const students = [{ id: 1, name: "Ajay k", email: "ajay.cs23@bitsathy.ac.in", register: "7376231CS101", department: "CSE", yos: 2024, semester: "S5" },
+    { id: 2, name: "Ajay k", email: "ajay.cs23@bitsathy.ac.in", register: "7376231CS101", department: "CSE", yos: 2024, semester: "S5" },
+    { id: 3, name: "Ajay k", email: "ajay.cs23@bitsathy.ac.in", register: "7376231CS101", department: "CSE", yos: 2024, semester: "S5" },
+    { id: 4, name: "Ajay k", email: "ajay.cs23@bitsathy.ac.in", register: "7376231CS101", department: "CSE", yos: 2024, semester: "S5" },
+    { id: 5, name: "Ajay k", email: "ajay.cs23@bitsathy.ac.in", register: "7376231CS101", department: "CSE", yos: 2024, semester: "S5" },
+    { id: 6, name: "Ajay k", email: "ajay.cs23@bitsathy.ac.in", register: "7376231CS101", department: "CSE", yos: 2024, semester: "S5" },
+    { id: 7, name: "Ajay k", email: "ajay.cs23@bitsathy.ac.in", register: "7376231CS101", department: "CSE", yos: 2024, semester: "S5" },
+    { id: 8, name: "Ajay k", email: "ajay.cs23@bitsathy.ac.in", register: "7376231CS101", department: "CSE", yos: 2024, semester: "S5" },
+    { id: 9, name: "Ajay k", email: "ajay.cs23@bitsathy.ac.in", register: "7376231CS101", department: "CSE", yos: 2024, semester: "S5" },
+    { id: 10, name: "Ajay k", email: "ajay.cs23@bitsathy.ac.in", register: "7376231CS101", department: "CSE", yos: 2024, semester: "S5" },
+    { id: 11, name: "Ajay k", email: "ajay.cs23@bitsathy.ac.in", register: "7376231CS101", department: "CSE", yos: 2024, semester: "S5" },
+    { id: 12, name: "Ajay k", email: "ajay.cs23@bitsathy.ac.in", register: "7376231CS101", department: "CSE", yos: 2024, semester: "S5" },
+    { id: 13, name: "Ajay k", email: "ajay.cs23@bitsathy.ac.in", register: "7376231CS101", department: "CSE", yos: 2024, semester: "S5" },
+    { id: 14, name: "Ajay k", email: "ajay.cs23@bitsathy.ac.in", register: "7376231CS101", department: "CSE", yos: 2024, semester: "S5" },
+    
+];
+
+export const facultyHeader = [
+    {
+        key: "1",
+        label:"Faculty Name"
+    },
+    {
+        key: "2",
+        label:"Email"
+    },
+    {
+        key: "3",
+        label:"Faculty ID"
+    },
+    {
+        key: "4",
+        label:"Department"
+    },
+    {
+        key: "5",
+        label:"Lab component"
+    },
+    {
+        key: "6",
+        label:"Course ID"
+    },
+    {
+        key: "7",
+        label:"Semester"
+    }
+];
+
+export const faculties = [
+    {
+        id: 1,
+        name: "Priya R",
+        email: "priya.r@bitsathy.ac.in",
+        register: "7376231CS101",
+        department: "CSE",
+        lab:"Theory with lab",
+        course:"22CS501",
+        semester:"S1,S4"
+    },
+    {
+        id: 2,
+        name: "Priya R",
+        email: "priya.r@bitsathy.ac.in",
+        register: "7376231CS101",
+        department: "CSE",
+        lab:"Theory with lab",
+        course:"22CS501",
+        semester:"S1,S4"
+    },
+    {
+        id: 3,
+        name: "Priya R",
+        email: "priya.r@bitsathy.ac.in",
+        register: "7376231CS101",
+        department: "CSE",
+        lab:"Theory with lab",
+        course:"22CS501",
+        semester:"S1,S4"
+    },
+
+    {
+        id: 4,
+        name: "sai R",
+        email: "priya.r@bitsathy.ac.in",
+        register: "7376231CS101",
+        department: "EEE",
+        lab:"Theory with lab",
+        course:"22CS501",
+        semester:"S1,S4"
+    },
+    {
+        id: 5,
+        name: "Priya R",
+        email: "priya.r@bitsathy.ac.in",
+        register: "7376231CS101",
+        department: "CSE",
+        lab:"Theory with lab",
+        course:"22CS501",
+        semester:"S1,S4"
+    },
+
+    {
+        id: 6,
+        name: "Priya R",
+        email: "priya.r@bitsathy.ac.in",
+        register: "7376231CS101",
+        department: "CSE",
+        lab:"Theory with lab",
+        course:"22CS501",
+        semester:"S1,S4"
+    },
+    {
+        id: 7,
+        name: "Priya R",
+        email: "priya.r@bitsathy.ac.in",
+        register: "7376231CS101",
+        department: "CSE",
+        lab:"Theory with lab",
+        course:"22CS501",
+        semester:"S1,S4"
+    },
+    {
+        id: 8,
+        name: "Priya R",
+        email: "priya.r@bitsathy.ac.in",
+        register: "7376231CS101",
+        department: "CSE",
+        lab:"Theory with lab",
+        course:"22CS501",
+        semester:"S1,S4"
+    },
+    {
+        id: 9,
+        name: "Priya R",
+        email: "priya.r@bitsathy.ac.in",
+        register: "7376231CS101",
+        department: "CSE",
+        lab:"Theory with lab",
+        course:"22CS501",
+        semester:"S1,S4"
+    },
+
+];
