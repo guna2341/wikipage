@@ -19,12 +19,11 @@ export const StudentListTable = (props) => {
     React.useEffect(() => {
         const lower = searchText.toLowerCase();
         const filtered = props.student.filter((s) =>
-  (s?.name || '').toLowerCase().includes(lower) ||
-  (s?.register || '').toLowerCase().includes(lower) ||
-  (s?.email || '').toLowerCase().includes(lower) ||
-  (s?.department || '').toLowerCase().includes(lower)
-);
-
+            s.name.toLowerCase().includes(lower) ||
+            s.register.toLowerCase().includes(lower) ||
+            s.email.toLowerCase().includes(lower) ||
+            s.department.toLowerCase().includes(lower)
+        );
         setFilteredData(filtered);
     }, [searchText, props.student]);
 
@@ -115,37 +114,36 @@ export const StudentListTable = (props) => {
                                 }
                             </tr>
                         </thead>
-                        <tbody className="w-full">
-  {filteredData.map((row, index) => (
-    <tr
-      key={index}
-      className={cn("text-center border-b border-custom-100 z-0", {
-        "border-0": index === filteredData.length - 1,
-      })}
-    >
-      <td className="pl-5 z-0 relative">
-        {selected ? <Checkbox isSelected={true} /> : <Checkbox />}
-      </td>
-
-      {/* Render cells dynamically based on headers */}
-      {props.header.map((col) => (
-        <td key={col.id} className="text-custom-1004 text-sm py-[15px]">
-          {row[col.id] || '-'}
-        </td>
-      ))}
-
-      {edit && (
-        <td>
-          <div className="flex justify-center items-center gap-[15px]">
-            <Edit2 />
-            <Delete />
-          </div>
-        </td>
-      )}
-    </tr>
-  ))}
-</tbody>
-
+                        <tbody className='w-full'>
+                            {filteredData.map((s, index) => (
+                                <tr
+                                    key={s.id}
+                                    className={cn("text-center border-b border-custom-100 z-0", {
+                                        "border-0": index === filteredData.length - 1,
+                                    })}
+                                >
+                                    <td className="pl-5 z-0 relative">
+                                        {selected ? <Checkbox isSelected={true} /> : <Checkbox />}
+                                    </td>
+                                    <td className="py-[15px] text-custom-1004 text-sm">{s?.name}</td>
+                                    <td className="text-custom-1004 text-sm">{s?.email}</td>
+                                    <td className="text-custom-1004 text-sm">{s?.register}</td>
+                                    <td className="text-custom-1004 text-sm">{s?.department}</td>
+                                    {s.lab && <td className="text-custom-1004 text-sm">{s?.lab}</td>}
+                                    {s.course && <td className="text-custom-1004 text-sm">{s?.course}</td>}
+                                    {s?.yos && <td className="text-custom-1004 text-sm">{s?.yos}</td>}
+                                    {s?.semester && <td className="text-custom-1004 text-sm">{s?.semester}</td>}
+                                    <td>
+                                        {edit &&
+                                            <div className="flex justify-center items-center gap-[15px]">
+                                              <Edit2 />
+                                                <Delete />
+                                            </div>
+                                        }
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
                     </table>
                 </div>
             }
