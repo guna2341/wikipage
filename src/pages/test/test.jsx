@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { NavBar, SideBar, InputField, MessageCard, MessageNavbar, MessageBox, MessageList, CourseHeader, TabItem, CourseBody, CourseTable, Stepper, CourseItem, CreateCourseSecond, CourseMaterialTable, StudentListTable } from "@/components";
+import { NavBar, SideBar, InputField, MessageCard, MessageNavbar, MessageBox, MessageList, CourseHeader, TabItem, CourseBody, CourseTable, Stepper, CourseItem, CreateCourseSecond, CourseMaterialTable, StudentListTable, FileUploadBox } from "@/components";
 import { SearchIcon } from '@/assets';
 import { coursePlanList } from '../faculty/utils';
 import { CoursePlanOverview } from '@/components/coursePlanOverview';
@@ -33,7 +33,9 @@ export const Test = () => {
     const [isEdit, setEdit] = useState(false);
     
   return (
+    
       <div className='p-12 flex flex-col gap-5'>
+        <FileUploadBox/>
         <StudentListTable student={students} header={studentHeader} isedit={isEdit} edit={setEdit} />
         <SyllabusTable
         header="B.E COMPUTER SCIENCE AND ENGINEERING"
