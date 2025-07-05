@@ -1,5 +1,6 @@
 import { DownArrow, SearchIcon } from '@/assets'
 import { InputField, MessageCard } from '@/components'
+import React from 'react';
 
 export const MessageList = ({
   messageList = [
@@ -60,9 +61,10 @@ export const MessageList = ({
     },
   ]
 }) => {
+  const [active, setActive] = React.useState(0);
   return (
-    <div className='w-full h-full px-5 py-5 overflow-hidden'>
-      <div className='flex items-center gap-2.5'>
+    <div className='w-full h-full py-5 overflow-hidden'>
+      <div className='flex items-center px-5 gap-2.5'>
         <span className='font-semibold text-xl leading-5'>
           Messages
         </span>
@@ -71,19 +73,24 @@ export const MessageList = ({
           10
         </span>
       </div>
-      <InputField
+      <div className='px-5'>
+        <InputField
         size="lg"
         startContent={<SearchIcon />}
         placeholder="Search messages"
         classname={"w-[300px] mt-[22px]"}
       />
-      <div className='mt-8 h-[80%] overflow-y-scroll scrollbar-hide flex flex-col gap-3.5'>
+      </div>
+
+      <div className='mt-8 h-[80%] overflow-y-scroll scrollbar-hide flex flex-col gap-3.5 px-5'>
         {messageList.map((list, index) => (
           <MessageCard
             key={index}
             name={list.name}
             role={list.role}
             delay={list.delay}
+            active={index === active}
+            handleClick={() => setActive(index)}
           />
         ))}
       </div>

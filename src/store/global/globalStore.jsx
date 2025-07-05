@@ -5,7 +5,6 @@ const useGlobalStore = create(
   immer((set) => ({
     
     role: "admin",
-    
     changeGlobalStore:(key,value) => {
     set({[key]:value});
    }
