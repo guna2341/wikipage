@@ -14,7 +14,7 @@ export const CreateRegulation = () => {
   }
 
   return (
-    <div className='p-7 h-full over flex flex-col gap-6 overflow-scroll scrollbar-hide'>
+    <div className='p-7 h-full flex flex-col gap-6 overflow-scroll scrollbar-hide'>
       <div className='flex items-center gap-4'>
         <span onClick={handleClick} className='cursor-pointer'>
         <LeftArrow
@@ -26,7 +26,7 @@ export const CreateRegulation = () => {
         </p>
       </div>
       <div
-      className='bg-white rounded-2xl border border-custom-100 px-[50px] py-[42px] flex flex-col gap-8'
+      className='bg-white rounded-2xl px-[50px] py-[42px] flex flex-col gap-8'
       >
         <div className='font-semibold leading-6 text-xl w-full pt-0.5 flex flex-col gap-5 max-w-[366px]'>
               Create Academic Regulation
