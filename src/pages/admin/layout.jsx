@@ -1,8 +1,9 @@
 import { NavBar, SideBar } from '@/components';
-import useAdminRegulationStore from '@/store/admin/regulation';
-import React, { useEffect } from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
+import React from 'react';
+import { Outlet,  useFormAction,  useNavigate } from 'react-router-dom';
 import { AdminTabList } from './utils';
+import useGlobalStore from '@/store/global/globalStore';
+import useAdminStore from '@/store/admin/admin';
 
 const ADMIN_TABS = {
   REGULATION: "0",
@@ -12,11 +13,18 @@ const ADMIN_TABS = {
 
 export const Admin = () => {
   const navigate = useNavigate();
-  const activeTab = useAdminRegulationStore((s) => s.currentNavbar);
-  const changeRegulation = useAdminRegulationStore((s) => s.changeRegulation);
+  const activeTab = useAdminStore((s) => s.currentNavbar);
+  const changeRegulation = useAdminStore((s) => s.changeRegulation);
+  const token = useGlobalStore(state => state.token);
 
-  useEffect(() => {
-    navigate("regulation");
+  React.useEffect(() => {
+    if (!token) {
+      navigate("/login");
+    }
+    else if (token) {
+      navigate("regulation");
+    }
+
   }, []);
 
   const navigateToTab = (tabId) => {
@@ -40,6 +48,7 @@ export const Admin = () => {
     changeRegulation("createCourseTab", false);
     navigateToTab(newTab);
   };
+
 
   return (
     <div className="flex bg-custom-850 h-screen w-full">

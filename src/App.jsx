@@ -1,14 +1,20 @@
 import { Route, Routes } from "react-router-dom";
-import { Login } from "@/components";
+import { Login, NotFound, Register, Unauthorized } from "@/components";
 import { PageRoutes } from "./pageRoutes";
 import { ProtectedRoute } from "./protectedRoutes";
-import { Admin, AdminRegulation, AdminRegulationList, CourseMaterial, CoursePlan, CourseView, CreateRegulation, Faculty, FacultyComment, FacultyCoursePlanIllustration, FacultyCoursePlanOverView, FacultyCreateCourse, FacultyList, Regulation, Student, StudentComment, StudentCourseView, StudentList, Syllabus, Test } from "./pages";
+import { Admin, AdminRegulation, AdminRegulationList, CourseMaterial, CoursePlan, CourseView, CreateRegulation, Faculty, FacultyComment, FacultyCreateCourse, FacultyList, Regulation, Student, StudentComment, StudentCourseView, StudentList, Syllabus, Test } from "./pages";
+import './api/interceptors/request';
+import './api/interceptors/response';
+import './api/utils/errorHandler';
 
 function App() {
   return (
-    <Routes>
+      <Routes>
+      <Route path="/unauthorized" element={<Unauthorized/>} />
+
       {/* demo login page */}
       <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
 
       {/* testing page */}
       <Route path="/test" element={<Test/>} />
@@ -45,6 +51,9 @@ function App() {
           <Route path="facultyList" element={<FacultyList/>} />
         </Route>
 
+        {/* page not found */}
+        <Route path="*" element={<NotFound />} />
+        
       </Route>
     </Routes>
   );

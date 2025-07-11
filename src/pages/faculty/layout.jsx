@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import useCoursePlanStore from '@/store/faculty/coursePlan';
 import useCourseMaterialStore from '@/store/faculty/courseMaterial';
+import useGlobalStore from '@/store/global/globalStore';
 
 const FACULTY_TABS = {
   COURSE_PLAN: "0",
@@ -13,13 +14,19 @@ const FACULTY_TABS = {
 
 export const Faculty = () => {
   const navigate = useNavigate();
+  const token = useGlobalStore(state => state.token);
   const activeTab = useCoursePlanStore((s) => s.currentNavbar);
   const changeCoursePlan = useCoursePlanStore((s) => s.changeCoursePlan);
   const changeCourseMaterial = useCourseMaterialStore((s) => s.changeCourseMaterial);
-
-  useEffect(() => {
-      navigate('courseplan');
-  }, []);
+  
+      React.useEffect(() => {
+        if (!token) {
+          navigate("/login");
+        }
+        else {
+          navigate("courseplan");
+        }
+      }, []);
 
   const navigateToTab = (tabId) => {
     switch (tabId) {

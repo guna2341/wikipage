@@ -7,14 +7,19 @@ import useGlobalStore from '@/store/global/globalStore'
 
 export const Student = () => {
 
-  const role = useGlobalStore(e => e.role);
+  const token = useGlobalStore(state => state.token);
   const activeTab = useStudentRegulationStore(e => e.currentNavbar);
   const changeStudentRegulation = useStudentRegulationStore(e => e.changeStudentRegulation);
   const navigate = useNavigate();
 
-  React.useEffect(() => {
-    navigate('regulation');
-  }, []);
+    React.useEffect(() => {
+      if (!token) {
+        navigate("/login");
+      }
+      else {
+        navigate("regulation");
+      }
+    }, []);
 
   function navigateRoute(tab) {
     switch(tab) {

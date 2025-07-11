@@ -1,8 +1,8 @@
 import { AvatarComponent, cn } from '@components';
-import { img } from '@/assets';
 
 export const MessageCard = ({
     index,
+    img = "https://tse3.mm.bing.net/th/id/OIP.QZIRZKUSWt1HBifjDRKGzAHaFj?pid=Api&P=0&h=180",
     name = "Elmer Laverty",
     role = "Student",
     delay = "12m",
@@ -11,7 +11,7 @@ export const MessageCard = ({
 }) => {
     return (
         <div className={cn('flex justify-between cursor-pointer p-2 rounded-md transition-all', {
-            'bg-custom-950 text-custom-600 shadow-md': active,
+            'bg-custom-950 text-custom-600': active,
             'bg-white': !active,
         })}
             key={index}

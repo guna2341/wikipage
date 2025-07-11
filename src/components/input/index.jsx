@@ -1,6 +1,8 @@
 import { Input } from '@heroui/input'
 
 export const InputField = ({
+  id,
+  type,
   startContent,
   endContent,
   placeholder,
@@ -13,11 +15,17 @@ export const InputField = ({
   variant,
   radius,
   disabled,
-  isReadOnly
+  isInvalid,
+  errorMessage,
+  isReadOnly,
+  required
 }) => {
   return (
     <div>
       <Input
+        id={id}
+        type={type}
+        required={required}
         isReadOnly={isReadOnly}
         isDisabled={disabled}
         radius={radius}
@@ -26,10 +34,12 @@ export const InputField = ({
         onChange={onChange}
         size={size}
         className={classname}
+        isInvalid={isInvalid}
+        errorMessage={errorMessage}
         classNames={{
           base: "w-full",
           mainWrapper: "w-full",
-          inputWrapper: "px-4",
+          inputWrapper: "px-4 ring-0 outline-0 group-data-[focus-visible=true]:ring-0",
           innerWrapper: "flex gap-1",
           ...classnames
         }}

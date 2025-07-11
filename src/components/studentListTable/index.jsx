@@ -5,31 +5,17 @@ import { SelectComponent } from '../select';
 import { ButtonComponent } from '../button';
 import { Checkbox } from '@heroui/checkbox';
 import { cn } from '../cn';
+import useGlobalStore from '@/store/global/globalStore';
+import { Pagination } from '@heroui/pagination';
+import { Spinner } from '@heroui/spinner';
 
 export const StudentListTable = (props) => {
     const [edit, setEdit] = React.useState(props.isedit);
     const [selected, setselected] = React.useState(false);
-    const [searchText, setSearchText] = React.useState('');
-    const [filteredData, setFilteredData] = React.useState(props.student || []);
 
     const handleclick = () => {
         setEdit(!edit);
     };
-
-    React.useEffect(() => {
-        const lower = searchText.toLowerCase();
-        const filtered = props.student.filter((s) =>
-            s.name.toLowerCase().includes(lower) ||
-            s.register.toLowerCase().includes(lower) ||
-            s.email.toLowerCase().includes(lower) ||
-            s.department.toLowerCase().includes(lower)
-        );
-        setFilteredData(filtered);
-    }, [searchText, props.student]);
-
-    if (!filteredData) {
-
-    }
 
     return (
         <div className="h-full">
@@ -37,8 +23,8 @@ export const StudentListTable = (props) => {
                 <div className="flex gap-[15px]">
                     <InputField
                         startContent={<SearchIcon />}
-                        value={searchText}
-                        onChange={(e) => setSearchText(e.target.value)}
+                        value={props.search}
+                        onChange={(e) => props.handleSearch(e.target.value)}
                         classnames={{
                             inputWrapper: "bg-white border-2",
                             mainWrapper: "rounded-2xl",
@@ -47,6 +33,7 @@ export const StudentListTable = (props) => {
                         classname="w-[320px] h-[32px]"
                         radius="sm"
                     />
+
                     <SelectComponent
                         className="w-[156px]"
                         placeholder="All industries"
@@ -69,7 +56,7 @@ export const StudentListTable = (props) => {
                 </div>
             </div>
 
-            {filteredData.length == 0 ?
+            {props.loading || (props.students && props.students.length == 0) ?
                 <div className='w-full h-full flex flex-col'>
                     <table className="w-full table-auto">
                         <thead className="sticky top-0 z-10 bg-custom-1029">
@@ -91,7 +78,16 @@ export const StudentListTable = (props) => {
                         </thead>
                     </table>
                     <div className='w-full h-full flex justify-center items-center text-custom-1008 text-xl pb-20'>
-                        No data found
+                        {props.loading ? 
+                            <div className='flex gap-2 items-center'>
+                                <Spinner
+                                    variant='wave'
+                                    className='mb-3.5'
+                                    size='lg'
+                                    color='default'
+                                />
+                                </div>
+                        : "No data found"}
                     </div>
                 </div>
                 :
@@ -115,11 +111,11 @@ export const StudentListTable = (props) => {
                             </tr>
                         </thead>
                         <tbody className='w-full'>
-                            {filteredData.map((s, index) => (
+                            {props.students && props.students.map((s, index) => (
                                 <tr
                                     key={s.id}
                                     className={cn("text-center border-b border-custom-100 z-0", {
-                                        "border-0": index === filteredData.length - 1,
+                                        "border-0": index === props.students.length - 1,
                                     })}
                                 >
                                     <td className="pl-5 z-0 relative">
@@ -127,16 +123,16 @@ export const StudentListTable = (props) => {
                                     </td>
                                     <td className="py-[15px] text-custom-1004 text-sm">{s?.name}</td>
                                     <td className="text-custom-1004 text-sm">{s?.email}</td>
-                                    <td className="text-custom-1004 text-sm">{s?.register}</td>
-                                    <td className="text-custom-1004 text-sm">{s?.department}</td>
+                                    <td className="text-custom-1004 text-sm">{s?.id}</td>
+                                    <td className="text-custom-1004 text-sm">{s?.dept}</td>
                                     {s.lab && <td className="text-custom-1004 text-sm">{s?.lab}</td>}
-                                    {s.course && <td className="text-custom-1004 text-sm">{s?.course}</td>}
-                                    {s?.yos && <td className="text-custom-1004 text-sm">{s?.yos}</td>}
+                                    {s.course_id && <td className="text-custom-1004 text-sm">{s?.course_id}</td>}
+                                    {s?.year && props.role != "faculty" && <td className="text-custom-1004 text-sm">{s?.year}</td>}
                                     {s?.semester && <td className="text-custom-1004 text-sm">{s?.semester}</td>}
                                     <td>
                                         {edit &&
                                             <div className="flex justify-center items-center gap-[15px]">
-                                              <Edit2 />
+                                                <Edit2 />
                                                 <Delete />
                                             </div>
                                         }

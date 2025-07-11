@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import { NavBar, SideBar, InputField, MessageCard, MessageNavbar, MessageBox, MessageList, CourseHeader, TabItem, CourseBody, CourseTable, Stepper, CourseItem, CreateCourseSecond, CourseMaterialTable, StudentListTable } from "@/components";
+import { NavBar, SideBar, InputField, MessageCard, MessageNavbar, MessageBox, MessageList, CourseHeader, TabItem, CourseBody, CourseTable, Stepper, CourseItem, CreateCourseSecond, CourseMaterialTable, StudentListTable, ButtonComponent } from "@/components";
 import { SearchIcon } from '@/assets';
 import { coursePlanList } from '../faculty/utils';
 import { CoursePlanOverview } from '@/components/coursePlanOverview';
 import { SyllabusTable } from '@/components/syllabusTable';
 import { courseTable } from '../student/utils';
+import { authService } from '@/api';
 export const Test = () => {
     const sampleData = [
         {
@@ -32,14 +33,27 @@ export const Test = () => {
     ]
     const [isEdit, setEdit] = useState(false);
     
+    async function handleAuth() {
+        try {
+            const response = await authService.register({ name: "guna", email: "guna@gmail.com", password: "123456", role: "admin" })
+            console.log(response)
+        }
+        catch (err) {
+            console.log(err)
+        }
+    }
+
   return (
       <div className='p-12 flex flex-col gap-5'>
+          <ButtonComponent onClick={handleAuth}>
+              click
+        </ButtonComponent>
         <StudentListTable student={students} header={studentHeader} isedit={isEdit} edit={setEdit} />
-        <SyllabusTable
+        {/* <SyllabusTable
         header="B.E COMPUTER SCIENCE AND ENGINEERING"
         minimun_credits={'22.0'}
         courses={courseTable}
-        />
+        /> */}
         <CoursePlanOverview/>
         <CourseMaterialTable/>
         <CreateCourseSecond/>

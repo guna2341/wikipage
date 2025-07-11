@@ -39,11 +39,11 @@ export const AdminRegulationList = () => {
 
 
   return (
-    <div className='h-full p-7 pb-0 pt-5 overflow-auto scrollbar-hide'>   
+    <div className='h-full p-7 pb-4 pt-5 overflow-auto scrollbar-hide'>   
       <p className='font-semibold leading-6 text-lg w-full pb-4'>
         Create New Course
       </p>
-      <div className={cn('h-[calc(100%-4.5rem)] bg-white rounded-2xl border border-custom-100 overflow-hidden', {
+      <div className={cn('h-[calc(100%-2.5rem)] bg-white rounded-2xl border border-custom-100 overflow-hidden', {
       'h-full max-h-full min-h-[calc(100%+10rem)]'  :  currentTab == 3
       })}>  
         <div className='flex gap-4 px-5 pt-5 border-b border-custom-100'>
@@ -61,7 +61,7 @@ export const AdminRegulationList = () => {
           ))}
         </div>
 
-        <div className={cn('h-[calc(100%-4.5rem)] w-full', {
+        <div className={cn('h-[calc(100%-2.5rem)] w-full', {
         })}>
           {list.map((li, index) => (
             <div
@@ -75,16 +75,7 @@ export const AdminRegulationList = () => {
         </div>
       </div>
 
-      <div className='flex gap-4 justify-end py-3'>
-        <ButtonComponent
-          className={'bg-white border border-custom-100 text-black'}
-        >
-          Cancel
-        </ButtonComponent>
-        <ButtonComponent>
-          Save
-        </ButtonComponent>
-      </div>
+
     </div>
 
   )

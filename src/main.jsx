@@ -2,15 +2,17 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { HeroUIProvider } from "@heroui/system";
 import App from "./App.jsx";
-import "./index.css";  
+import "./index.css";
 import { BrowserRouter } from "react-router-dom";
+import { ToastProvider } from "@heroui/toast";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <HeroUIProvider>
-      <BrowserRouter>
-        <App />
+      <ToastProvider placement="top-center" />
+        <BrowserRouter>
+          <App />
         </BrowserRouter>
-      </HeroUIProvider>
-  </React.StrictMode>,
+    </HeroUIProvider>
+  </React.StrictMode>
 );

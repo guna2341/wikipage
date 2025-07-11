@@ -1,30 +1,30 @@
 import { Button } from '@heroui/button'
 import React from 'react'
 
-export const ButtonComponent = ({
-  ref,
+export const ButtonComponent = React.forwardRef(({
+  type,
   onClick,
   color = "primary",
   variant = "solid",
   children = "button",
   className,
-  classnames,
+  classNames, // Fixed: should be classNames (capital N)
   endContent,
   startContent,
   isLoading = false,
   isIconOnly = false,
   isDisabled = false,
-  radius
-}) => {
+}, ref) => {
   return (
     <Button
       ref={ref}
+      type={type}
       variant={variant}
       radius={"md"}
-      classnames={{
-        ...classnames
+      classNames={{
+        ...classNames 
       }}
-      className={`pl-3 rounded-lg bg-purple-600 ${className}`}
+      className={`pl-3 rounded-lg bg-purple-600 ${className || ''}`}
       color={color}
       isLoading={isLoading}
       startContent={startContent}
@@ -36,4 +36,4 @@ export const ButtonComponent = ({
       {children}
     </Button>
   )
-}
+})

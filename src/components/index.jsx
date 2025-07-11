@@ -36,3 +36,7 @@ export { SyllabusTable } from './syllabusTable';
 export { NewCourseInputField } from './newCourseInputField';
 export { AccordianComponent } from './accordian';
 export { TextField } from './textarea';
+export { NotFound } from './notFound';
+export { Unauthorized } from './unAuthorized';
+export { DemoLogin } from './login/demoPage';
+export { Register } from './register';
