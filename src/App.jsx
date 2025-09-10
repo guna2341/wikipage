@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { Login } from "@/components";
 import { PageRoutes } from "./pageRoutes";
 import { ProtectedRoute } from "./protectedRoutes";
-import { Admin, AdminRegulation, AdminRegulationList, CourseMaterial, CoursePlan, CourseView, CreateRegulation, Faculty, FacultyComment, FacultyCoursePlanIllustration, FacultyCoursePlanOverView, FacultyCreateCourse, FacultyList, Regulation, Student, StudentComment, StudentCourseView, StudentList, Syllabus, Test } from "./pages";
+import { Admin, AdminRegulation, AdminRegulationList, CourseMaterial, CoursePlan, CourseView, CreateRegulation, Faculty, FacultyComment, FacultyCreateCourse, FacultyList, Regulation, Student, StudentComment, StudentCourseView, StudentList, Syllabus, Test } from "./pages";
 
 function App() {
   return (

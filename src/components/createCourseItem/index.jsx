@@ -39,7 +39,9 @@ export const CourseItem = ({
                         <span className='flex flex-col gap-2 font-normal text-sm leading-6 text-custom-1020'>
                             {isDiscourse ? <span>Upload DISCOURSE Material File:</span> : <span>Upload Lecture Material File:</span>}
                             <div className='flex justify-between items-start gap-8'>
+                                <div className='w-full'>
                                 <FileUploadBox />
+                                </div>
                                 <UploadProgress
                                     name={lm?.lmName}
                                     size={lm?.size}

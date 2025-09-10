@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { InputField } from '../input';
 import { AddIcon, Delete, Edit2, SearchIcon } from '@/assets';
 import { SelectComponent } from '../select';
@@ -10,11 +10,11 @@ export const StudentListTable = (props) => {
     const [edit, setEdit] = React.useState(props.isedit);
     const [selected, setselected] = React.useState(false);
 
+    useEffect(() => { }, [props.student]);
+
     const handleclick = () => {
         setEdit(!edit);
     };
-
-
 
     return (
         <div className="h-full">
@@ -80,14 +80,14 @@ export const StudentListTable = (props) => {
                     </div>
                 </div>
                 :
-                <div className="h-[calc(100%-4rem)] overflow-y-auto scrollbar-hide">
+                <div className={cn("h-[calc(100%-4rem)] overflow-y-auto scrollbar-hide",props.className)}>
                     <table className="w-full table-auto">
                         <thead className="sticky top-0 z-10 bg-custom-1029">
                             <tr className="text-center border-b border-custom-100">
                                 <th className="pl-5 z-10 relative">
                                     <Checkbox isSelected={selected} onValueChange={setselected} />
                                 </th>
-                                {props.header.map((h) => (
+                                {props?.header?.map((h) => (
                                     <th key={h.id} className="font-semibold py-5 text-custom-1030 text-sm">
                                         {h.label}
                                     </th>
@@ -121,7 +121,7 @@ export const StudentListTable = (props) => {
                                     <td>
                                         {edit &&
                                             <div className="flex justify-center items-center gap-[15px]">
-                                              <Edit2 />
+                                                <Edit2 />
                                                 <Delete />
                                             </div>
                                         }

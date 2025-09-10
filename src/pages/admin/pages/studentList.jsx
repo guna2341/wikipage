@@ -108,7 +108,6 @@ export const StudentList = () => {
           </div>
         )
       ) : (
-        // Original Server Pagination
         totalPages > 1 && (
           <div className="flex justify-center mt-4">
             <Pagination
