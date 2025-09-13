@@ -2,6 +2,8 @@ import { Input } from '@heroui/input'
 
 export const InputField = ({
   startContent,
+  isRequired,
+  error,
   endContent,
   placeholder,
   label,
@@ -18,9 +20,12 @@ export const InputField = ({
   return (
     <div>
       <Input
+      isRequired={isRequired}
         isReadOnly={isReadOnly}
         isDisabled={disabled}
         radius={radius}
+        isInvalid={!!error}
+        errorMessage={error}
         variant={variant}
         value={value}
         onChange={onChange}

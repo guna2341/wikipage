@@ -1,7 +1,7 @@
 import { NavBar, SideBar } from '@/components';
 import useAdminRegulationStore from '@/store/admin/regulation';
 import React, { useEffect } from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { AdminTabList } from './utils';
 
 const ADMIN_TABS = {
@@ -14,10 +14,14 @@ export const Admin = () => {
   const navigate = useNavigate();
   const activeTab = useAdminRegulationStore((s) => s.currentNavbar);
   const changeRegulation = useAdminRegulationStore((s) => s.changeRegulation);
-
+  const location = useLocation();
+  const path = location.pathname.split("/");
+  
   useEffect(() => {
-    navigate("regulation");
-  }, []);
+    if (path.length == 2) {
+      navigate("regulation");
+    }
+  },[]);
 
   const navigateToTab = (tabId) => {
     switch (tabId) {

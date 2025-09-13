@@ -3,6 +3,7 @@ import { Login } from "@/components";
 import { PageRoutes } from "./pageRoutes";
 import { ProtectedRoute } from "./protectedRoutes";
 import { Admin, AdminRegulation, AdminRegulationList, CourseMaterial, CoursePlan, CourseView, CreateRegulation, Faculty, FacultyComment, FacultyCreateCourse, FacultyList, Regulation, Student, StudentComment, StudentCourseView, StudentList, Syllabus, Test } from "./pages";
+import { FacultyDetailsPage } from "./pages/admin/pages/facultyPage";
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
           <Route path="regulation/:course/:sem" element={<AdminRegulationList/>} />
           <Route path="studentList" element={<StudentList/>} />
           <Route path="facultyList" element={<FacultyList/>} />
+          <Route path="facultyDetails/:id" element = {<FacultyDetailsPage />} />
         </Route>
 
       </Route>

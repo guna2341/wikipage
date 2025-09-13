@@ -15,6 +15,7 @@ export const FileUploadBox = ({handleData}) => {
       const sheet=booksheet.Sheets[booksheet.SheetNames[0]]
       const json=XLSX.utils.sheet_to_json(sheet)
       handleData(json);
+      ref.current.value = "";
     }
 
   }

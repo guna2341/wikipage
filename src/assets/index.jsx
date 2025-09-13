@@ -21,3 +21,4 @@ export { LeftArrow } from './svgs/leftArrow';
 export { FileUpload } from './svgs/fileUpload'; 
 export { DocumentIcon } from './svgs/documentIcon';
 export { TickMark } from './svgs/tickMark';
+export { Eye } from './svgs/eye'; 

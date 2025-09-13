@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { InputField } from '../input';
-import { AddIcon, Delete, Edit2, SearchIcon } from '@/assets';
+import { AddIcon, Delete, Edit2, Eye, SearchIcon } from '@/assets';
 import { SelectComponent } from '../select';
 import { ButtonComponent } from '../button';
 import { Checkbox } from '@heroui/checkbox';
@@ -94,7 +94,7 @@ export const StudentListTable = (props) => {
                                 ))}
                                 {edit &&
                                     <th className="font-semibold py-5 text-custom-1030 text-sm">
-                                        Action
+                                        View
                                     </th>
                                 }
                             </tr>
@@ -115,14 +115,20 @@ export const StudentListTable = (props) => {
                                     <td className="text-custom-1004 text-sm">{props.faculty ? s?.id : s?.roll_no}</td>
                                     <td className="text-custom-1004 text-sm">{s?.dept}</td>
                                     {/* {s.lab && <td className="text-custom-1004 text-sm">{s?.lab}</td>} */}
-                                    {props.faculty && <td className="text-custom-1004 text-sm">{"course"}</td>}
+                                    {/* {props.faculty && <td className="text-custom-1004 text-sm">{"course"}</td>} */}
                                     {s?.year && <td className="text-custom-1004 text-sm">{s?.year}</td>}
                                     {s?.semester && <td className="text-custom-1004 text-sm">{s?.semester}</td>}
                                     <td>
-                                        {edit &&
+                                        {edit && !props.faculty ? 
                                             <div className="flex justify-center items-center gap-[15px]">
                                                 <Edit2 />
                                                 <Delete />
+                                            </div>
+                                            :
+                                            <div className="flex justify-center items-center gap-[15px] cursor-pointer"
+                                            onClick={() => props.view(s)}
+                                            >
+                                                <Eye />
                                             </div>
                                         }
                                     </td>

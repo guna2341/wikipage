@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { Pagination } from '@heroui/pagination'; // Make sure to import Pagination
 import { facultyHeader } from '../utils';
 import useAdminRegulationStore from '@/store/admin/regulation';
+import { useNavigate } from 'react-router-dom';
 
 export const FacultyList = () => {
   const {
@@ -18,7 +19,7 @@ export const FacultyList = () => {
   const [filteredData, setFilteredData] = React.useState([]);
   const [searchCurrentPage, setSearchCurrentPage] = React.useState(1);
   const [total, setTotal] = React.useState(1);
-
+  const nav = useNavigate();
   // Items per page for search pagination
   const ITEMS_PER_PAGE = 10; // Adjust this based on your needs
 
@@ -71,17 +72,21 @@ export const FacultyList = () => {
       </p>
       <div className='bg-white border border-custom-100 rounded-2xl h-full overflow-hidden'>
         {isFacultyLoading ? (
-          <div className="flex items-center justify-center h-full">
-            <p>Loading...</p>
+          <div className="absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center z-10">
+            <div className="text-center">
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-custom-600 mx-auto mb-2"></div>
+              <p>Loading students...</p>
+            </div>
           </div>
         ) : (
           <StudentListTable
             isedit
             faculty
             data={displayData}
-            searchText={searchText}
-            setSearchText={setSearchText}
             header={facultyHeader}
+            searchText={searchText}
+            view={s => nav(`../facultyDetails/${s.id}`)}
+            setSearchText={setSearchText}
           />
         )}
       </div>

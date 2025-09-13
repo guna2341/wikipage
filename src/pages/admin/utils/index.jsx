@@ -190,10 +190,10 @@ export const facultyHeader = [
         label:"Department"
     },
 
-    {
-        key: "6",
-        label:"Course ID"
-    },
+    // {
+    //     key: "6",
+    //     label:"Course ID"
+    // },
     {
         key: "7",
         label:"Semester"

@@ -4,10 +4,12 @@ import { HeroUIProvider } from "@heroui/system";
 import App from "./App.jsx";
 import "./index.css";  
 import { BrowserRouter } from "react-router-dom";
+import { ToastProvider } from "@heroui/toast";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <HeroUIProvider>
+      <ToastProvider/>
       <BrowserRouter>
         <App />
         </BrowserRouter>
