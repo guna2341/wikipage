@@ -1,30 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { InputField, ButtonComponent, SelectComponent } from '../../../components/index';
 import { AddIcon, Delete, Edit2, LeftArrow, SearchIcon } from '@/assets';
 import { cn } from '@heroui/theme';
 import useAdminRegulationStore from '@/store/admin/regulation';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { addToast } from '@heroui/toast';
+import { AddCourseModal } from '@/components/facultyModal/facultyModal';
 
 export const FacultyDetailsPage = ({ onBack, onSave }) => {
     const faculties = useAdminRegulationStore(e => e.faculties);
+    const getCourses = useAdminRegulationStore(e => e.getCourses);
+    const [addCourse, setAddCourse] = useState(false);
     const params = useParams();
     const faculty = faculties.find(item => item.id == params.id);
     const [editMode, setEditMode] = useState(false);
     const [facultyData, setFacultyData] = useState(faculty || {});
-    const [mappedCourses, setMappedCourses] = useState([
-        { id: 1, courseCode: 'CS101', courseName: 'Introduction to Programming', credits: 3, semester: 1 },
-        { id: 2, courseCode: 'CS201', courseName: 'Data Structures', credits: 4, semester: 2 },
-        { id: 3, courseCode: 'CS301', courseName: 'Database Systems', credits: 3, semester: 3 },
-    ]);
-    const [availableCourses] = useState([
-        { id: 4, courseCode: 'CS401', courseName: 'Machine Learning', credits: 4, semester: 4 },
-        { id: 5, courseCode: 'CS501', courseName: 'Software Engineering', credits: 3, semester: 5 },
-        { id: 6, courseCode: 'CS601', courseName: 'Computer Networks', credits: 3, semester: 6 },
-        { id: 7, courseCode: 'CS701', courseName: 'Artificial Intelligence', credits: 4, semester: 7 },
-    ]);
+    const courses = useAdminRegulationStore(e => e.courses);
+    const nav = useNavigate();
+    const [mappedCourses, setMappedCourses] = useState([]);
     const [selectedCourse, setSelectedCourse] = useState('');
     const [searchText, setSearchText] = useState('');
     const [showAddCourse, setShowAddCourse] = useState(false);
+
+    const getFacultyCourse = useAdminRegulationStore(e => e.getFacultyCourse);
+
+    useEffect(() => {
+        async function getMappedCourse() {
+            const response = await getFacultyCourse(params.id)
+            setMappedCourses(response.courses || [])
+        }
+        getMappedCourse();
+    }, []);
 
     const handleInputChange = (field, value) => {
         setFacultyData(prev => ({
@@ -33,9 +39,30 @@ export const FacultyDetailsPage = ({ onBack, onSave }) => {
         }));
     };
 
+    useEffect(() => {
+        if (!faculty || faculty?.length == 0) {
+            nav("/admin/facultyList");
+        }
+    }, []);
+
+    useEffect(() => {
+        async function fetchCourse() {
+            const response = await getCourses();
+            console.log(response)
+            if (!response?.state) {
+                addToast({
+                    color: "danger",
+                    title: "Error",
+                    description: "Error fetching courses"
+                })
+            }
+        }
+        fetchCourse();
+    }, []);
+
     const handleAddCourse = () => {
         if (selectedCourse) {
-            const courseToAdd = availableCourses.find(course => course.id == selectedCourse);
+            const courseToAdd = courses.find(course => course.id == selectedCourse);
             if (courseToAdd && !mappedCourses.find(course => course.id === courseToAdd.id)) {
                 setMappedCourses(prev => [...prev, courseToAdd]);
                 setSelectedCourse('');
@@ -57,9 +84,21 @@ export const FacultyDetailsPage = ({ onBack, onSave }) => {
         setEditMode(false);
     };
 
+    // Filter out already mapped courses from available courses
+    const availableCoursesForModal = courses.filter(course => !mappedCourses.find(mapped => mapped.course_code === course.course_code)
+    );
+    console.log(availableCoursesForModal)
+    // Handle course addition from modal
+    const handleCourseAdded = (addedCourseCode) => {
+        const addedCourse = courses.find(course => course.course_code === addedCourseCode);
+        if (addedCourse) {
+            setMappedCourses(prev => [...prev, addedCourse]);
+        }
+    };
+
     const filteredCourses = mappedCourses.filter(course =>
-        course.courseName.toLowerCase().includes(searchText.toLowerCase()) ||
-        course.courseCode.toLowerCase().includes(searchText.toLowerCase())
+        course?.course_name.toLowerCase().includes(searchText.toLowerCase()) ||
+        course?.course_code.toLowerCase().includes(searchText.toLowerCase())
     );
 
     return (
@@ -68,13 +107,7 @@ export const FacultyDetailsPage = ({ onBack, onSave }) => {
             <div className="w-full p-5 bg-custom-1029 border-b border-custom-100">
                 <div className="flex items-center justify-between">
                     <div className="flex items-center gap-4">
-                        <ButtonComponent
-                            startContent={<LeftArrow />}
-                            variant="light"
-                            isIconOnly
-                            onClick={onBack}
-                            className="min-w-0"
-                        />
+                        {/* <LeftArrow onClick={() => nav(-1)} className="cursor-pointer" /> */}
                         <h1 className="text-xl font-semibold text-custom-1030">Faculty Details</h1>
                     </div>
                     <div className="flex gap-3">
@@ -83,6 +116,7 @@ export const FacultyDetailsPage = ({ onBack, onSave }) => {
                                 <ButtonComponent
                                     children="Cancel"
                                     variant="bordered"
+                                    className={"bg-transparent"}
                                     onClick={() => {
                                         setEditMode(false);
                                         setFacultyData(faculty);
@@ -96,7 +130,7 @@ export const FacultyDetailsPage = ({ onBack, onSave }) => {
                             </>
                         ) : (
                             <ButtonComponent
-                                startContent={<Edit2 />}
+                                startContent={<Edit2 color='#fff' />}
                                 children="Edit"
                                 onClick={() => setEditMode(true)}
                             />
@@ -154,29 +188,6 @@ export const FacultyDetailsPage = ({ onBack, onSave }) => {
                                 }}
                             />
                         </div>
-                        {/* <div className="space-y-2">
-                            <label className="text-sm font-medium text-custom-1030">Designation</label>
-                            <InputField
-                                value={facultyData.designation || ''}
-                                onChange={(e) => handleInputChange('designation', e.target.value)}
-                                disabled={!editMode}
-                                classNames={{
-                                    inputWrapper: editMode ? "bg-white border-2" : "bg-gray-100",
-                                }}
-                            />
-                        </div> */}
-                        {/* <div className="space-y-2">
-                            <label className="text-sm font-medium text-custom-1030">Experience</label>
-                            <InputField
-                                value={facultyData.experience || ''}
-                                onChange={(e) => handleInputChange('experience', e.target.value)}
-                                disabled={!editMode}
-                                classNames={{
-                                    inputWrapper: editMode ? "bg-white border-2" : "bg-gray-100",
-                                }}
-                                placeholder="Years of experience"
-                            />
-                        </div> */}
                     </div>
                 </div>
 
@@ -198,7 +209,7 @@ export const FacultyDetailsPage = ({ onBack, onSave }) => {
                             <ButtonComponent
                                 startContent={<AddIcon />}
                                 children="Add Course"
-                                onClick={() => setShowAddCourse(true)}
+                                onClick={() => setAddCourse(true)}
                                 disabled={!editMode}
                                 className={editMode ? "bg-blue-600 text-white" : ""}
                             />
@@ -218,11 +229,11 @@ export const FacultyDetailsPage = ({ onBack, onSave }) => {
                                         trigger: "bg-white",
                                     }}
                                 >
-                                    {availableCourses
+                                    {courses
                                         .filter(course => !mappedCourses.find(mapped => mapped.id === course.id))
                                         .map(course => (
                                             <SelectItem key={course.id} value={course.id}>
-                                                {course.courseCode} - {course.courseName}
+                                                {course.course_code} - {course.course_name}
                                             </SelectItem>
                                         ))
                                     }
@@ -252,8 +263,6 @@ export const FacultyDetailsPage = ({ onBack, onSave }) => {
                                 <tr className="text-left border-b border-custom-100">
                                     <th className="font-semibold py-4 px-6 text-custom-1030 text-sm">Course Code</th>
                                     <th className="font-semibold py-4 px-6 text-custom-1030 text-sm">Course Name</th>
-                                    <th className="font-semibold py-4 px-6 text-custom-1030 text-sm">Credits</th>
-                                    <th className="font-semibold py-4 px-6 text-custom-1030 text-sm">Semester</th>
                                     {editMode && (
                                         <th className="font-semibold py-4 px-6 text-custom-1030 text-sm">Action</th>
                                     )}
@@ -269,23 +278,17 @@ export const FacultyDetailsPage = ({ onBack, onSave }) => {
                                             })}
                                         >
                                             <td className="py-4 px-6 text-custom-1004 text-sm font-medium">
-                                                {course.courseCode}
+                                                {course.course_code}
                                             </td>
                                             <td className="py-4 px-6 text-custom-1004 text-sm">
-                                                {course.courseName}
-                                            </td>
-                                            <td className="py-4 px-6 text-custom-1004 text-sm">
-                                                {course.credits}
-                                            </td>
-                                            <td className="py-4 px-6 text-custom-1004 text-sm">
-                                                Semester {course.semester}
+                                                {course.course_name}
                                             </td>
                                             {editMode && (
                                                 <td className="py-4 px-6">
                                                     <ButtonComponent
                                                         isIconOnly
-                                                        variant="light"
-                                                        className="text-red-600 hover:bg-red-50"
+                                                        variant="bordered"
+                                                        className="text-red-600 bg-transparent border border-none hover:bg-red-50 flex items-center p-0 justify-center"
                                                         onClick={() => handleRemoveCourse(course.id)}
                                                     >
                                                         <Delete />
@@ -297,7 +300,7 @@ export const FacultyDetailsPage = ({ onBack, onSave }) => {
                                 ) : (
                                     <tr>
                                         <td
-                                            colSpan={editMode ? 5 : 4}
+                                            colSpan={editMode ? 4 : 3}
                                             className="py-8 text-center text-custom-1008 text-lg"
                                         >
                                             {searchText ? 'No courses found matching your search' : 'No courses mapped yet'}
@@ -309,16 +312,10 @@ export const FacultyDetailsPage = ({ onBack, onSave }) => {
                     </div>
 
                     {/* Course Statistics */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
                         <div className="bg-blue-50 p-4 rounded-lg">
                             <div className="text-2xl font-bold text-blue-600">{mappedCourses.length}</div>
                             <div className="text-sm text-blue-700">Total Courses</div>
-                        </div>
-                        <div className="bg-green-50 p-4 rounded-lg">
-                            <div className="text-2xl font-bold text-green-600">
-                                {mappedCourses.reduce((total, course) => total + course.credits, 0)}
-                            </div>
-                            <div className="text-sm text-green-700">Total Credits</div>
                         </div>
                         <div className="bg-purple-50 p-4 rounded-lg">
                             <div className="text-2xl font-bold text-purple-600">
@@ -329,6 +326,13 @@ export const FacultyDetailsPage = ({ onBack, onSave }) => {
                     </div>
                 </div>
             </div>
+            <AddCourseModal
+                isOpen={addCourse}
+                onClose={() => setAddCourse(false)}
+                availableCourses={availableCoursesForModal}
+                faculty_id={params.id}
+                onCourseAdd={handleCourseAdded}
+            />
         </div>
     );
 };

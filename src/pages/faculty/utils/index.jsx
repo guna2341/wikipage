@@ -5,17 +5,19 @@ import { SideBarAccordian } from "@/components/sidebarAccordian";
 export const TabList = [
     {
         id: 0,
-        tab: <SideBarAccordian />,
+        link:"/faculty/courseplan"
     },
     {
         id: 1,
         img: Edit,
-        tab: "Course Material"
+        tab: "Course Material",
+        link:"/faculty/coursematerial"
     },
     {
         id: 2,
         img: Comment,
         tab: "Comments",
+        link:"/faculty/comment",
         comments: "10",
     },
 ];

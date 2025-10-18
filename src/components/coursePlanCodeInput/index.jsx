@@ -4,6 +4,7 @@ import React from "react";
 
 export const CoursePlanCodeInput = ({
   course,
+  courseClassName,
   faculty_members,
   onSubmit,
   isHeader = true
@@ -15,24 +16,25 @@ export const CoursePlanCodeInput = ({
     <div className='flex items-center w-full justify-between'>
       {isHeader && 
         <div className='flex items-start'>
-        <Checkbox
+        {/* <Checkbox
           radius='full'
           className='pt-[6.5px]'
           size='lg'
-        />
+        /> */}
         <CourseHeader
           isEdit={true}
           className={'ml-2'}
           isSaveBtn={false}
           course={course}
-          dept={"CSE"}
+            dept={"CSE"}
+            courseClassName={courseClassName}
           course_code={"22CS501"}
           academic_year={"24-25"}
           faculty_members={faculty_members}
         />
       </div>
 }
-      <div className='flex items-center gap-4'>
+      {/* <div className='flex items-center gap-4'>
         <InputField
           radius={"sm"}
           placeholder={"Enter the code"}
@@ -47,7 +49,7 @@ export const CoursePlanCodeInput = ({
         >
           Submit
         </ButtonComponent>
-      </div>
+      </div> */}
     </div>
   )
 }

@@ -1,4 +1,5 @@
 import { Comment, Edit } from "@/assets";
+import useGlobalStore from "@/store/global/globalStore";
 
 export const StudentTabList = [
     {
@@ -7,10 +8,11 @@ export const StudentTabList = [
         tab: "Regulation"
     },
     {
-         id: 1,
+        id: 1,
         img: Comment,
         tab: "Comments",
-        comments: "10",
+        comments: `${useGlobalStore.getState().messageLength
+    }`,
     }
 ]
 

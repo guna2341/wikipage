@@ -5,21 +5,13 @@ export const CourseBody = ({
   headerIcon = <Edit2 />,
   className,
   message,
-  isEdit
+  isEdit,
+  body
 }) => {
   return (
-    <div className={`flex flex-col gap-4 ${className}`}>
-      <span
-        className='font-semibold text-lg leading-6 flex items-center gap-3'
-      >
-        {header}
-        {isEdit && headerIcon}
-      </span>
-      <span
-        className='pl-[22px] font-medium text-sm leading-6 text-custom-1004'
-      >
-        {message}
-      </span>
-    </div>
-  )
+    <div
+      className="ProseMirror course-body tiptap-content"
+    dangerouslySetInnerHTML={{ __html:body }}
+  />
+       )
 }

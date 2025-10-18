@@ -4,6 +4,8 @@ import { PageRoutes } from "./pageRoutes";
 import { ProtectedRoute } from "./protectedRoutes";
 import { Admin, AdminRegulation, AdminRegulationList, CourseMaterial, CoursePlan, CourseView, CreateRegulation, Faculty, FacultyComment, FacultyCreateCourse, FacultyList, Regulation, Student, StudentComment, StudentCourseView, StudentList, Syllabus, Test } from "./pages";
 import { FacultyDetailsPage } from "./pages/admin/pages/facultyPage";
+import CoursePage from "./pages/faculty/pages/coursePage";
+import { CourseList } from "./pages/faculty/pages/courseList";
 
 function App() {
   return (
@@ -23,16 +25,17 @@ function App() {
         {/* faculty module */}
         <Route path="/faculty" element={<Faculty />}>
           <Route path="courseplan" element={<CoursePlan />} />
+          <Route path="courseplan/:courseId" element={<CoursePage />} />
           <Route path="coursematerial" element={<CourseMaterial />} />
           <Route path="comment" element={<FacultyComment />} />
-          <Route path=":course/:id" element={<CourseView />} />
+          <Route path=":dept/:sem" element={<CourseList />} />
           <Route path="coursematerial/Createcourse" element={<FacultyCreateCourse/>} />
         </Route>
         
         {/* student module */}
         <Route path="/student" element={<Student/>}>
           <Route path="regulation" element={<Regulation/>} />
-          <Route path="regulation/:academic_year/:course/:sem" element={<Syllabus/>} />
+          <Route path="regulation/:academic_year/:dept/:sem" element={<Syllabus/>} />
           <Route path="regulation/:academic_year/:course/:sem/:course_code" element={<StudentCourseView/>} />
           <Route path="comments" element={<StudentComment />} />
         </Route>
@@ -41,7 +44,7 @@ function App() {
         <Route path="/admin" element = {<Admin/>} >
           <Route path="regulation" element={<AdminRegulation/>} />
           <Route path="regulation/createRegulation" element={<CreateRegulation/>} />
-          <Route path="regulation/:course/:sem" element={<AdminRegulationList/>} />
+          <Route path="regulation/:dept/:sem" element={<AdminRegulationList/>} />
           <Route path="studentList" element={<StudentList/>} />
           <Route path="facultyList" element={<FacultyList/>} />
           <Route path="facultyDetails/:id" element = {<FacultyDetailsPage />} />

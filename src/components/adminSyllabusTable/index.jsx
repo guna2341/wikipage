@@ -6,13 +6,14 @@ export const AdminSyllabusTable = ({
   handleClick,
   header,
   minimun_credits,
-  courses = []
+  courses = [],
+  isEdit
 }) => {
+  console.log(courses)
   return (
     <div className='flex flex-col gap-5 py-4 h-full'>
       <div className='flex items-center px-4 gap-4 justify-end'>
-
-        <ButtonComponent
+        {isEdit && <>        <ButtonComponent
           className={'p-2'}
           startContent={
             <Edit2
@@ -22,14 +23,15 @@ export const AdminSyllabusTable = ({
           Edit
         </ButtonComponent>
 
-        <ButtonComponent
-          startContent={
-            <AddIcon
-            />}
-        >
-          Upload
-        </ButtonComponent>
-
+          <ButtonComponent
+            startContent={
+              <AddIcon
+              />}
+          >
+            Upload
+          </ButtonComponent>
+        </>
+        }
       </div>
 
       <div className='px-8 h-full'>

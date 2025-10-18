@@ -8,7 +8,6 @@ import { CourseStore } from '@/store/admin/course';
 
 export const AdminRegulationList = () => {
   const params = useParams();
-  console.log(params);
 
   const [currentTab, setCurrentTab] = React.useState(1);
 
@@ -43,11 +42,12 @@ export const AdminRegulationList = () => {
       case "S7":
         return 7;
       case "S8":
-        return 8; 
+        return 8;
     }
   }
 
-  const { sem, course, regulation } = params;
+  const { sem, dept, regulation } = params;
+  const course = dept;
   const ITEMS_PER_PAGE = 10;
 
   const fetchData = async (page = 1, limit = 10, type = 'both') => {
@@ -107,7 +107,7 @@ export const AdminRegulationList = () => {
   console.log('Students pagination:', studentsPagination);
   console.log('Faculties pagination:', facultiesPagination);
 
-  // FIXED: Students table with pagination - key fixes applied
+  // Students table with proper loading
   const StudentsTableWithPagination = useMemo(() => {
     console.log('Rendering StudentsTableWithPagination:', {
       studentsLength: students?.length || 0,
@@ -119,16 +119,6 @@ export const AdminRegulationList = () => {
     return (
       <div className="h-full flex flex-col">
         <div className="flex-1 relative">
-          {/* Loading overlay */}
-          {loading && currentTab === 1 && (
-            <div className="absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center z-10">
-              <div className="text-center">
-                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-custom-600 mx-auto mb-2"></div>
-                <p>Loading students...</p>
-              </div>
-            </div>
-          )}
-
           {/* Show empty state only when not loading and no data */}
           {!loading && (!students || students.length === 0) ? (
             <div className="flex items-center justify-center h-full">
@@ -139,29 +129,27 @@ export const AdminRegulationList = () => {
               </div>
             </div>
           ) : (
-            students && students.length > 0 && (
-              
-              <div className={cn('',{
-                "h-[calc(100%-10rem)]" : students.length >= 10,
-                "h-[calc(100%-6rem)]": students.length == 9,
-                "h-[calc(100%-3rem)]" : students.length == 8,
-                "h-full" : students.length <= 7
-              })}>
-                <StudentListTable
-                  iseditBtn
-                  data={students}
-                  header={studentHeader}
-                />
-                </div>
-            )
+            <div className={cn('', {
+              "h-[calc(100%-10rem)]": students && students.length >= 10,
+              "h-[calc(100%-6rem)]": students && students.length == 9,
+              "h-[calc(100%-3rem)]": students && students.length == 8,
+              "h-full": students && students.length <= 7
+            })}>
+                
+              <StudentListTable
+                iseditBtn
+                isLoading={loading}
+                data={students || []}
+                header={studentHeader}
+              />
+            </div>
           )}
         </div>
-
-      
       </div>
     );
   }, [students, studentsPagination, loading, currentTab, course, sem]);
 
+  // Faculties table with proper loading
   const FacultiesTableWithPagination = useMemo(() => {
     console.log('Rendering FacultiesTableWithPagination:', {
       facultiesLength: faculties?.length || 0,
@@ -173,16 +161,6 @@ export const AdminRegulationList = () => {
     return (
       <div className="h-full flex flex-col">
         <div className="flex-1 relative">
-          {/* Loading overlay */}
-          {loading && currentTab === 2 && (
-            <div className="absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center z-10">
-              <div className="text-center">
-                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-custom-600 mx-auto mb-2"></div>
-                <p>Loading faculties...</p>
-              </div>
-            </div>
-          )}
-
           {/* Show empty state only when not loading and no data */}
           {!loading && (!faculties || faculties.length === 0) ? (
             <div className="flex items-center justify-center h-full">
@@ -193,20 +171,23 @@ export const AdminRegulationList = () => {
               </div>
             </div>
           ) : (
-            /* Show table when we have data */
-            faculties && faculties.length > 0 && (
-                <div className="h-[calc(100%-10rem)]">
-                <StudentListTable
-                  iseditBtn={true}
-                  data={faculties}
-                  header={facultyHeader}
-                />
-              </div>
-            )
+            <div className={cn('', {
+              "h-[calc(100%-10rem)]": faculties && faculties.length >= 10,
+              "h-[calc(100%-6rem)]": faculties && faculties.length == 9,
+              "h-[calc(100%-3rem)]": faculties && faculties.length == 8,
+              "h-full": faculties && faculties.length <= 7
+            })}>
+              <StudentListTable
+                isLoading={loading}
+                iseditBtn={true}
+                data={faculties || []}
+                edit={false}
+                header={facultyHeader}
+                faculty
+              />
+            </div>
           )}
         </div>
-
-      
       </div>
     );
   }, [faculties, facultiesPagination, loading, currentTab, course, sem]);
@@ -235,13 +216,6 @@ export const AdminRegulationList = () => {
     }
   ];
 
-  // FIXED: Added null checks for pagination objects
-  const showInitialLoading = loading &&
-    (!students || students.length === 0) &&
-    (!faculties || faculties.length === 0) &&
-    (!studentsPagination || studentsPagination?.currentPage === 1) &&
-    (!facultiesPagination || facultiesPagination?.currentPage === 1);
-
   return (
     <div className='h-full p-7 pb-0 pt-5 overflow-auto scrollbar-hide'>
       <div className="flex justify-between items-center pb-4">
@@ -250,52 +224,40 @@ export const AdminRegulationList = () => {
         </p>
       </div>
 
-      {showInitialLoading ? (
-        <div className="h-[calc(100%-4.5rem)] bg-white rounded-2xl border border-custom-100 flex items-center justify-center">
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-custom-600 mx-auto mb-4"></div>
-            <p className="text-lg font-medium">Loading course data...</p>
-            <p className="text-sm text-gray-600 mt-1">
-              Fetching students and faculties for {course} Semester {sem}
-            </p>
-          </div>
+      <div className={cn('h-[calc(100%-4.5rem)] bg-white rounded-2xl border border-custom-100 overflow-hidden', {
+        'h-full max-h-full min-h-[calc(100%+10rem)]': currentTab == 3
+      })}>
+        <div className='flex gap-4 px-5 pt-5 border-b border-custom-100'>
+          {list.map(li => (
+            <div
+              key={li.id}
+              className={cn(
+                'font-medium text-base leading-6 text-custom-1011 p-3 rounded-t-2xl cursor-pointer text-nowrap ',
+                { 'text-custom-600 bg-custom-500': currentTab === li.id }
+              )}
+              onClick={() => setCurrentTab(li.id)}
+            >
+              {li.list}
+            </div>
+          ))}
         </div>
-      ) : (
-        <div className={cn('h-[calc(100%-4.5rem)] bg-white rounded-2xl border border-custom-100 overflow-hidden', {
-          'h-full max-h-full min-h-[calc(100%+10rem)]': currentTab == 3
-        })}>
-          <div className='flex gap-4 px-5 pt-5 border-b border-custom-100'>
-            {list.map(li => (
+
+        <div className="flex flex-col h-[calc(100%-4.5rem)]">
+          {/* Table Content */}
+          <div className="flex-1">
+            {list.map((li, index) => (
               <div
-                key={li.id}
-                className={cn(
-                  'font-medium text-base leading-6 text-custom-1011 p-3 rounded-t-2xl cursor-pointer text-nowrap ',
-                  { 'text-custom-600 bg-custom-500': currentTab === li.id }
-                )}
-                onClick={() => setCurrentTab(li.id)}
+                className={cn('h-full w-full', {
+                  'hidden': currentTab != li.id
+                })}
+                key={index}
               >
-                {li.list}
+                {li.component}
               </div>
             ))}
           </div>
-
-          <div className="flex flex-col h-[calc(100%-4.5rem)]">
-            {/* Table Content */}
-            <div className="flex-1">
-              {list.map((li, index) => (
-                <div
-                  className={cn('h-full w-full', {
-                    'hidden': currentTab != li.id
-                  })}
-                  key={index}
-                >
-                  {li.component}
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
-      )}
+      </div>
 
       <div className='flex items-center justify-between'>
         <Pagination

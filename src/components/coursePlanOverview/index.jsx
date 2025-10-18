@@ -1,13 +1,13 @@
-import { CourseBody, CourseHeader, CourseTable } from '@/components'
+import { CourseBody, CourseHeader, CoursePlanIllustration, CourseTable } from '@/components'
 import { coursePlanList } from '@/pages/faculty/utils'
-import React from 'react'
+import React, { useState } from 'react'
 
 export const CoursePlanOverview = ({
     handleEdit,
     showEdit = true,
-    isEdit = false
+    isEdit = false,
+    course
 }) => {
-
 
     return (
         <div className='p-7 flex flex-col gap-9 h-full overflow-auto scrollbar-hide'>
@@ -15,14 +15,15 @@ export const CoursePlanOverview = ({
                 isEdit={isEdit}
                 showEdit={showEdit}
                 handleEdit={handleEdit}
-                dept={"CSE"}
-                course_code={"22CS501"}
-                academic_year={"24-25"}
+                dept={course?.dept}
+                course_code={course?.course_code}
+                academic_year={course?.academic_year}
                 faculty_members={["Dr.Parthasarathi P", "Mrs.Ganagavalli K"]}
             />
             <CourseBody
                 isEdit={isEdit}
                 className={"w-full max-w-[804px]"}
+                body={course?.body}
                 header={'Introduction to the course'}
                 message={'In theoretical computer science and mathematics, the theory of computation is the branch that deals with what problems can be solved on a model of computation, using an algorithm, how efficiently they can be solved or to what degree (e.g., approximate solutions versus precise ones). The field is divided into three major branches: automata theory and formal languages, computability theory, and computational complexity theory, which are linked by the question: "What are the fundamental capabilities and limitations of computers?'}
             />

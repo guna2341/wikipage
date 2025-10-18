@@ -64,16 +64,16 @@ function handleClick(course_code) {
     <div className='p-5 scrollbar-hide overflow-scroll h-full'>
       <div className='bg-white h-[calc(100%+10rem)] py-5 px-5 border border-custom-100 rounded-2xl flex flex-col gap-5 pb-10'>
         <p className='font-semibold text-xl leading-6'>
-          {dept(params.course)}: SEMESTER {sem(params.sem)} (25-26)
+          {dept(params.dept)}: SEMESTER {sem(params.sem)} (25-26)
         </p>
         <p className='font-semibold text-base leading-6'>
-          B.E. {params.course.toUpperCase()} SYLLABUS
+          B.E. {params.dept.toUpperCase()} SYLLABUS
         </p>
       <div className='w-full h-full'>
       <SyllabusTable
       handleClick={handleClick}
       minimun_credits={'22.0'}
-      header={`B.E ${params.course}`}
+      header={`B.E ${params.dept}`}
       courses={courseTable}
       />
       </div>

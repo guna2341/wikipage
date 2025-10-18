@@ -3,6 +3,7 @@ import { Edit2 } from '@/assets';
 
 export const CourseHeader = ({
   className,
+  courseClassName,
   isSaveBtn = true,
   course,
   dept,
@@ -18,11 +19,11 @@ export const CourseHeader = ({
     <div className={`flex justify-between ${className}`}>
       <div className='flex flex-col gap-2'>
         <span
-          className='font-semibold text-[22px] leading-6'>
+          className={`font-semibold text-2xl leading-6 ${courseClassName}`}>
           {course ? <>{course}</> : <>{dept}: {course_code} {academic_year}</>}
         </span>
-        <span
-          className='font-medium text-base leading-6 text-custom-1003'
+    {faculty_members?.length > 0 &&     <span
+          className='font-medium text-sm leading-6 text-custom-1003'
         >
           Faculty member(s):
           {faculty_members.map((member, index) => {
@@ -39,7 +40,7 @@ export const CourseHeader = ({
               </span>
             )
           })}
-        </span>
+        </span>}
       </div>
       {showEdit &&
         <div className='flex items-center gap-4'>

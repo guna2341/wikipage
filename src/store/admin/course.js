@@ -21,7 +21,7 @@ export const CourseStore = create((set, get) => ({
   },
 
   getStudents: async (query) => {
-  
+
     const { sem, course, page = 1, limit = 10, ...otherQuery } = query;
 
     try {
@@ -50,19 +50,19 @@ export const CourseStore = create((set, get) => ({
         studentsPagination: {
           currentPage: data.currentPage || page,
           totalItems: data.length,
-          totalPages: data.length/10 || 1,
+          totalPages: Math.ceil(data.length/10 || 1),
           itemsPerPage: 10,
         },
         loading: false,
       });
-
+      console.log("test")
       return {
         success: true,
         data: data.data,
         pagination: {
           currentPage: data.currentPage || page,
           totalItems: data.totalItems || (data.data ? data.data.length : 0),
-          totalPages: data.length / 10 || 1,
+          totalPages: Math.ceil(data.length / 10 || 1),
           itemsPerPage: 10,
         },
         message: data.message,

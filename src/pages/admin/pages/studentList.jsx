@@ -65,29 +65,21 @@ export const StudentList = () => {
   };
 
   const displayData = isSearchActive ? getPaginatedSearchData() : filteredData;
-  console.log(filteredData.length)
   return (
     <div className='flex flex-col gap-4 p-7 h-[calc(100%-3rem)] overflow-auto scrollbar-hide'>
       <p className='font-semibold leading-6 text-lg'>
         Current Regulation
       </p>
       <div className='bg-white border border-custom-100 rounded-2xl h-full overflow-hidden'>
-        {isLoading ? (
-          <div className="absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center z-10">
-            <div className="text-center">
-              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-custom-600 mx-auto mb-2"></div>
-              <p>Loading students...</p>
-            </div>
-          </div>
-        ) : (
           <StudentListTable
-            isedit
+            edit
+            isLoading={isLoading}
             data={displayData}
             searchText={searchText}
             setSearchText={setSearchText}
-            header={studentHeader}
-          />
-        )}
+          header={studentHeader}
+          faculty
+        />
       </div>
 
       {/* Pagination Logic */}

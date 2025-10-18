@@ -1,20 +1,50 @@
 import React, { useEffect } from 'react';
 import { InputField } from '../input';
-import { AddIcon, Delete, Edit2, Eye, SearchIcon } from '@/assets';
+import { AddIcon, Edit2, Eye, SearchIcon } from '@/assets';
 import { SelectComponent } from '../select';
 import { ButtonComponent } from '../button';
 import { Checkbox } from '@heroui/checkbox';
 import { cn } from '../cn';
+import { useNavigate } from 'react-router-dom';
+import useAdminRegulationStore from '@/store/admin/regulation';
 
 export const StudentListTable = (props) => {
     const [edit, setEdit] = React.useState(props.isedit);
     const [selected, setselected] = React.useState(false);
+    const nav = useNavigate();
+    const changeRegulation = useAdminRegulationStore((s) => s.changeRegulation);
 
     useEffect(() => { }, [props.student]);
 
     const handleclick = () => {
         setEdit(!edit);
+        if (props.faculty) {
+            nav("/admin/facultyList");
+            changeRegulation("currentNavbar", "1");
+        } else {
+            nav("/admin/studentList");
+            changeRegulation("currentNavbar", "2");
+        }
     };
+
+    // Loading skeleton row component
+    const LoadingRow = ({ colCount }) => (
+        <tr className="text-center border-b border-custom-100 animate-pulse">
+            <td className="pl-5">
+                <div className="w-4 h-4 bg-gray-200 rounded"></div>
+            </td>
+            {Array.from({ length: colCount }).map((_, index) => (
+                <td key={index} className="py-[15px]">
+                    <div className="h-4 bg-gray-200 rounded mx-2"></div>
+                </td>
+            ))}
+            <td>
+                <div className="flex justify-center items-center gap-[15px]">
+                    <div className="w-4 h-4 bg-gray-200 rounded"></div>
+                </div>
+            </td>
+        </tr>
+    );
 
     return (
         <div className="h-full">
@@ -31,6 +61,7 @@ export const StudentListTable = (props) => {
                         placeholder="Search by name or register no"
                         classname="w-[320px] h-[32px]"
                         radius="sm"
+                        disabled={props.isLoading}
                     />
                     <SelectComponent
                         className="w-[156px]"
@@ -39,22 +70,64 @@ export const StudentListTable = (props) => {
                             trigger: "h-[40px]",
                             mainWrapper: "bg-white rounded-2xl",
                         }}
+                        disabled={props.isLoading}
                     />
                 </div>
                 <div className="flex gap-[15px] ml-auto">
                     {props.iseditBtn && (
-                        <ButtonComponent
+                        <>                        <ButtonComponent
                             startContent={<span className="text-white"><Edit2 color="currentColor" /></span>}
                             children="Edit"
                             onClick={handleclick}
                             className="ml-auto"
+                            disabled={props.isLoading}
                         />
-                    )}
-                    <ButtonComponent startContent={<AddIcon />} children="Upload" />
+                    <ButtonComponent
+                        startContent={<AddIcon />}
+                        children="Upload"
+                        disabled={props.isLoading}
+                        onClick={() => {
+                            nav("/admin/regulation/createRegulation")
+                        }}
+                            />
+                        </>
+                )}
                 </div>
             </div>
 
-            {props.data?.length == 0 ?
+            {/* Loading State */}
+            {props.isLoading ? (
+                <div className={cn("h-[calc(100%-4rem)] overflow-y-auto scrollbar-hide", props.className)}>
+                    <table className="w-full table-auto">
+                        <thead className="sticky top-0 z-10 bg-custom-1029">
+                            <tr className="text-center border-b border-custom-100">
+                                <th className="pl-5 z-10 relative">
+                                    <Checkbox disabled />
+                                </th>
+                                {props?.header?.map((h) => (
+                                    <th key={h.id} className="font-semibold py-5 text-custom-1030 text-sm">
+                                        {h.label}
+                                    </th>
+                                ))}
+                                {edit &&
+                                    <th className="font-semibold py-5 text-custom-1030 text-sm">
+                                        View
+                                    </th>
+                                }
+                            </tr>
+                        </thead>
+                        <tbody className='w-full'>
+                            {Array.from({ length: 8 }).map((_, index) => (
+                                <LoadingRow
+                                    key={index}
+                                    colCount={props.header?.length || 4}
+                                />
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            ) : props.data?.length === 0 ? (
+                /* No Data State */
                 <div className='w-full h-full flex flex-col'>
                     <table className="w-full table-auto">
                         <thead className="sticky top-0 z-10 bg-custom-1029">
@@ -79,8 +152,9 @@ export const StudentListTable = (props) => {
                         No data found
                     </div>
                 </div>
-                :
-                <div className={cn("h-[calc(100%-4rem)] overflow-y-auto scrollbar-hide",props.className)}>
+            ) : (
+                /* Data State */
+                <div className={cn("h-[calc(100%-4rem)] overflow-y-auto scrollbar-hide", props.className)}>
                     <table className="w-full table-auto">
                         <thead className="sticky top-0 z-10 bg-custom-1029">
                             <tr className="text-center border-b border-custom-100">
@@ -92,7 +166,7 @@ export const StudentListTable = (props) => {
                                         {h.label}
                                     </th>
                                 ))}
-                                {edit &&
+                                {edit && props.faculty && 
                                     <th className="font-semibold py-5 text-custom-1030 text-sm">
                                         View
                                     </th>
@@ -114,19 +188,18 @@ export const StudentListTable = (props) => {
                                     <td className="text-custom-1004 text-sm">{s?.email}</td>
                                     <td className="text-custom-1004 text-sm">{props.faculty ? s?.id : s?.roll_no}</td>
                                     <td className="text-custom-1004 text-sm">{s?.dept}</td>
-                                    {/* {s.lab && <td className="text-custom-1004 text-sm">{s?.lab}</td>} */}
-                                    {/* {props.faculty && <td className="text-custom-1004 text-sm">{"course"}</td>} */}
                                     {s?.year && <td className="text-custom-1004 text-sm">{s?.year}</td>}
                                     {s?.semester && <td className="text-custom-1004 text-sm">{s?.semester}</td>}
                                     <td>
-                                        {edit && !props.faculty ? 
+                                        {/* {edit && !props.faculty ?
                                             <div className="flex justify-center items-center gap-[15px]">
                                                 <Edit2 />
                                                 <Delete />
                                             </div>
                                             :
-                                            <div className="flex justify-center items-center gap-[15px] cursor-pointer"
-                                            onClick={() => props.view(s)}
+                                            } */}
+                                            {props.faculty && edit && <div className="flex justify-center items-center gap-[15px] cursor-pointer"
+                                                onClick={() => props.view(s)}
                                             >
                                                 <Eye />
                                             </div>
@@ -137,7 +210,7 @@ export const StudentListTable = (props) => {
                         </tbody>
                     </table>
                 </div>
-            }
+            )}
         </div>
     );
 };

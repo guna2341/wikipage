@@ -1,5 +1,7 @@
 import { cn } from '@/components'
 import { Tab, Tabs } from '@heroui/tabs'
+import { SideBarAccordian } from '../sidebarAccordian'
+import { useNavigate } from 'react-router-dom'
 
 export const TabItem = ({
     customTab,
@@ -7,7 +9,7 @@ export const TabItem = ({
     setActiveTab,
     tabList = [],
 }) => {
-
+    const nav = useNavigate();
     return (
         <Tabs
             isVertical
@@ -21,13 +23,23 @@ export const TabItem = ({
                 cursor: "bg-custom-500 border-0 outline-0 z-0 shadow-none",
             }}
         >
-            {tabList.map(tab => (
+            {tabList.map(tab => (                   
                 <Tab
                     key={tab?.id}
-                    title={
-                        <div className={cn('flex items-center p-4', {
-                            "p-0": customTab && tab.id === 0
-                        })}>
+                        title={
+                            tab?.id == 0 ?
+                                <div className={"!p-0"}>
+                                    <div className={cn(
+                                        'w-full flex items-center p-0 font-normal text-base leading-6 text-custom-400',
+                                        {
+                                            "font-semibold text-custom-600": activeTab == tab?.id
+                                        }
+                                    )}>
+                                        <SideBarAccordian customTab={customTab} handleNav={e => nav(`courseplan/${e}`)} />
+                                        </div>
+                                </div>
+                            :
+                        <div className={cn('flex items-center p-4')} onClick={() => nav(tab?.link)}  >
                             <div className={cn(
                                 'w-full flex items-center gap-4 font-normal text-base leading-6 text-custom-400',
                                 {
@@ -50,12 +62,12 @@ export const TabItem = ({
                                     {tab?.comments}
                                 </div>
                             }
-                        </div>
+                                </div>
                     }
                     itemKey={tab?.id}
                     className="h-18"
-                >
-                </Tab>
+                >  
+                    </Tab>
             ))}
         </Tabs>
     )
