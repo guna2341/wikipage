@@ -36,7 +36,7 @@ function App() {
         <Route path="/student" element={<Student/>}>
           <Route path="regulation" element={<Regulation/>} />
           <Route path="regulation/:academic_year/:dept/:sem" element={<Syllabus/>} />
-          <Route path="regulation/:academic_year/:course/:sem/:course_code" element={<StudentCourseView/>} />
+          <Route path="regulation/:academic_year/:dept/:sem/:courseId" element={<StudentCourseView/>} />
           <Route path="comments" element={<StudentComment />} />
         </Route>
 

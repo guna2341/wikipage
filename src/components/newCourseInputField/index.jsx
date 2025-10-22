@@ -6,14 +6,16 @@ export const NewCourseInputField = (
     placeholder,
     topLabel,
     bottomLabel,
+    name,
+    words = "",
+    handleValue,
     isTextArea = false,
   }
 ) => {
 
-  const [words, setWords] = React.useState(0);
 
   function handleOnChange(e) {
-    setWords(e.target.value.length);
+    handleValue(e);
   }
 
   if (!isTextArea) {
@@ -28,9 +30,11 @@ export const NewCourseInputField = (
             className='font-normal text-custom-1016 text-xs leading-6 flex flex-col gap-2'
           >
             <InputField
-              disabled
+              // disabled
+              name={name}
               placeholder={placeholder}
               classname={'opacity-100'}
+              onChange={handleOnChange}
               classnames={{
                 base: "rounded-2xl",
                 mainWrapper: "border border-custom-1015 rounded-2xl h-[70px]",
@@ -60,9 +64,10 @@ export const NewCourseInputField = (
             <div className='rounded-xl border border-custom-1015 bg-custom-850 pb-0.5'>
               <TextField
                 disableAutosize
-                disabled
+                // disabled
                 onChange={handleOnChange}
                 placeholder={placeholder}
+                value={words}
                 classname={'opacity-100'}
                 classNames={{
                   inputWrapper: "bg-custom-850 max-h-[190px] w-full shadow-none border-custom-1015 data-[hover=true]:bg-custom-850 group-data-[focus=true]:bg-custom-850",
@@ -70,8 +75,7 @@ export const NewCourseInputField = (
                 }}
               />
               <span className='pl-4 font-normal text-custom-1016 text-xs leading-6'>
-                {words} Words Out Of 500 Words
-              </span>
+                {(words?.trim().split(/\s+/).filter(Boolean).length) || 0} Words out of 500 Words</span>
             </div>
             {bottomLabel}
           </span>

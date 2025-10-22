@@ -1,3 +1,4 @@
+import { CourseMaterial } from '@/pages';
 import axios from 'axios';
 import { create } from 'zustand';
 import { immer } from 'zustand/middleware/immer';
@@ -10,6 +11,8 @@ const useCourseMaterialStore = create(
     set({[key]:value});
     },
     
+    courseMaterial: {},
+
     mappedCourses: [],
     courseData: {},
     courseHistory: {},
@@ -70,7 +73,29 @@ const useCourseMaterialStore = create(
         console.log(error);
         return { state: false, message: error?.data?.message }
       }
-     },
+    },
+    
+    getCourseMaterial: async (course_code) => {
+      const state = get();
+      if (state.courseMaterial[course_code]) { 
+        return { state:true, data:state.courseMaterial[course_code] };
+      }
+      try {
+        const response = await axios.post("http://localhost:3000/wikipage/common/getCourse", {
+          course_code
+        });
+        set({
+          courseMaterial: {
+            ...state.courseMaterial,
+            [course_code]: response?.data
+        }});
+        return { state: true, data: response?.data };
+      }
+      catch (err) {
+        console.log(err);
+        return { state: false, message: err?.data?.message }
+      }
+     }
 
   }))
 );

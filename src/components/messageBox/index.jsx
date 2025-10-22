@@ -25,17 +25,17 @@ export const MessageBox = ({
 
     if (type === "incoming") {
         return (
-            <div className='flex gap-4'>
+            <div className='flex items-center gap-4'>
                 <AvatarComponent src={icon} radius="sm" size="lg" className="w-12 h-12 border" />
-                <div className='bg-custom-900 p-2 font-normal text-sm leading-7 rounded-2xl'>
+                <div className='bg-custom-900 p-2 py-1 font-normal text-sm rounded-[10px]'>
                     {msg}
                 </div>
             </div>
         )
     } else {
         return (
-            <div className='flex gap-4 justify-end'>
-                <div className='bg-custom-900 p-2 font-normal text-sm leading-7 rounded-2xl'>
+            <div className='flex gap-4 items-center justify-end'>
+                <div className='bg-custom-900 p-2 py-1 font-normal text-sm rounded-[10px]'>
                     {msg}
                 </div>
                 <AvatarComponent src={icon} radius="sm" size="lg" className="w-12 h-12 border" />

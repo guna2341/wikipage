@@ -10,6 +10,7 @@ export const TextField = ({
     placeholder,
     onKeyDown,
     disableAutosize,
+    value,
     disabled = false,
     onChange
 }) => {
@@ -21,6 +22,7 @@ export const TextField = ({
     return (
         <Textarea
             onChange={handleOnChange}
+            value={value}
             disableAutosize={disableAutosize}
             isDisabled={disabled}
             onKeyDown={onKeyDown}

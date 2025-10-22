@@ -1,38 +1,35 @@
 import { CoursePlanIllustration, CoursePlanOverview } from '@/components';
 import useCourseMaterialStore from '@/store/faculty/courseMaterial';
+import { param } from 'framer-motion/client';
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 const CoursePage = () => {
   const { courseData, getCourseData } = useCourseMaterialStore();
   const params = useParams();
-  const [loading, setLoading] = useState(true);
-  const [dataExists, setDataExists] = useState(false);
+  const [loading, setLoading] = useState({});
+  const [data, setData] = useState(false);
 
   useEffect(() => {
     let isMounted = true; 
 
     const fetchData = async () => {
-      if (courseData?.[params.courseId]) { 
+      if (courseData?.[params?.courseId]) { 
         return;
       }
-      setLoading(true);
+      setLoading({[params?.courseId]: true});
       try {
         const response = await getCourseData(params.courseId);
         if (!response?.state) {
-          setDataExists(false);
+          setData(true);
           return;
-        }
-        if (isMounted) {
-          if (response) setDataExists(true);
-          else setDataExists(false);
         }
       } catch (err) {
         console.error(err);
-        if (isMounted) setDataExists(false);
       } finally {
         setTimeout(() => {
-          if (isMounted) setLoading(false);
+          setLoading({ [params?.courseId]: false });
+          ;
         }, 400);
       }
     };
@@ -44,7 +41,8 @@ const CoursePage = () => {
     };
   }, [params.courseId, getCourseData]);
 
-  if (loading) {
+
+  if (loading[params?.courseId]) {
     return (
       <div className="h-full flex flex-col justify-center items-center">
         <div className="flex flex-col items-center">
@@ -55,7 +53,8 @@ const CoursePage = () => {
     );
   }
 
-  if (!dataExists) { 
+
+  if (data) { 
     return <CoursePlanIllustration />;
   }
 
@@ -65,7 +64,7 @@ const CoursePage = () => {
         course={courseData?.[params.courseId]}
       />
     </div>
-  );
+  );  
 };
 
 export default CoursePage;

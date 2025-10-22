@@ -35,7 +35,8 @@ export const CourseMaterial = () => {
                              <p className='font-semibold leading-6 text-lg'>
                                 2022 Regulation
                             </p>
-                            <div className='flex flex-col w-full gap-14'>
+                        <div className='flex flex-col w-full gap-14'>
+                            
                             <CourseMaterialTable handleClick={handleCourse} />
                             <CourseMaterialTable/>
                             <ModCourseMaterialTable/>

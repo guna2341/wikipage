@@ -10,7 +10,6 @@ export const Faculty = () => {
   const navigate = useNavigate();
   const activeTab = useCoursePlanStore((s) => s.currentNavbar);
   const changeCoursePlan = useCoursePlanStore((s) => s.changeCoursePlan);
-  const changeCourseMaterial = useCourseMaterialStore((s) => s.changeCourseMaterial);
   const { getCourse } = useCourseMaterialStore();
 
   useEffect(() => {

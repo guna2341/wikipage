@@ -2,17 +2,22 @@ import { AdminSyllabusTable } from '@/components'
 import { courseTable } from '@/pages/student/utils'
 import { useCourseListStore } from '@/store/faculty/courseList'
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 export const CourseList = () => {
 
   const getCourseList = useCourseListStore(e => e.getCourseList);
   const [course, setCourse] = useState();
 
+  const nav = useNavigate();  
   const params = useParams();
 
+  function handleNav(e) {
+    nav(`/faculty/courseplan/${e}`);
+  }
+
   function getDept(params) {
-    switch (params) { 
+    switch (params) {
       case "Biomedical Engineering":
         return "bio";
       case "Civil Engineering":
@@ -35,8 +40,8 @@ export const CourseList = () => {
         return "cse";
     }
   }
-    
-  useEffect(() => { 
+
+  useEffect(() => {
     async function getCourse() {
       const response = await getCourseList(getDept(params.dept), params.sem);
       setCourse(response?.data);
@@ -45,15 +50,16 @@ export const CourseList = () => {
   }, []);
 
   return (
-      <div className='p-12 px-6 overflow-auto'>
-          <div className='bg-white rounded-2xl p-4'>
-              <AdminSyllabusTable
-                  isEdit={false}
-                    header={"B.E. Computer Science And Engineering"}
-                    courses={course}
-                    minimun_credits={'22.0'}
-              />
-          </div>
+    <div className='p-12 px-6 overflow-auto'>
+      <div className='bg-white rounded-2xl p-4'>
+        <AdminSyllabusTable
+          isEdit={false}
+          header={"B.E. Computer Science And Engineering"}
+          courses={course}
+          minimun_credits={'22.0'}
+          handleClick={handleNav}
+        />
+      </div>
     </div>
   )
 }

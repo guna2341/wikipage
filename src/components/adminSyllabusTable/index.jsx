@@ -39,6 +39,7 @@ export const AdminSyllabusTable = ({
           header={header}
           courses={courses}
           minimun_credits={minimun_credits}
+          handleClick={handleClick}
         />
       </div>
     </div>

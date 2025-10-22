@@ -122,8 +122,8 @@ export const SyllabusTable = ({
                 className={cn('border-t-2 cursor-pointer', {
                   'cursor-default': item.total,
                 })}
-                key={item.code_no}
-                onClick={() => handleClick(item?.course_id)}
+                key={item?.course_code}
+                onClick={() => handleClick(item?.course_code)}
               >
                 {item.total ? (
                   <td className='pl-4 border-r-2 border-custom-100 py-3 font-semibold'>Total</td>
